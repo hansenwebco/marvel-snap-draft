@@ -53,15 +53,15 @@ function redraw(redraw) {
     if (redraw === 1)
         do {
             pick1 = randomNum(1, 172);
-        } while (pick1 === pick2 || pick1 === pick3 || pickList.indexOf("|" + pick1) > 0)
+        } while (pick1 === pick2 || pick1 === pick3 || pickList.indexOf("|" + pick1) >= 0)
     else if (redraw === 2)
         do {
             pick2 = randomNum(1, 172);
-        } while (pick1 === pick2 || pick2 === pick3 ||  pickList.indexOf("|" + pick2) > 0);
+        } while (pick1 === pick2 || pick2 === pick3 ||  pickList.indexOf("|" + pick2) >= 0);
     else if (redraw === 3)
         do {
             pick3 = randomNum(1, 172);
-        } while (pick1 === pick3 || pick2 === pick3 || pickList.indexOf("|" + pick3) > 0);
+        } while (pick1 === pick3 || pick2 === pick3 || pickList.indexOf("|" + pick3) >= 0);
 
 
     document.getElementById("pick1").src = "./images/" + pick1 + ".webp";
@@ -73,15 +73,15 @@ function updatePicks() {
 
     do {
         pick1 = randomNum(1, 172);
-    } while (pickList.indexOf("|" + pick1) > 0)
+    } while (pickList.indexOf("|" + pick1) >= 0)
 
     do {
         pick2 = randomNum(1, 172);
-    } while (pick1 === pick2 || pickList.indexOf("|" + pick2) > 0);
+    } while (pick1 === pick2 || pickList.indexOf("|" + pick2) >= 0);
 
     do {
         pick3 = randomNum(1, 172);
-    } while (pick1 === pick3 || pick2 === pick3 || pickList.indexOf("|" + pick3) > 0);
+    } while (pick1 === pick3 || pick2 === pick3 || pickList.indexOf("|" + pick3) >= 0);
 
     document.getElementById("pick1").src = "./images/" + pick1 + ".webp";
     document.getElementById("pick2").src = "./images/" + pick2 + ".webp";
