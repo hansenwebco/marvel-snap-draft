@@ -3,6 +3,7 @@
     <title>Marvel Snap! Draftanator</title>
 </head>
 <body>
+    <!-- yeah yeah it's full of tables sue me -->
     <div id="heading">Marvel Snap Draftanator</div>
     <div id="draft-ui">
         <table cellpadding=0 cellmargin="0" id="draft">
@@ -13,6 +14,26 @@
                 <td><img src="./images/blank.png" class="card" id="card4"></td>
                 <td><img src="./images/blank.png" class="card" id="card5"></td>
                 <td><img src="./images/blank.png" class="card" id="card6"></td>
+                <td rowspan="2">
+                    <table id="energy-table">
+                        <tr>
+                            <td valign="bottom"><div id="energy1"></div></td>
+                            <td valign="bottom"><div id="energy2"></div></td>
+                            <td valign="bottom"><div id="energy3"></div></td>
+                            <td valign="bottom"><div id="energy4"></div></td>
+                            <td valign="bottom"><div id="energy5"></div></td>
+                            <td valign="bottom"><div id="energy6"></div></td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>5</td>
+                            <td>6</td>
+                        </tr>
+                    </table>
+                </td>>
             </tr>
             <tr>
                 <td><img src="./images/blank.png" class="card" id="card7"></td>
@@ -24,10 +45,14 @@
             </tr>
         </table>
     </div>
-    <!-- yeah yeah it's a table sue me -->
+
+
+
+
     <div id="picks-ui">
         <div id="picks-complete" style="display:none">
-            By Thor's hammer, congratuatations you've completed your draft!
+            By Thor's hammer!<br/><br/> 
+            Congratuatations you've completed your draft!
             <br/><br/>
             <a href="/">Start a New Draft</a>
         </div>

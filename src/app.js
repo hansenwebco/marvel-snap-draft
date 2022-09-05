@@ -42,9 +42,10 @@ function randomNum(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+// called when the user says they already have a card
+// this can probably be combined with updatePicks somehow but I can't be bothered...
 function redraw(redraw) {
-
-    // this can probably be combined with update picks somehow but I can't be bothered...
+    
     if (redraw === 1)
         do {
             pick1 = randomNum(1, 172);
@@ -88,6 +89,17 @@ function drawPicks() {
     for(var x = 0; x < cardsPicked.length ; x++) {
         document.getElementById("card" + (x+1)).src = "./images/" + cardsPicked[x].id + ".webp";
     }
+
+    for(var y =0 ; y< 6; y++) {
+        
+        var count = cardsPicked.filter(elm => {
+            return elm.energy == (y+1)}
+        ).length;
+       
+
+        document.getElementById("energy" + (y+1)).style.height = count*10 + "px";
+    }
+
 }
 
 window.updatePicks = updatePicks;

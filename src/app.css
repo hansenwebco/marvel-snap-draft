@@ -63,3 +63,43 @@ td {
 #picks-complete {
     text-align: center;
 }
+
+#energy-table {
+    margin-left:30px;
+}
+
+#energy1 {
+    width:10px;
+    height:1px;
+    background-color: #1e6ff4;
+}
+
+#energy2 {
+    width:10px;
+    height:1px;
+    background-color: #1e6ff4;
+}
+
+#energy3 {
+    width:10px;
+    height:1px;
+    background-color: #1e6ff4;
+}
+
+#energy4 {
+    width:10px;
+    height:1px;
+    background-color: #1e6ff4;
+}
+
+#energy5 {
+    width:10px;
+    height:1px;
+    background-color: #1e6ff4;
+}
+
+#energy6 {
+    width:10px;
+    height:1px;
+    background-color:#1e6ff4;
+}
