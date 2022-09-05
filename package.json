@@ -1,0 +1,24 @@
+{
+  "name": "marvel-snap-draft",
+  "version": "1.0.0",
+  "description": "A simple draft tool for Marvel Snap",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack serve --mode development --open",
+    "build": "webpack --mode production"
+  },
+  "author": "Mark Hansen",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/core": "^7.18.13",
+    "@babel/preset-env": "^7.18.10",
+    "babel-loader": "^8.2.5",
+    "css-loader": "^6.7.1",
+    "script-loader": "^0.7.2",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.10.1"
+  }
+}

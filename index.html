@@ -1,0 +1,51 @@
+<html>
+<head>
+    <title>Marvel Snap! Draftanator</title>
+</head>
+<body>
+    <div id="heading">Marvel Snap Draftanator</div>
+    <div id="draft-ui">
+        <table cellpadding=0 cellmargin="0" id="draft">
+            <tr>
+                <td><img src="./images/blank.png" class="card" id="card1"></td>
+                <td><img src="./images/blank.png" class="card" id="card2"></td>
+                <td><img src="./images/blank.png" class="card" id="card3"></td>
+                <td><img src="./images/blank.png" class="card" id="card4"></td>
+                <td><img src="./images/blank.png" class="card" id="card5"></td>
+                <td><img src="./images/blank.png" class="card" id="card6"></td>
+            </tr>
+            <tr>
+                <td><img src="./images/blank.png" class="card" id="card7"></td>
+                <td><img src="./images/blank.png" class="card" id="card8"></td>
+                <td><img src="./images/blank.png" class="card" id="card9"></td>
+                <td><img src="./images/blank.png" class="card" id="card10"></td>
+                <td><img src="./images/blank.png" class="card" id="card11"></td>
+                <td><img src="./images/blank.png" class="card" id="card12"></td>
+            </tr>
+        </table>
+    </div>
+    <!-- yeah yeah it's a table sue me -->
+    <div id="picks-ui">
+        <div id="picks-complete" style="display:none">
+            By Thor's hammer, congratuatations you've completed your draft!
+            <br/><br/>
+            <a href="/">Start a New Draft</a>
+        </div>
+        <table id="picks">
+            <tr>
+                <td>
+                    <img onclick="chooseCard(1)" id="pick1" class="pick"><br /><br />
+                    <a href="#" onclick="redraw(1)">Don't Have Card</a>
+                </td>
+                <td><img onclick="chooseCard(2)" id="pick2" class="pick"><br /><br />
+                    <a href="#" onclick="redraw(2)">Don't Have Card</a>
+                </td>
+                <td><img onclick="chooseCard(3)" id="pick3" class="pick"><br /><br />
+                    <a href="#" onclick="redraw(3)">Don't Have Card</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script src="./dist/dist.js"></script>
+</body>
+</html>

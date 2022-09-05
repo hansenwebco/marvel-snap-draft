@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+#draft {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+}
+
+#draft td {
+    width:100px;
+}
+
+#picks {
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+a {
+    color:white;
+}
+
+#heading {
+    font-size: 30px;
+    font-weight: 400;
+    text-align: center;
+    margin-top:20px;
+    color: white;
+}
+
+#picks-ui {
+    background-color: #555;
+    width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    border-radius: 25px;
+    margin-top: 50px;
+}
+
+.pick {
+    width: 300px;
+    cursor: pointer;
+}
+
+.card {
+    height: 100px;
+}
+
+
+
+body {
+    background-color: #222;
+    font-family:  'Orbitron',Arial, Helvetica, sans-serif;
+    color: #DDD;
+}
+
+td {
+    font-size: 10px;
+    text-align: center;
+}
+
+#picks-complete {
+    text-align: center;
+}
