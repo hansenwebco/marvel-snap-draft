@@ -11,6 +11,10 @@ window.onload = function () {
 
 function chooseCard(card) {
 
+    document.getElementById("pick1").src = "";
+    document.getElementById("pick2").src = "";
+    document.getElementById("pick3").src = "";
+
     let chose = 0;
     if (card === 1)
         chose = pick1;
@@ -49,11 +53,11 @@ function redraw(redraw) {
     if (redraw === 1)
         do {
             pick1 = randomNum(1, 172);
-        } while (pickList.indexOf("|" + pick1) > 0)
+        } while (pick1 === pick2 || pick1 === pick3 || pickList.indexOf("|" + pick1) > 0)
     else if (redraw === 2)
         do {
             pick2 = randomNum(1, 172);
-        } while (pick1 === pick2 || pickList.indexOf("|" + pick2) > 0);
+        } while (pick1 === pick2 || pick2 === pick3 ||  pickList.indexOf("|" + pick2) > 0);
     else if (redraw === 3)
         do {
             pick3 = randomNum(1, 172);
@@ -95,7 +99,6 @@ function drawPicks() {
         var count = cardsPicked.filter(elm => {
             return elm.energy == (y+1)}
         ).length;
-       
 
         document.getElementById("energy" + (y+1)).style.height = count*10 + "px";
     }
