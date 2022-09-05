@@ -39,8 +39,9 @@ a {
 }
 
 .pick {
-    width: 300px;
+   
     cursor: pointer;
+    height:300px;
 }
 
 .card {
@@ -102,4 +103,10 @@ td {
     width:10px;
     height:1px;
     background-color:#1e6ff4;
+}
+
+#footer {
+    margin-top:60px;
+    font-size:8px;
+    text-align: center;
 }
