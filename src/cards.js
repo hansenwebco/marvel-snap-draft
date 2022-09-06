@@ -15,7 +15,7 @@ cards = {
     },
     {
       "id": "3",
-      "name": "Moon Girl",
+      "name": "MoonGirl",
       "energy": "4",
       "power": "4"
     },
@@ -39,25 +39,25 @@ cards = {
     },
     {
       "id": "7",
-      "name": "Mister Fantastic",
+      "name": "MrFantastic",
       "energy": "3",
       "power": "2"
     },
     {
       "id": "8",
-      "name": "Mister Negative",
+      "name": "MrNegative",
       "energy": "4",
       "power": "4"
     },
     {
       "id": "9",
-      "name": "Mister Sinister",
+      "name": "MrSinister",
       "energy": "2",
       "power": "2"
     },
     {
       "id": "10",
-      "name": "Multiple Man",
+      "name": "MultipleMan",
       "energy": "2",
       "power": "3"
     },
@@ -117,7 +117,7 @@ cards = {
     },
     {
       "id": "20",
-      "name": "Omega Red",
+      "name": "OmegaRed",
       "energy": "4",
       "power": "5"
     },
@@ -141,25 +141,25 @@ cards = {
     },
     {
       "id": "24",
-      "name": "Arnim Zola",
+      "name": "ArnimZola",
       "energy": "6",
       "power": "0"
     },
     {
       "id": "25",
-      "name": "Professor X",
+      "name": "ProfessorX",
       "energy": "5",
       "power": "3"
     },
     {
       "id": "26",
-      "name": "Pyslocke",
+      "name": "Psylocke",
       "energy": "2",
       "power": "1"
     },
     {
       "id": "27",
-      "name": "The Punisher",
+      "name": "Punisher",
       "energy": "3",
       "power": "2"
     },
@@ -183,7 +183,7 @@ cards = {
     },
     {
       "id": "31",
-      "name": "Red Skull",
+      "name": "RedSkull",
       "energy": "5",
       "power": "14"
     },
@@ -201,19 +201,19 @@ cards = {
     },
     {
       "id": "34",
-      "name": "Rocket Raccoon",
+      "name": "RocketRaccoon",
       "energy": "1",
       "power": "2"
     },
     {
       "id": "35",
-      "name": "Baron Mordo",
+      "name": "BaronMordo",
       "energy": "2",
       "power": "3"
     },
     {
       "id": "36",
-      "name": "Rock Slide",
+      "name": "Rockslide",
       "energy": "4",
       "power": "6"
     },
@@ -225,7 +225,7 @@ cards = {
     },
     {
       "id": "38",
-      "name": "Ronan The Accuser",
+      "name": "Ronan",
       "energy": "4",
       "power": "0"
     },
@@ -243,7 +243,7 @@ cards = {
     },
     {
       "id": "41",
-      "name": "Scarlet Witch",
+      "name": "ScarletWitch",
       "energy": "2",
       "power": "3"
     },
@@ -267,7 +267,7 @@ cards = {
     },
     {
       "id": "45",
-      "name": "Shang-Chi",
+      "name": "ShangChi",
       "energy": "4",
       "power": "3"
     },
@@ -291,19 +291,19 @@ cards = {
     },
     {
       "id": "49",
-      "name": "Spider-man",
+      "name": "SpiderMan",
       "energy": "4",
       "power": "2"
     },
     {
       "id": "50",
-      "name": "Spider-woman",
+      "name": "SpiderWoman",
       "energy": "4",
       "power": "4"
     },
     {
       "id": "51",
-      "name": "Squirrel Girl",
+      "name": "SquirrelGirl",
       "energy": "1",
       "power": "1"
     },
@@ -321,7 +321,7 @@ cards = {
     },
     {
       "id": "54",
-      "name": "Strong Guy",
+      "name": "StrongGuy",
       "energy": "4",
       "power": "4"
     },
@@ -345,7 +345,7 @@ cards = {
     },
     {
       "id": "58",
-      "name": "Sword Master",
+      "name": "SwordMaster",
       "energy": "3",
       "power": "6"
     },
@@ -357,13 +357,13 @@ cards = {
     },
     {
       "id": "60",
-      "name": "The Collector",
+      "name": "TheCollector",
       "energy": "2",
       "power": "1"
     },
     {
       "id": "61",
-      "name": "The Thing",
+      "name": "TheThing",
       "energy": "4",
       "power": "6"
     },
@@ -375,13 +375,13 @@ cards = {
     },
     {
       "id": "63",
-      "name": "Typhoid Mary",
+      "name": "TyphoidMary",
       "energy": "4",
       "power": "10"
     },
     {
       "id": "64",
-      "name": "Vatu The Watcher",
+      "name": "Uatu",
       "energy": "1",
       "power": "2"
     },
@@ -405,13 +405,13 @@ cards = {
     },
     {
       "id": "68",
-      "name": "Black Bolt",
+      "name": "BlackBolt",
       "energy": "5",
       "power": "7"
     },
     {
       "id": "69",
-      "name": "Vison",
+      "name": "Vision",
       "energy": "5",
       "power": "7"
     },
@@ -441,13 +441,13 @@ cards = {
     },
     {
       "id": "74",
-      "name": "White Queen",
+      "name": "WhiteQueen",
       "energy": "4",
       "power": "6"
     },
     {
       "id": "75",
-      "name": "White Tiger",
+      "name": "WhiteTiger",
       "energy": "5",
       "power": "1"
     },
@@ -471,7 +471,7 @@ cards = {
     },
     {
       "id": "79",
-      "name": "Black Cat",
+      "name": "BlackCat",
       "energy": "3",
       "power": "6"
     },
@@ -507,13 +507,13 @@ cards = {
     },
     {
       "id": "85",
-      "name": "Adam Warlock",
+      "name": "AdamWarlock",
       "energy": "2",
       "power": "0"
     },
     {
       "id": "86",
-      "name": "Blue Marvel",
+      "name": "BlueMarvel",
       "energy": "6",
       "power": "4"
     },
@@ -525,7 +525,7 @@ cards = {
     },
     {
       "id": "88",
-      "name": "Buckey Barnes",
+      "name": "BuckyBarnes",
       "energy": "2",
       "power": "1"
     },
@@ -537,7 +537,7 @@ cards = {
     },
     {
       "id": "90",
-      "name": "Captain America",
+      "name": "CaptainAmerica",
       "energy": "3",
       "power": "3"
     },
@@ -567,7 +567,7 @@ cards = {
     },
     {
       "id": "95",
-      "name": "Colleen Wing",
+      "name": "ColleenWing",
       "energy": "2",
       "power": "4"
     },
@@ -639,7 +639,7 @@ cards = {
     },
     {
       "id": "107",
-      "name": "Agatha Harkness",
+      "name": "AgathaHarkness",
       "energy": "6",
       "power": "13"
     },
@@ -657,19 +657,19 @@ cards = {
     },
     {
       "id": "110",
-      "name": "Devil Dinosaur",
+      "name": "DevilDinosaur",
       "energy": "4",
       "power": "0"
     },
     {
       "id": "111",
-      "name": "Doctor Octopus",
+      "name": "DoctorOctopus",
       "energy": "5",
       "power": "10"
     },
     {
       "id": "112",
-      "name": "Doctor Strange",
+      "name": "DoctorStrange",
       "energy": "3",
       "power": "3"
     },
@@ -693,19 +693,19 @@ cards = {
     },
     {
       "id": "116",
-      "name": "Doctor Doom",
+      "name": "DrDoom",
       "energy": "6",
       "power": "5"
     },
     {
       "id": "117",
-      "name": "Ebony Maw",
+      "name": "EbonyMaw",
       "energy": "1",
       "power": "7"
     },
     {
       "id": "118",
-      "name": "Agent 13",
+      "name": "Agent13",
       "energy": "1",
       "power": "2"
     },
@@ -753,7 +753,7 @@ cards = {
     },
     {
       "id": "126",
-      "name": "Ghost Rider",
+      "name": "GhostRider",
       "energy": "4",
       "power": "3"
     },
@@ -771,13 +771,13 @@ cards = {
     },
     {
       "id": "129",
-      "name": "America Chavez",
+      "name": "AmericaChavez",
       "energy": "6",
       "power": "9"
     },
     {
       "id": "130",
-      "name": "Green Goblin",
+      "name": "GreenGoblin",
       "energy": "3",
       "power": "-3"
     },
@@ -813,7 +813,7 @@ cards = {
     },
     {
       "id": "136",
-      "name": "Hell Cow",
+      "name": "Hellcow",
       "energy": "4",
       "power": "6"
     },
@@ -825,7 +825,7 @@ cards = {
     },
     {
       "id": "138",
-      "name": "The Hood",
+      "name": "Hood",
       "energy": "-",
       "power": "-2"
     },
@@ -843,13 +843,13 @@ cards = {
     },
     {
       "id": "141",
-      "name": "Hulk Buster",
+      "name": "Hulkbuster",
       "energy": "3",
       "power": "4"
     },
     {
       "id": "142",
-      "name": "Human Torch",
+      "name": "HumanTorch",
       "energy": "1",
       "power": "2"
     },
@@ -861,19 +861,19 @@ cards = {
     },
     {
       "id": "144",
-      "name": "The Infinaut",
+      "name": "Infinaut",
       "energy": "6",
       "power": "20"
     },
     {
       "id": "145",
-      "name": "Invisible Woman",
+      "name": "InvisibleWoman",
       "energy": "2",
       "power": "2"
     },
     {
       "id": "146",
-      "name": "Iron Fist",
+      "name": "IronFist",
       "energy": "1",
       "power": "2"
     },
@@ -891,13 +891,13 @@ cards = {
     },
     {
       "id": "149",
-      "name": "Jane Foster The Mighty Thor",
+      "name": "JaneFoster",
       "energy": "5",
       "power": "8"
     },
     {
       "id": "150",
-      "name": "Jessica Jones",
+      "name": "JessicaJones",
       "energy": "5",
       "power": "8"
     },
@@ -921,7 +921,7 @@ cards = {
     },
     {
       "id": "154",
-      "name": "Kazar",
+      "name": "KaZar",
       "energy": "4",
       "power": "4"
     },
@@ -957,7 +957,7 @@ cards = {
     },
     {
       "id": "160",
-      "name": "Lady Sif",
+      "name": "LadySif",
       "energy": "2",
       "power": "4"
     },
@@ -1023,7 +1023,7 @@ cards = {
     },
     {
       "id": "171",
-      "name": "Misty Knight",
+      "name": "MistyKnight",
       "energy": "1",
       "power": "2"
     },
