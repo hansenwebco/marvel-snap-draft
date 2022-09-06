@@ -1,3 +1,6 @@
+import { Base64 } from 'js-base64';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 let pick1 = 0;
 let pick2 = 0;
 let pick3 = 0;
@@ -25,19 +28,21 @@ function chooseCard(card) {
 
     pickList += "|" + chose;
 
-    cardsPicked.push(cards.card.find(x=> parseInt(x.id) === chose));
-    cardsPicked.sort((a,b) => (a.name < b.name) ? 1 : -1);
-    cardsPicked.sort((a,b) => a.energy > b.energy ? 1 : -1);
+    cardsPicked.push(cards.card.find(x => parseInt(x.id) === chose));
+    cardsPicked.sort((a, b) => (a.name < b.name) ? 1 : -1);
+    cardsPicked.sort((a, b) => a.energy > b.energy ? 1 : -1);
 
     drawPicks();
 
     currentPick++;
     updatePicks();
 
-    if (currentPick > 12)
-    {
+    let deckCode = buildDeckCode();
+
+    if (currentPick > 12) {
         document.getElementById("picks").style.display = "none";
         document.getElementById("picks-complete").style.display = "block";
+    
         return;
     }
 }
@@ -49,7 +54,7 @@ function randomNum(min, max) {
 // called when the user says they already have a card
 // this can probably be combined with updatePicks somehow but I can't be bothered...
 function redraw(redraw) {
-    
+
     if (redraw === 1)
         do {
             pick1 = randomNum(1, 172);
@@ -57,7 +62,7 @@ function redraw(redraw) {
     else if (redraw === 2)
         do {
             pick2 = randomNum(1, 172);
-        } while (pick1 === pick2 || pick2 === pick3 ||  pickList.indexOf("|" + pick2) >= 0);
+        } while (pick1 === pick2 || pick2 === pick3 || pickList.indexOf("|" + pick2) >= 0);
     else if (redraw === 3)
         do {
             pick3 = randomNum(1, 172);
@@ -90,19 +95,37 @@ function updatePicks() {
 }
 
 function drawPicks() {
-    for(var x = 0; x < cardsPicked.length ; x++) {
-        document.getElementById("card" + (x+1)).src = "./images/" + cardsPicked[x].id + ".webp";
+    for (var x = 0; x < cardsPicked.length; x++) {
+        document.getElementById("card" + (x + 1)).src = "./images/" + cardsPicked[x].id + ".webp";
     }
 
-    for(var y =0 ; y< 6; y++) {
-        
+    for (var y = 0; y < 6; y++) {
+
         var count = cardsPicked.filter(elm => {
-            return elm.energy == (y+1)}
+            return elm.energy == (y + 1)
+        }
         ).length;
 
-        document.getElementById("energy" + (y+1)).style.height = count*10 + "px";
+        document.getElementById("energy" + (y + 1)).style.height = count * 10 + "px";
     }
 
+}
+
+function buildDeckCode() {
+
+    let deck = {};
+    deck.Cards = [];
+    deck.Name = "Draft Deck"
+
+    for (var x = 0; x < cardsPicked.length; x++) {
+        const replaced = cardsPicked[x].name.replace(/[^a-z0-9]/gi, '');
+        deck.Cards[x] = { "CardDefId" : replaced };
+    }
+
+
+    let result = Base64.btoa(JSON.stringify(deck));
+    document.getElementById("deck-code").value = result;
+   
 }
 
 window.updatePicks = updatePicks;
