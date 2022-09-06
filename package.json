@@ -13,6 +13,7 @@
     "@babel/core": "^7.18.13",
     "@babel/preset-env": "^7.18.10",
     "babel-loader": "^8.2.5",
+    "bootstrap": "^5.2.0",
     "css-loader": "^6.7.1",
     "js-base64": "^3.7.2",
     "script-loader": "^0.7.2",

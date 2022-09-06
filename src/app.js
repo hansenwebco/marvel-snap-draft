@@ -1,4 +1,5 @@
 import { Base64 } from 'js-base64';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 let pick1 = 0;
 let pick2 = 0;

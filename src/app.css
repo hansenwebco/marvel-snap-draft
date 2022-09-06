@@ -42,9 +42,20 @@ a {
    
     cursor: pointer;
     height:300px;
+       
 }
 
-.card {
+.donthave {
+    margin-top:10px;
+    margin-bottom:20px;
+}
+
+.picks  {
+    margin-top:20px;
+   
+}
+
+.cards {
     height: 100px;
 }
 
@@ -57,7 +68,7 @@ body {
 }
 
 td {
-    font-size: 10px;
+    font-size: 8px;
     text-align: center;
 }
 

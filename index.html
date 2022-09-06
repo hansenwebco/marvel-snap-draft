@@ -8,12 +8,12 @@
     <div id="draft-ui">
         <table cellpadding=0 cellmargin="0" id="draft">
             <tr>
-                <td><img src="./images/blank.png" class="card" id="card1"></td>
-                <td><img src="./images/blank.png" class="card" id="card2"></td>
-                <td><img src="./images/blank.png" class="card" id="card3"></td>
-                <td><img src="./images/blank.png" class="card" id="card4"></td>
-                <td><img src="./images/blank.png" class="card" id="card5"></td>
-                <td><img src="./images/blank.png" class="card" id="card6"></td>
+                <td><img src="./images/blank.png" class="cards" id="card1"></td>
+                <td><img src="./images/blank.png" class="cards" id="card2"></td>
+                <td><img src="./images/blank.png" class="cards" id="card3"></td>
+                <td><img src="./images/blank.png" class="cards" id="card4"></td>
+                <td><img src="./images/blank.png" class="cards" id="card5"></td>
+                <td><img src="./images/blank.png" class="cards" id="card6"></td>
                 <td rowspan="2">
                     <table id="energy-table">
                         <tr>
@@ -36,12 +36,12 @@
                 </td>
             </tr>
             <tr>
-                <td><img src="./images/blank.png" class="card" id="card7"></td>
-                <td><img src="./images/blank.png" class="card" id="card8"></td>
-                <td><img src="./images/blank.png" class="card" id="card9"></td>
-                <td><img src="./images/blank.png" class="card" id="card10"></td>
-                <td><img src="./images/blank.png" class="card" id="card11"></td>
-                <td><img src="./images/blank.png" class="card" id="card12"></td>
+                <td><img src="./images/blank.png" class="cards" id="card7"></td>
+                <td><img src="./images/blank.png" class="cards" id="card8"></td>
+                <td><img src="./images/blank.png" class="cards" id="card9"></td>
+                <td><img src="./images/blank.png" class="cards" id="card10"></td>
+                <td><img src="./images/blank.png" class="cards" id="card11"></td>
+                <td><img src="./images/blank.png" class="cards" id="card12"></td>
             </tr>
         </table>
     </div>
@@ -50,21 +50,22 @@
             By Thor's hammer!<br/><br/> 
             Congratulations you've completed your draft!
             <br/><br/>
-            <a href="/">Start a New Draft</a>
+            Deck Code:<input class="form-control" readonly onclick="this.select();" type="text" id="deck-code"/>
             <br/><br/>
-            <input readonly onclick="this.select();" type="text" id="deck-code"/>
+            <a class="btn btn-primary" href="/">Start a New Draft</a>
+            <br/><br/>
         </div>
         <table id="picks">
             <tr>
                 <td>
                     <img onclick="chooseCard(1)" id="pick1" class="pick"><br /><br />
-                    <a href="#" onclick="redraw(1)">Don't Have Card</a>
+                    <a href="#" class="donthave btn btn-secondary btn-sm" onclick="redraw(1)">Don't Have Card</a>
                 </td>
                 <td><img onclick="chooseCard(2)" id="pick2" class="pick"><br /><br />
-                    <a href="#" onclick="redraw(2)">Don't Have Card</a>
+                    <a href="#" class="btn btn-secondary btn-sm" onclick="redraw(2)">Don't Have Card</a>
                 </td>
                 <td><img onclick="chooseCard(3)" id="pick3" class="pick"><br /><br />
-                    <a href="#" onclick="redraw(3)">Don't Have Card</a>
+                    <a href="#" class="btn btn-secondary btn-sm" onclick="redraw(3)">Don't Have Card</a>
                 </td>
             </tr>
         </table>
