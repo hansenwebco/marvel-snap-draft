@@ -29,8 +29,11 @@ function chooseCard(card) {
     pickList += "|" + chose;
 
     cardsPicked.push(cards.card.find(x => parseInt(x.id) === chose));
-    cardsPicked.sort((a, b) => (a.name < b.name) ? 1 : -1);
-    cardsPicked.sort((a, b) => a.energy > b.energy ? 1 : -1);
+    
+    
+    cardsPicked.sort((a, b) => a.name > b.name ? 1 : -1)
+    cardsPicked.sort((a, b) => a.power - b.power);
+    cardsPicked.sort((a, b) => a.energy - b.energy);
 
     drawPicks();
 
@@ -128,6 +131,12 @@ function buildDeckCode() {
    
 }
 
+function copyDeckCode() {
+    let code =  document.getElementById("deck-code").value;
+    navigator.clipboard.writeText(code);
+}
+
 window.updatePicks = updatePicks;
 window.chooseCard = chooseCard;
 window.redraw = redraw;
+window.copyDeckCode =copyDeckCode;

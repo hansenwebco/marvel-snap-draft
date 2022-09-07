@@ -47,10 +47,18 @@
     </div>
     <div id="picks-ui">
         <div id="picks-complete" style="display:none">
-            By Thor's hammer!<br/><br/> 
-            Congratulations you've completed your draft!
+            By Thor's hammer, congratulations you've completed your draft!
             <br/><br/>
-            Deck Code:<input class="form-control" readonly onclick="this.select();" type="text" id="deck-code"/>
+            
+            <div id="deckcode-container" class="row col-12">
+                <div class="col-9">
+                    <input class="form-control" readonly onclick="this.select();" type="text" id="deck-code" />
+                </div>
+                <div class="col-2">
+                    <input type="button" class="btn btn-secondary" onclick="copyDeckCode();" value="Copy Deck Code">
+                </div>
+            </div>
+     
             <br/><br/>
             <a class="btn btn-primary" href="/">Start a New Draft</a>
             <br/><br/>
