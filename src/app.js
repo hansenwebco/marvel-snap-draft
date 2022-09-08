@@ -18,6 +18,10 @@ function chooseCard(card) {
     document.getElementById("pick2").src = "";
     document.getElementById("pick3").src = "";
 
+    document.getElementById("pick1").setAttribute("onclick", "");
+    document.getElementById("pick2").setAttribute("onclick", "");
+    document.getElementById("pick3").setAttribute("onclick", "");
+
     let chose = 0;
     if (card === 1)
         chose = pick1;
@@ -45,7 +49,6 @@ function chooseCard(card) {
     if (currentPick > 12) {
         document.getElementById("picks").style.display = "none";
         document.getElementById("picks-complete").style.display = "block";
-    
         return;
     }
 }
@@ -58,17 +61,19 @@ function randomNum(min, max) {
 // this can probably be combined with updatePicks somehow but I can't be bothered...
 function redraw(redraw) {
 
+    let totalCards = cards.card.length;
+
     if (redraw === 1)
         do {
-            pick1 = randomNum(1, 172);
+            pick1 = randomNum(1, totalCards);
         } while (pick1 === pick2 || pick1 === pick3 || pickList.indexOf("|" + pick1) >= 0)
     else if (redraw === 2)
         do {
-            pick2 = randomNum(1, 172);
+            pick2 = randomNum(1, totalCards);
         } while (pick1 === pick2 || pick2 === pick3 || pickList.indexOf("|" + pick2) >= 0);
     else if (redraw === 3)
         do {
-            pick3 = randomNum(1, 172);
+            pick3 = randomNum(1, totalCards);
         } while (pick1 === pick3 || pick2 === pick3 || pickList.indexOf("|" + pick3) >= 0);
 
 
@@ -79,16 +84,19 @@ function redraw(redraw) {
 
 function updatePicks() {
 
+    let totalCards = cards.card.length;
+
+
     do {
-        pick1 = randomNum(1, 172);
+        pick1 = randomNum(1, totalCards);
     } while (pickList.indexOf("|" + pick1) >= 0)
 
     do {
-        pick2 = randomNum(1, 172);
+        pick2 = randomNum(1, totalCards);
     } while (pick1 === pick2 || pickList.indexOf("|" + pick2) >= 0);
 
     do {
-        pick3 = randomNum(1, 172);
+        pick3 = randomNum(1, totalCards);
     } while (pick1 === pick3 || pick2 === pick3 || pickList.indexOf("|" + pick3) >= 0);
 
     document.getElementById("pick1").src = "./images/" + pick1 + ".webp";

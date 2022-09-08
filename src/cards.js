@@ -1032,6 +1032,12 @@ cards = {
       "name": "Mojo",
       "energy": "2",
       "power": "2"
-    }
+    },
+    {
+      "id": "173",
+      "name": "NickFury",
+      "energy": "5",
+      "power": "7"
+    }    
   ]
 }
