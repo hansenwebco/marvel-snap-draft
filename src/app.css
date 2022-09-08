@@ -36,12 +36,14 @@ a {
     padding: 30px;
     border-radius: 25px;
     margin-top: 50px;
+    box-sizing:content-box;
 }
 
 .pick {
    
     cursor: pointer;
     height:300px;
+    width:300px;
        
 }
 

@@ -55,24 +55,24 @@
                     <input class="form-control" readonly onclick="this.select();" type="text" id="deck-code" />
                 </div>
                 <div class="col-2">
-                    <input type="button" class="btn btn-secondary" onclick="copyDeckCode();" value="Copy Deck Code">
+                    <input type="button" class="btn btn-primary" onclick="copyDeckCode();" value="Copy Deck Code">
                 </div>
             </div>
      
             <br/><br/>
-            <a class="btn btn-primary" href="/">Start a New Draft</a>
+            <a class="btn btn-secondary" href="/">Start a New Draft</a>
             <br/><br/>
         </div>
         <table id="picks">
             <tr>
                 <td>
-                    <img onclick="chooseCard(1)" id="pick1" class="pick"><br /><br />
-                    <a href="#" class="donthave btn btn-secondary btn-sm" onclick="redraw(1)">Don't Have Card</a>
+                    <img onload="this.setAttribute('onclick', 'chooseCard(1);')" id="pick1" class="pick"><br /><br />
+                    <a href="#" class="btn btn-secondary btn-sm" onclick="redraw(1)">Don't Have Card</a>
                 </td>
-                <td><img onclick="chooseCard(2)" id="pick2" class="pick"><br /><br />
+                <td><img onload="this.setAttribute('onclick', 'chooseCard(2);')" id="pick2" class="pick"><br /><br />
                     <a href="#" class="btn btn-secondary btn-sm" onclick="redraw(2)">Don't Have Card</a>
                 </td>
-                <td><img onclick="chooseCard(3)" id="pick3" class="pick"><br /><br />
+                <td><img onload="this.setAttribute('onclick', 'chooseCard(3);')" id="pick3" class="pick"><br /><br />
                     <a href="#" class="btn btn-secondary btn-sm" onclick="redraw(3)">Don't Have Card</a>
                 </td>
             </tr>
