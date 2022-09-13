@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
 
+#header-image {
+    height:150px;
+    margin-bottom: -25px;
+}
+
 #draft {
     margin-left: auto;
     margin-right: auto;
@@ -43,8 +48,8 @@ a {
 .pick {
    
     cursor: pointer;
-    height:300px;
-    width:300px;
+    height:260px;
+    width:260px;
        
 }
 
@@ -59,7 +64,7 @@ a {
 }
 
 .cards {
-    height: 100px;
+    height: 90px;
 }
 
 
