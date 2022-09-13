@@ -22,11 +22,15 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader',
-        ],
-      },
+        loader: 'style-loader',
+      },  
+      {
+        test: /\.css$/,
+        loader: 'css-loader',
+        options: {
+          url: false,
+        }
+      },  
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
