@@ -29,7 +29,7 @@ a {
 }
 
 #picks-ui {
-    background-color: #555;
+    background-color: #333;
     width: 900px;
     margin-left: auto;
     margin-right: auto;
@@ -37,6 +37,7 @@ a {
     border-radius: 25px;
     margin-top: 50px;
     box-sizing:content-box;
+    border: solid 4px #95a2e4;
 }
 
 .pick {
@@ -67,6 +68,10 @@ body {
     background-color: #222;
     font-family:  'Orbitron',Arial, Helvetica, sans-serif;
     color: #DDD;
+    background-image: url('/images/back.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+
 }
 
 td {
@@ -120,7 +125,7 @@ td {
 
 #footer {
     margin-top:60px;
-    font-size:8px;
+    font-size:10px;
     text-align: center;
 }
 
