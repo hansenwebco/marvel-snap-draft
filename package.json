@@ -15,6 +15,7 @@
     "babel-loader": "^8.2.5",
     "bootstrap": "^5.2.0",
     "css-loader": "^6.7.1",
+    "html-webpack-plugin": "^5.5.0",
     "js-base64": "^3.7.2",
     "script-loader": "^0.7.2",
     "style-loader": "^3.3.1",

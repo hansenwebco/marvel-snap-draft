@@ -4,16 +4,16 @@
 </head>
 <body>
     <!-- yeah yeah it's full of tables sue me -->
-    <div id="heading">Marvel Snap Draftanator</div>
-    <div id="draft-ui">
+      <div id="heading"><img height="150" src="/images/header.png"></div>
+     <div id="draft-ui">
         <table cellpadding=0 cellmargin="0" id="draft">
             <tr>
-                <td><img src="./images/blank.png" class="cards" id="card1"></td>
-                <td><img src="./images/blank.png" class="cards" id="card2"></td>
-                <td><img src="./images/blank.png" class="cards" id="card3"></td>
-                <td><img src="./images/blank.png" class="cards" id="card4"></td>
-                <td><img src="./images/blank.png" class="cards" id="card5"></td>
-                <td><img src="./images/blank.png" class="cards" id="card6"></td>
+                <td><img src="./images/blank2.png" class="cards" id="card1"></td>
+                <td><img src="./images/blank2.png" class="cards" id="card2"></td>
+                <td><img src="./images/blank2.png" class="cards" id="card3"></td>
+                <td><img src="./images/blank2.png" class="cards" id="card4"></td>
+                <td><img src="./images/blank2.png" class="cards" id="card5"></td>
+                <td><img src="./images/blank2.png" class="cards" id="card6"></td>
                 <td rowspan="2">
                     <table id="energy-table">
                         <tr>
@@ -36,12 +36,12 @@
                 </td>
             </tr>
             <tr>
-                <td><img src="./images/blank.png" class="cards" id="card7"></td>
-                <td><img src="./images/blank.png" class="cards" id="card8"></td>
-                <td><img src="./images/blank.png" class="cards" id="card9"></td>
-                <td><img src="./images/blank.png" class="cards" id="card10"></td>
-                <td><img src="./images/blank.png" class="cards" id="card11"></td>
-                <td><img src="./images/blank.png" class="cards" id="card12"></td>
+                <td><img src="./images/blank2.png" class="cards" id="card7"></td>
+                <td><img src="./images/blank2.png" class="cards" id="card8"></td>
+                <td><img src="./images/blank2.png" class="cards" id="card9"></td>
+                <td><img src="./images/blank2.png" class="cards" id="card10"></td>
+                <td><img src="./images/blank2.png" class="cards" id="card11"></td>
+                <td><img src="./images/blank2.png" class="cards" id="card12"></td>
             </tr>
         </table>
     </div>
@@ -78,7 +78,8 @@
             </tr>
         </table>
     </div>
-    <div id="footer">Created by stonedonkey - <a target="_blank" href="https://github.com/hansenwebco/marvel-snap-draft">Github</a> - <a target="_blank" href="https://github.com/hansenwebco/marvel-snap-draft/issues">Bugs</a></div>
-    <script src="./dist/dist.js"></script>
+    <div id="footer">Created by stonedonkey - Follow on <a target="_blank" href="https://twitch.tv/stonedonkey">Twitch</a> - <a target="_blank" href="https://twitter.com/stonedonkey">Twitter</a>
+       <br/><br/> <a target="_blank" href="https://github.com/hansenwebco/marvel-snap-draft">Github</a> - <a target="_blank" href="https://github.com/hansenwebco/marvel-snap-draft/issues">Bugs</a></div>
+    <script src="./dist/dist.js?v=<%=htmlWebpackPlugin.options.buildDate%>"></script>
 </body>
 </html>

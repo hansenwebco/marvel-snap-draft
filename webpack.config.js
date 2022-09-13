@@ -1,4 +1,14 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const buildDate = Date.now();
+
 module.exports = {
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: 'index.html',
+      title: 'HTML Webpack Plugin',
+      buildDate: buildDate,
+    })
+  ],
     entry: [
       './src/app.js',
       './src/cards.js',
