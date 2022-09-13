@@ -73,7 +73,7 @@ body {
     background-color: #222;
     font-family:  'Orbitron',Arial, Helvetica, sans-serif;
     color: #DDD;
-    background-image: url('/images/back.jpg');
+    background-image: url('../images/back.jpg');
     background-size: cover;
     background-repeat: no-repeat;
 
