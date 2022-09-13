@@ -1,52 +1,42 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const buildDate = Date.now();
-
 module.exports = {
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: 'index.html',
-      title: 'HTML Webpack Plugin',
-      buildDate: buildDate,
-    })
+  entry: [
+    './src/app.js',
+    './src/cards.js',
+    './src/app.css',
   ],
-    entry: [
-      './src/app.js',
-      './src/cards.js',
-      './src/app.css',
-    ],
-    output: {
-      path: `${__dirname}/dist`,
-      publicPath: '/',
-      filename: 'dist.js',
-      clean: true,
+  output: {
+    path: `${__dirname}/dist`,
+    publicPath: '/',
+    filename: 'dist.js',
+    clean: true,
+  },
+  devServer: {
+    devMiddleware: {
+      writeToDisk: true,
     },
-    devServer: {
-      devMiddleware: {
-        writeToDisk: true,
-      },
-      static: {
-        directory: __dirname
-      }
-    },
-    module: {
-      rules: [
-        {
-          test: /\.css$/,
-          use: [
-            'style-loader',
-            'css-loader',
-          ],
-        },
-        {
-          test: /\.js$/,
-          exclude: /(node_modules|bower_components)/,
-          use: {
-            loader: 'babel-loader',
-            options: {
-              presets: ['@babel/preset-env']
-            }
-          }
-        }      
-      ]
+    static: {
+      directory: __dirname
     }
-  };
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader',
+        ],
+      },
+      {
+        test: /\.js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
+      }      
+    ]
+  }
+};
