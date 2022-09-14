@@ -177,7 +177,7 @@ cards = {
     },
     {
       "id": "26",
-      "name": "Pyslocke",
+      "name": "Psylocke",
       "energy": "2",
       "power": "1",
       "desc": "On Reveal: Next turn, you get +1 Energy"
@@ -478,7 +478,7 @@ cards = {
     },
     {
       "id": "69",
-      "name": "Vison",
+      "name": "Vision",
       "energy": "5",
       "power": "7",
       "desc": "You can move this each turn."
@@ -1212,6 +1212,4 @@ cards = {
       "desc": "On Reveal: Add 3 random 6-Cost cards to your hand"
     }
   ]
-
-
 }
