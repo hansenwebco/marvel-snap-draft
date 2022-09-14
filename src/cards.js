@@ -16,7 +16,7 @@ cards = {
     },
     {
       "id": "3",
-      "name": "Moon Girl",
+      "name": "MoonGirl",
       "energy": "4",
       "power": "4",
       "desc": "On Reveal: Duplicate your hand."
@@ -44,28 +44,28 @@ cards = {
     },
     {
       "id": "7",
-      "name": "Mister Fantastic",
+      "name": "MrFantastic",
       "energy": "3",
       "power": "2",
       "desc": "Ongoing: Adjacent locations have +2 Power."
     },
     {
       "id": "8",
-      "name": "Mister Negative",
+      "name": "MrNegative",
       "energy": "4",
       "power": "4",
       "desc": "On Reveal: Swap the Power and Cost of all cards in your deck."
     },
     {
       "id": "9",
-      "name": "Mister Sinister",
+      "name": "MrSinister",
       "energy": "2",
       "power": "2",
       "desc": "On Reveal: Add a Sinister Clone to this location with the same Power."
     },
     {
       "id": "10",
-      "name": "Multiple Man",
+      "name": "MultipleMan",
       "energy": "2",
       "power": "3",
       "desc": "When this moves, add a copy to the old location."
@@ -135,7 +135,7 @@ cards = {
     },
     {
       "id": "20",
-      "name": "Omega Red",
+      "name": "OmegaRed",
       "energy": "4",
       "power": "5",
       "desc": "Ongoing: If you're ahead by 10 Power here, +4 Power to other locations."
@@ -163,14 +163,14 @@ cards = {
     },
     {
       "id": "24",
-      "name": "Arnim Zola",
+      "name": "ArnimZola",
       "energy": "6",
       "power": "0",
       "desc": "On Reveal: Destroy a random friendly card here; add copies of it to the other locations."
     },
     {
       "id": "25",
-      "name": "Professor X",
+      "name": "ProfessorX",
       "energy": "5",
       "power": "3",
       "desc": "Ongoing: Lock down this location. (Cards can't be added, removed or destroyed.)"
@@ -184,7 +184,7 @@ cards = {
     },
     {
       "id": "27",
-      "name": "The Punisher",
+      "name": "Punisher",
       "energy": "3",
       "power": "2",
       "desc": "Ongoing: +1 Power for each opposing card at this location."
@@ -212,7 +212,7 @@ cards = {
     },
     {
       "id": "31",
-      "name": "Red Skull",
+      "name": "RedSkull",
       "energy": "5",
       "power": "14",
       "desc": "Ongoing: Enemy cards at this location have +2 Power."
@@ -233,21 +233,21 @@ cards = {
     },
     {
       "id": "34",
-      "name": "Rocket Raccoon",
+      "name": "RocketRaccoon",
       "energy": "1",
       "power": "2",
       "desc": "On Reveal: Shuffle 2 useless Rocks into your opponents deck."
     },
     {
       "id": "35",
-      "name": "Baron Mordo",
+      "name": "BaronMordo",
       "energy": "2",
       "power": "3",
       "desc": "On Reveal: Your opponent draws a card, increase its cost by 1."
     },
     {
       "id": "36",
-      "name": "Rock Slide",
+      "name": "Rockslide",
       "energy": "4",
       "power": "6",
       "desc": "On Reveal: If your opponent played a card here this turn, +2 Power"
@@ -261,7 +261,7 @@ cards = {
     },
     {
       "id": "38",
-      "name": "Ronan The Accuser",
+      "name": "Ronan",
       "energy": "4",
       "power": "0",
       "desc": "Ongoing: +2 Power for each card in your opponent's hand."
@@ -282,7 +282,7 @@ cards = {
     },
     {
       "id": "41",
-      "name": "Scarlet Witch",
+      "name": "ScarletWitch",
       "energy": "2",
       "power": "3",
       "desc": "On Reveal: Replace this location with a random new one."
@@ -310,7 +310,7 @@ cards = {
     },
     {
       "id": "45",
-      "name": "Shang-Chi",
+      "name": "ShangChi",
       "energy": "4",
       "power": "3",
       "desc": "On Reveal: Destroy all enemy cards at this location that have 9 or more Power."
@@ -338,28 +338,28 @@ cards = {
     },
     {
       "id": "49",
-      "name": "Spider-man",
+      "name": "SpiderMan",
       "energy": "4",
       "power": "2",
       "desc": "On Reveal: Your opponent can't play cards at this location next turn."
     },
     {
       "id": "50",
-      "name": "Spider-woman",
+      "name": "SpiderWoman",
       "energy": "4",
       "power": "4",
       "desc": "On Reveal: Afflict all enemy cards here with -1 Power."
     },
     {
       "id": "51",
-      "name": "Squirrel Girl",
+      "name": "SquirrelGirl",
       "energy": "1",
       "power": "1",
       "desc": "On Reveal: Add a 1 -Power Squirrel to each other location."
     },
     {
       "id": "52",
-      "name": "Star Lord",
+      "name": "StarLord",
       "energy": "2",
       "power": "2",
       "desc": "On Reveal: If your opponent played a card here this turn, +3 Power."
@@ -373,7 +373,7 @@ cards = {
     },
     {
       "id": "54",
-      "name": "Strong Guy",
+      "name": "StrongGuy",
       "energy": "4",
       "power": "4",
       "desc": "Ongoing: If your hand is empty, +6 Power."
@@ -401,7 +401,7 @@ cards = {
     },
     {
       "id": "58",
-      "name": "Sword Master",
+      "name": "SwordMaster",
       "energy": "3",
       "power": "6",
       "desc": "On Reveal: Discard a card from your hand."
@@ -415,14 +415,14 @@ cards = {
     },
     {
       "id": "60",
-      "name": "The Collector",
+      "name": "TheCollector",
       "energy": "2",
       "power": "1",
       "desc": "When a card enters your hand from anywhere (exept your deck), +2 Power."
     },
     {
       "id": "61",
-      "name": "The Thing",
+      "name": "TheThing",
       "energy": "4",
       "power": "6",
       "desc": "No abilities"
@@ -436,14 +436,14 @@ cards = {
     },
     {
       "id": "63",
-      "name": "Typhoid Mary",
+      "name": "TyphoidMary",
       "energy": "4",
       "power": "10",
       "desc": "Ongoing: Your other cards have -1 Power."
     },
     {
       "id": "64",
-      "name": "Vatu The Watcher",
+      "name": "Uatu",
       "energy": "1",
       "power": "2",
       "desc": "Once this is in your hand, you can see the unrevealed locations."
@@ -471,7 +471,7 @@ cards = {
     },
     {
       "id": "68",
-      "name": "Black Bolt",
+      "name": "BlackBolt",
       "energy": "5",
       "power": "7",
       "desc": "On Reveal: Your opponent must discard the lowest-Cost card in their hand."
@@ -513,14 +513,14 @@ cards = {
     },
     {
       "id": "74",
-      "name": "White Queen",
+      "name": "WhiteQueen",
       "energy": "4",
       "power": "6",
       "desc": "On Reveal: Draw a copy of a 6-Cost card in your opponent's hand."
     },
     {
       "id": "75",
-      "name": "White Tiger",
+      "name": "WhiteTiger",
       "energy": "5",
       "power": "1",
       "desc": "On Reveal: Add a 7-Power Tiger to another location."
@@ -548,7 +548,7 @@ cards = {
     },
     {
       "id": "79",
-      "name": "Black Cat",
+      "name": "BlackCat",
       "energy": "3",
       "power": "6",
       "desc": "If this is in your hand at the end of your turn, discard it."
@@ -576,7 +576,7 @@ cards = {
     },
     {
       "id": "83",
-      "name": "Black Widow",
+      "name": "BlackWidow",
       "energy": "2",
       "power": "1",
       "desc": "On Reveal: Add a Widow's Bite to your opponent's hand."
@@ -590,14 +590,14 @@ cards = {
     },
     {
       "id": "85",
-      "name": "Adam Warlock",
+      "name": "AdamWarlock",
       "energy": "2",
       "power": "0",
       "desc": "At the end of each turn, if you are winning this location, draw a card."
     },
     {
       "id": "86",
-      "name": "Blue Marvel",
+      "name": "BlueMarvel",
       "energy": "6",
       "power": "4",
       "desc": "Ongoing: Your other cards have +1 Power."
@@ -611,7 +611,7 @@ cards = {
     },
     {
       "id": "88",
-      "name": "Buckey Barnes",
+      "name": "BuckyBarnes",
       "energy": "2",
       "power": "1",
       "desc": "When this is destroyed, create the Winter Soldier in its place."
@@ -625,14 +625,14 @@ cards = {
     },
     {
       "id": "90",
-      "name": "Captain America",
+      "name": "CaptainAmerica",
       "energy": "3",
       "power": "3",
       "desc": "Ongoing: Your other cards at this location have +1 Power."
     },
     {
       "id": "91",
-      "name": "Captain Marvel",
+      "name": "CaptainMarvel",
       "energy": "5",
       "power": "6",
       "desc": "After the final turn, move to a location that wins you the game (if possible)"
@@ -660,7 +660,7 @@ cards = {
     },
     {
       "id": "95",
-      "name": "Colleen Wing",
+      "name": "ColleenWing",
       "energy": "2",
       "power": "4",
       "desc": "On Reveal: Discard the lowest-cost card from your hand."
@@ -744,7 +744,7 @@ cards = {
     },
     {
       "id": "107",
-      "name": "Agatha Harkness",
+      "name": "AgathaHarkness",
       "energy": "6",
       "power": "13",
       "desc": "Agatha starts in your hand and plays your cards for you."
@@ -765,21 +765,21 @@ cards = {
     },
     {
       "id": "110",
-      "name": "Devil Dinosaur",
+      "name": "DevilDinosaur",
       "energy": "4",
       "power": "0",
       "desc": "Ongoing: +2 Power for each card in your hand."
     },
     {
       "id": "111",
-      "name": "Doctor Octopus",
+      "name": "DoctorOctopus",
       "energy": "5",
       "power": "10",
       "desc": "On Reveal: Pull 4 random cards from y our opponent's hand to their side of this location."
     },
     {
       "id": "112",
-      "name": "Doctor Strange",
+      "name": "DoctorStrange",
       "energy": "3",
       "power": "3",
       "desc": "On Reveal: Move your highest power cards to this location."
@@ -807,21 +807,21 @@ cards = {
     },
     {
       "id": "116",
-      "name": "Doctor Doom",
+      "name": "DrDoom",
       "energy": "6",
       "power": "5",
       "desc": "On Reveal: Add a 5-Power Doombot to each other location."
     },
     {
       "id": "117",
-      "name": "Ebony Maw",
+      "name": "EbonyMaw",
       "energy": "1",
       "power": "7",
       "desc": "You can't play this after turn 3. Ongoing: You can't play cards here."
     },
     {
       "id": "118",
-      "name": "Agent 13",
+      "name": "Agent13",
       "energy": "1",
       "power": "2",
       "desc": "On Reveal: Add a random card to your hand."
@@ -877,7 +877,7 @@ cards = {
     },
     {
       "id": "126",
-      "name": "Ghost Rider",
+      "name": "GhostRider",
       "energy": "4",
       "power": "3",
       "desc": "On Reveal: Bring back one of your discarded cards (to this location)"
@@ -898,14 +898,14 @@ cards = {
     },
     {
       "id": "129",
-      "name": "America Chavez",
+      "name": "AmericaChavez",
       "energy": "6",
       "power": "9",
       "desc": "You always draw this card on turn 6, and not before."
     },
     {
       "id": "130",
-      "name": "Green Goblin",
+      "name": "GreenGoblin",
       "energy": "3",
       "power": "-3",
       "desc": "On Reveal: Your opponent gains control of this."
@@ -947,7 +947,7 @@ cards = {
     },
     {
       "id": "136",
-      "name": "Hell Cow",
+      "name": "Hellcow",
       "energy": "4",
       "power": "6",
       "desc": "On Reveal: Discard 2 cards from your hand."
@@ -961,7 +961,7 @@ cards = {
     },
     {
       "id": "138",
-      "name": "The Hood",
+      "name": "Hood",
       "energy": "-",
       "power": "-2",
       "desc": "On Reveal: Add a Demon to your hand."
@@ -982,14 +982,14 @@ cards = {
     },
     {
       "id": "141",
-      "name": "Hulk Buster",
+      "name": "Hulkbuster",
       "energy": "3",
       "power": "4",
       "desc": "On Reveal: Merge this card with a random friendy card at this location."
     },
     {
       "id": "142",
-      "name": "Human Torch",
+      "name": "HumanTorch",
       "energy": "1",
       "power": "2",
       "desc": "When this moves, double its Power."
@@ -1003,21 +1003,21 @@ cards = {
     },
     {
       "id": "144",
-      "name": "The Infinaut",
+      "name": "Infinaut",
       "energy": "6",
       "power": "20",
       "desc": "If you played a card last turn, you can't play this."
     },
     {
       "id": "145",
-      "name": "Invisible Woman",
+      "name": "InvisibleWoman",
       "energy": "2",
       "power": "2",
       "desc": "Ongoing: Cards you play here are not revealed until the game ends."
     },
     {
       "id": "146",
-      "name": "Iron Fist",
+      "name": "IronFist",
       "energy": "1",
       "power": "2",
       "desc": "On Reveal: Move the next card you play one location to the left after it reveals."
@@ -1038,14 +1038,14 @@ cards = {
     },
     {
       "id": "149",
-      "name": "Jane Foster The Mighty Thor",
+      "name": "JaneFoster",
       "energy": "5",
       "power": "8",
       "desc": "On Reveal: Draw all cards that Cost 0 from  your deck."
     },
     {
       "id": "150",
-      "name": "Jessica Jones",
+      "name": "JessicaJones",
       "energy": "5",
       "power": "8",
       "desc": "On Reveal: If you don't play a card here next turn, +2 Power."
@@ -1115,7 +1115,7 @@ cards = {
     },
     {
       "id": "160",
-      "name": "Lady Sif",
+      "name": "LadySif",
       "energy": "2",
       "power": "4",
       "desc": "On Reveal: Discard the highest cost card from your hand."
@@ -1192,7 +1192,7 @@ cards = {
     },
     {
       "id": "171",
-      "name": "Misty Knight",
+      "name": "MistyKnight",
       "energy": "1",
       "power": "2",
       "desc": "No abilities"
