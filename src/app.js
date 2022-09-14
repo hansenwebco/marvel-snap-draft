@@ -117,7 +117,7 @@ function drawPicks() {
         }
         ).length;
 
-        document.getElementById("energy" + (y + 1)).style.height = count * 10 + "px";
+        document.getElementById("energy" + (y + 1)).style.height = 1+ count * 10 + "px";
     }
 
 }
