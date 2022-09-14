@@ -80,6 +80,10 @@ function redraw(redraw) {
     document.getElementById("pick1").src = "./images/" + pick1 + ".webp";
     document.getElementById("pick2").src = "./images/" + pick2 + ".webp";
     document.getElementById("pick3").src = "./images/" + pick3 + ".webp";
+
+    document.getElementById("card-desc-1").innerHTML = cards.card[pick1-1].desc;
+    document.getElementById("card-desc-2").innerHTML = cards.card[pick2-1].desc;
+    document.getElementById("card-desc-3").innerHTML = cards.card[pick3-1].desc;
 }
 
 function updatePicks() {
@@ -102,6 +106,11 @@ function updatePicks() {
     document.getElementById("pick1").src = "./images/" + pick1 + ".webp";
     document.getElementById("pick2").src = "./images/" + pick2 + ".webp";
     document.getElementById("pick3").src = "./images/" + pick3 + ".webp";
+
+    document.getElementById("card-desc-1").innerHTML = cards.card[pick1-1].desc;
+    document.getElementById("card-desc-2").innerHTML = cards.card[pick2-1].desc;
+    document.getElementById("card-desc-3").innerHTML = cards.card[pick3-1].desc;
+    
 
 }
 
