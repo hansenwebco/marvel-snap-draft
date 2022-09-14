@@ -25,6 +25,10 @@ a {
     color:white;
 }
 
+a:hover {
+    color:skyblue;
+}
+
 #heading {
     font-size: 30px;
     font-weight: 400;
