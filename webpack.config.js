@@ -1,5 +1,6 @@
 module.exports = {
   entry: [
+    './src/vote.js',
     './src/app.js',
     './src/cards.js',
     './src/app.css',

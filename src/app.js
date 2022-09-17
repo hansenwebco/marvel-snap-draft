@@ -1,5 +1,8 @@
 import { Base64 } from 'js-base64';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { v4 as uuidv4 } from 'uuid';
+import { io } from "socket.io-client";
+
 
 let pick1 = 0;
 let pick2 = 0;
@@ -7,10 +10,8 @@ let pick3 = 0;
 let currentPick = 1;
 let pickList = "";
 let cardsPicked = [];
-
-window.onload = function () {
-    updatePicks();
-}
+let socket;
+let voteSession;
 
 function chooseCard(card) {
 
@@ -33,8 +34,8 @@ function chooseCard(card) {
     pickList += "|" + chose;
 
     cardsPicked.push(cards.card.find(x => parseInt(x.id) === chose));
-    
-    
+
+
     cardsPicked.sort((a, b) => a.name > b.name ? 1 : -1)
     cardsPicked.sort((a, b) => a.power - b.power);
     cardsPicked.sort((a, b) => a.energy - b.energy);
@@ -81,9 +82,9 @@ function redraw(redraw) {
     document.getElementById("pick2").src = "./images/" + pick2 + ".webp";
     document.getElementById("pick3").src = "./images/" + pick3 + ".webp";
 
-    document.getElementById("card-desc-1").innerHTML = cards.card[pick1-1].desc;
-    document.getElementById("card-desc-2").innerHTML = cards.card[pick2-1].desc;
-    document.getElementById("card-desc-3").innerHTML = cards.card[pick3-1].desc;
+    document.getElementById("card-desc-1").innerHTML = cards.card[pick1 - 1].desc;
+    document.getElementById("card-desc-2").innerHTML = cards.card[pick2 - 1].desc;
+    document.getElementById("card-desc-3").innerHTML = cards.card[pick3 - 1].desc;
 }
 
 function updatePicks() {
@@ -107,10 +108,13 @@ function updatePicks() {
     document.getElementById("pick2").src = "./images/" + pick2 + ".webp";
     document.getElementById("pick3").src = "./images/" + pick3 + ".webp";
 
-    document.getElementById("card-desc-1").innerHTML = cards.card[pick1-1].desc;
-    document.getElementById("card-desc-2").innerHTML = cards.card[pick2-1].desc;
-    document.getElementById("card-desc-3").innerHTML = cards.card[pick3-1].desc;
-    
+    document.getElementById("card-desc-1").innerHTML = cards.card[pick1 - 1].desc;
+    document.getElementById("card-desc-2").innerHTML = cards.card[pick2 - 1].desc;
+    document.getElementById("card-desc-3").innerHTML = cards.card[pick3 - 1].desc;
+
+    if (voteSession)
+        ioEmitState();
+
 
 }
 
@@ -126,7 +130,7 @@ function drawPicks() {
         }
         ).length;
 
-        document.getElementById("energy" + (y + 1)).style.height = 1+ count * 10 + "px";
+        document.getElementById("energy" + (y + 1)).style.height = 1 + count * 10 + "px";
     }
 
 }
@@ -139,21 +143,51 @@ function buildDeckCode() {
 
     for (var x = 0; x < cardsPicked.length; x++) {
         const replaced = cardsPicked[x].name.replace(/[^a-z0-9]/gi, '');
-        deck.Cards[x] = { "CardDefId" : replaced };
+        deck.Cards[x] = { "CardDefId": replaced };
     }
 
 
     let result = Base64.btoa(JSON.stringify(deck));
     document.getElementById("deck-code").value = result;
-   
+
 }
 
 function copyDeckCode() {
-    let code =  document.getElementById("deck-code").value;
+    let code = document.getElementById("deck-code").value;
     navigator.clipboard.writeText(code);
+}
+
+function ioStartStreamVote() {
+
+    socket = io("ws://localhost:4000");
+    
+    voteSession = uuidv4();
+
+    let message = {};
+    message.type = "connect";
+    message.session = voteSession;
+
+    socket.emit("message",message);
+
+    document.getElementById("vote-url").value = "http://localhost:8080/vote.html?id=" + voteSession;
+    ioEmitState();
+}
+
+function ioEmitState() {
+    let state = {};
+    state.pick1 = pick1;
+    state.pick2 = pick2;
+    state.pick3 = pick3;
+    state.session = voteSession;
+    state.cardsPicked = cardsPicked;
+    socket.emit("updatestate", state);
 }
 
 window.updatePicks = updatePicks;
 window.chooseCard = chooseCard;
 window.redraw = redraw;
-window.copyDeckCode =copyDeckCode;
+window.copyDeckCode = copyDeckCode;
+window.ioStartStreamVote = ioStartStreamVote;
+
+
+

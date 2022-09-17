@@ -1,0 +1,49 @@
+<html>
+
+<head>
+    <title>Marvel Snap! Draftanator</title>
+    <script>
+        window.onload = function () {
+            startVoteSession();
+        }
+    </script>
+</head>
+
+<body>
+
+    <div id="picks-ui">
+        <table id="picks">
+            <tr>
+                <td>
+                    <img id="client-pick1" class="pick"><br />
+                    <div class="card-desc" id="client-card-desc-1"></div>
+                    <a href="#" class="btn btn-small btn-primary" onclick="registerVote(1)">Vote 1</a>
+        
+                </td>
+                <td>
+                    <div class="circle">50%</div>
+                    <img id="client-pick2" class="pick"><br />
+                    <p class="card-desc" id="client-card-desc-2"></p><br />
+                    <a href="#" class="btn btn-small btn-primary" onclick="registerVote(2)">Vote 2</a>
+                </td>
+                <td>
+                    <div class="circle">100%</div>
+                    <img id="client-pick3" class="pick"><br />
+                    <p class="card-desc" id="client-card-desc-3"></p><br />
+                    <a href="#" class="btn btn-small btn-primary" onclick="registerVote(3)">Vote 3</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+    <div id="footer">Created by stonedonkey - Follow on 
+        <a target="_blank" href="https://twitch.tv/stonedonkey">Twitch</a> - 
+        <a target="_blank" href="https://twitter.com/stonedonkey">Twitter</a><br /><br /> 
+        <a target="_blank" href="https://github.com/hansenwebco/marvel-snap-draft">Github</a> - 
+        <a target="_blank" href="https://github.com/hansenwebco/marvel-snap-draft/issues">Bugs</a>
+    </div>
+    <script src="./dist/dist.js"></script>
+
+</body>
+</html>
