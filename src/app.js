@@ -196,7 +196,7 @@ function ioStartStreamVote() {
 
     socket.emit("message",message);
 
-    document.getElementById("vote-url").value = "https://stone-donkey.onrender.com/vote.html?id=" + voteSession;
+    document.getElementById("vote-url").value = "https://marvel-snap-draft-pr-12.onrender.com/vote.html?id=" + voteSession;
     ioEmitState();
 }
 
