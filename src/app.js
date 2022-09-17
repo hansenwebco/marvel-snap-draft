@@ -200,10 +200,8 @@ function ioStartStreamVote() {
     socket.emit("message",message);
 
     let url = new URL(location.pathname, location.href).href
-    console.log(url);
     document.getElementById("vote-url").value = url + "vote.html?id=" + voteSession;
 
-    //document.getElementsByClassName("vote-master").style.display = "block";
     [...document.getElementsByClassName("vote-master")].forEach(
         (element, index, array) => {
             element.style.display = "block";
@@ -217,6 +215,7 @@ function ioStartStreamVote() {
 function toggleLive() {
     let tab = document.getElementById("live-start");
     tab.style.display = (tab.style.display === "block") ? "none" : "block";
+    document.getElementById("live-tab").innerHTML = (tab.style.display === "none") ? "Draft With Friends (BETA)" : "Close";
 }
 
 function ioEmitState() {
