@@ -6,6 +6,9 @@ let socket;
 let voteSession;
 let userSession;
 
+///wss://stone-donkey.onrender.com
+const SIGNALIO_SERVER = "ws://localhost:3000";
+
 function getUserSession() {
     
     let id;
@@ -16,9 +19,10 @@ function getUserSession() {
         console.log("added to storage")
     }
     else {
-        localStorage.getItem("snapvote");
+        id = localStorage.getItem("snapvote");
         console.log("pulled from storage");
     }
+    
     
     return id;
     
@@ -30,7 +34,8 @@ function startVoteSession() {
     voteSession = parsed.id;
     userSession = getUserSession();
 
-    socket = io("wss://stone-donkey.onrender.com");
+    // TODO deal with this on prod vs dev
+    socket = io(SIGNALIO_SERVER);
 
     let message = {};
     message.type = "connect";
@@ -52,7 +57,7 @@ function startVoteSession() {
 function registerVote(vote) {
     var v = {};
     v.session = voteSession;
-    v.userSession = userSession;
+    v.userSession = getUserSession();
     v.pick = vote;
 
     for (let x = 1; x <= 3; x++) {
@@ -62,18 +67,18 @@ function registerVote(vote) {
     document.getElementById("vote-button-" + vote).classList.add("btn-primary");
     document.getElementById("vote-button-" + vote).classList.remove("btn-secondary");
 
+    console.log(v);
     socket.emit("vote", v);
 }
 
 function drawUI(arg, resetVote) {
 
-    console.log(arg.instance.cardsPicked.length);
+    drawPicks(arg);
+
     if (arg.instance.cardsPicked.length >= 12) {
         document.getElementById("picks").style.display = "none";
         document.getElementById("totalvotes").style.display = "none";
         document.getElementById("draft-done").style.display = "block";
-        
-        
         return;
     }
 
@@ -106,7 +111,27 @@ function drawUI(arg, resetVote) {
     document.getElementById("client-card-desc-1").innerHTML = cards.card[arg.instance.pick1 - 1].desc;
     document.getElementById("client-card-desc-2").innerHTML = cards.card[arg.instance.pick2 - 1].desc;
     document.getElementById("client-card-desc-3").innerHTML = cards.card[arg.instance.pick3 - 1].desc;
+
+
+
 }
+
+function drawPicks(arg) {
+    let cardsPicked = arg.instance.cardsPicked;
+    for (var x = 0; x < cardsPicked.length; x++) {
+        document.getElementById("card" + (x + 1)).src = "./images/" + cardsPicked[x].id + ".webp";
+    }
+    for (var y = 0; y < 6; y++) {
+
+        var count = cardsPicked.filter(elm => {
+            return elm.energy == (y + 1)
+        }
+        ).length;
+
+        document.getElementById("energy" + (y + 1)).style.height = 1 + count * 10 + "px";
+    }
+}
+
 
 window.registerVote = registerVote;
 window.startVoteSession = startVoteSession;

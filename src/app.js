@@ -13,6 +13,9 @@ let cardsPicked = [];
 let socket;
 let voteSession = "";
 
+//wss://stone-donkey.onrender.com
+const SIGNALIO_SERVER = "ws://localhost:3000";
+
 function chooseCard(card) {
 
     document.getElementById("pick1").src = "";
@@ -119,7 +122,6 @@ function updatePicks() {
     if (voteSession.length > 0)
         ioEmitState();
 
-
 }
 
 function drawPicks() {
@@ -178,7 +180,8 @@ function drawVotes(arg) {
 
 function ioStartStreamVote() {
 
-    socket = io("wss://stone-donkey.onrender.com");
+    // TODO: Deal with this
+    socket = io(SIGNALIO_SERVER);
 
     socket.on("stateupdate", (arg) => {
         drawVotes(arg);
@@ -196,8 +199,24 @@ function ioStartStreamVote() {
 
     socket.emit("message",message);
 
-    document.getElementById("vote-url").value = "https://marvel-snap-draft-pr-12.onrender.com/vote.html?id=" + voteSession;
+    let url = new URL(location.pathname, location.href).href
+    console.log(url);
+    document.getElementById("vote-url").value = url + "vote.html?id=" + voteSession;
+
+    //document.getElementsByClassName("vote-master").style.display = "block";
+    [...document.getElementsByClassName("vote-master")].forEach(
+        (element, index, array) => {
+            element.style.display = "block";
+        }
+    );
+
     ioEmitState();
+}
+
+
+function toggleLive() {
+    let tab = document.getElementById("live-start");
+    tab.style.display = (tab.style.display === "block") ? "none" : "block";
 }
 
 function ioEmitState() {
@@ -215,6 +234,6 @@ window.chooseCard = chooseCard;
 window.redraw = redraw;
 window.copyDeckCode = copyDeckCode;
 window.ioStartStreamVote = ioStartStreamVote;
-
+window.toggleLive = toggleLive;
 
 

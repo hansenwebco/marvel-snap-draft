@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
 
+body, html {
+    margin: 0px;
+    padding:0px;
+}
+
 #header-image {
     height: 120px;
     margin-bottom: -25px;
@@ -174,4 +179,44 @@ td {
 #draft-done { 
     display: none;
     margin-bottom:30px;
+}
+
+
+
+#live {
+    position: absolute;
+    right:30px;
+    top:0px;
+    width:550px;
+
+}
+#live-tab {
+    background-color: red;
+    padding:10px;
+    font-size: 10px;
+    width:150px;
+    margin:auto;
+    text-align: center;
+    cursor: pointer;
+
+}
+#live-start {
+    font-size: 10px;
+    background-color: #222;
+    padding:30px;
+    margin:0px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border: solid 1px #eee;
+    display: none;
+   
+   
+}
+
+#vote-details {
+    text-align: center;
+}
+
+.vote-master {
+    display: none;
 }
