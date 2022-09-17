@@ -178,7 +178,7 @@ function drawVotes(arg) {
 
 function ioStartStreamVote() {
 
-    socket = io("ws://localhost:4000");
+    socket = io("ws://stone-donkey.onrender.com:4000");
 
     socket.on("stateupdate", (arg) => {
         drawVotes(arg);
@@ -196,7 +196,7 @@ function ioStartStreamVote() {
 
     socket.emit("message",message);
 
-    document.getElementById("vote-url").value = "http://localhost:8080/vote.html?id=" + voteSession;
+    document.getElementById("vote-url").value = "https://stone-donkey.onrender.com/vote.html?id=" + voteSession;
     ioEmitState();
 }
 
