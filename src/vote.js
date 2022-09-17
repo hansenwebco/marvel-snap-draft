@@ -6,11 +6,29 @@ let socket;
 let voteSession;
 let userSession;
 
+function getUserSession() {
+    
+    let id;
+    
+    if (localStorage.getItem("snapvote") === null) {
+        id = uuidv4();
+        localStorage.setItem("snapvote",id);
+        console.log("added to storage")
+    }
+    else {
+        localStorage.getItem("snapvote");
+        console.log("pulled from storage");
+    }
+    
+    return id;
+    
+}
+
 function startVoteSession() {
     const parsed = queryString.parse(location.search);
 
     voteSession = parsed.id;
-    userSession = uuidv4();
+    userSession = getUserSession();
 
     socket = io("ws://localhost:4000");
 
@@ -41,8 +59,6 @@ function registerVote(vote) {
         document.getElementById("vote-button-" + x).classList.remove("btn-primary");
         document.getElementById("vote-button-" + x).classList.add("btn-secondary");
     }
-
-    //console.log( document.getElementById("vote-button-" + vote).classList);
     document.getElementById("vote-button-" + vote).classList.add("btn-primary");
     document.getElementById("vote-button-" + vote).classList.remove("btn-secondary");
 
@@ -50,6 +66,16 @@ function registerVote(vote) {
 }
 
 function drawUI(arg, resetVote) {
+
+    console.log(arg.instance.cardsPicked.length);
+    if (arg.instance.cardsPicked.length >= 12) {
+        document.getElementById("picks").style.display = "none";
+        document.getElementById("totalvotes").style.display = "none";
+        document.getElementById("draft-done").style.display = "block";
+        
+        
+        return;
+    }
 
     if (resetVote)
         for (let x = 1; x <= 3; x++) {

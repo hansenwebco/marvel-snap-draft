@@ -73,15 +73,20 @@
         <table id="picks">
             <tr>
                 <td>
+                    <div id="vote-1" class="circle">0%</div>
                     <img onload="this.setAttribute('onclick', 'chooseCard(1);')" id="pick1" class="pick"><br />
                     <div class="card-desc" id="card-desc-1">This card +2 on blah</div><br />
                     <a href="#" class="btn btn-secondary btn-sm" onclick="redraw(1)">Don't Have Card</a>
                 </td>
-                <td><img onload="this.setAttribute('onclick', 'chooseCard(2);')" id="pick2" class="pick"><br />
+                <td>
+                    <div id="vote-2" class="circle">0%</div>
+                    <img onload="this.setAttribute('onclick', 'chooseCard(2);')" id="pick2" class="pick"><br />
                     <p class="card-desc" id="card-desc-2">This card +2 on blah</p><br />
                     <a href="#" class="btn btn-secondary btn-sm" onclick="redraw(2)">Don't Have Card</a>
                 </td>
-                <td><img onload="this.setAttribute('onclick', 'chooseCard(3);')" id="pick3" class="pick"><br />
+                <td>
+                    <div id="vote-3" class="circle">0%</div>
+                    <img onload="this.setAttribute('onclick', 'chooseCard(3);')" id="pick3" class="pick"><br />
                     <p class="card-desc" id="card-desc-3">This card +2 on blah</p><br />
                     <a href="#" class="btn btn-secondary btn-sm" onclick="redraw(3)">Don't Have Card</a>
                 </td>

@@ -85,6 +85,10 @@ function redraw(redraw) {
     document.getElementById("card-desc-1").innerHTML = cards.card[pick1 - 1].desc;
     document.getElementById("card-desc-2").innerHTML = cards.card[pick2 - 1].desc;
     document.getElementById("card-desc-3").innerHTML = cards.card[pick3 - 1].desc;
+
+    if (voteSession.length > 0)
+     ioEmitState();
+
 }
 
 function updatePicks() {
@@ -157,9 +161,32 @@ function copyDeckCode() {
     navigator.clipboard.writeText(code);
 }
 
+function drawVotes(arg) {
+    let totalVotes = arg.votes.length;
+
+    if (totalVotes && totalVotes > 0) {
+        document.getElementById("vote-1").innerHTML = Math.round(((arg.votes.filter(elm => elm.pick === 1).length / totalVotes) * 100)) + "%";
+        document.getElementById("vote-2").innerHTML = Math.round(((arg.votes.filter(elm => elm.pick === 2).length / totalVotes) * 100)) + "%";
+        document.getElementById("vote-3").innerHTML = Math.round(((arg.votes.filter(elm => elm.pick === 3).length / totalVotes) * 100)) + "%";
+    }
+    else {
+        document.getElementById("vote-1").innerHTML =  "0%";
+        document.getElementById("vote-2").innerHTML =  "0%";
+        document.getElementById("vote-3").innerHTML =  "0%";
+    }
+}
+
 function ioStartStreamVote() {
 
     socket = io("ws://localhost:4000");
+
+    socket.on("stateupdate", (arg) => {
+        drawVotes(arg);
+    })
+
+    socket.on("picksupdated", (arg) => {
+        drawVotes(arg);
+    })
     
     voteSession = uuidv4();
 
