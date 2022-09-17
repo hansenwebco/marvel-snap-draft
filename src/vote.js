@@ -30,7 +30,7 @@ function startVoteSession() {
     voteSession = parsed.id;
     userSession = getUserSession();
 
-    socket = io("wss://stone-donkey.onrender.com");
+    socket = io("wss://stone-donkey.onrender.com:3000");
 
     let message = {};
     message.type = "connect";
