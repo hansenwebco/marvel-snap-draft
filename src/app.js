@@ -178,7 +178,7 @@ function drawVotes(arg) {
 
 function ioStartStreamVote() {
 
-    socket = io("wss://stone-donkey.onrender.com:3000");
+    socket = io("wss://stone-donkey.onrender.com");
 
     socket.on("stateupdate", (arg) => {
         drawVotes(arg);
