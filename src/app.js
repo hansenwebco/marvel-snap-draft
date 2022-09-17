@@ -11,7 +11,7 @@ let currentPick = 1;
 let pickList = "";
 let cardsPicked = [];
 let socket;
-let voteSession;
+let voteSession = "";
 
 function chooseCard(card) {
 
@@ -112,7 +112,7 @@ function updatePicks() {
     document.getElementById("card-desc-2").innerHTML = cards.card[pick2 - 1].desc;
     document.getElementById("card-desc-3").innerHTML = cards.card[pick3 - 1].desc;
 
-    if (voteSession)
+    if (voteSession.length > 0)
         ioEmitState();
 
 
