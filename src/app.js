@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { v4 as uuidv4 } from 'uuid';
 import { io } from "socket.io-client";
 
-
 let pick1 = 0;
 let pick2 = 0;
 let pick3 = 0;

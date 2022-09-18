@@ -11,10 +11,13 @@
     
     <div id="live">
         <div id="live-start">
-            WARNING: You will need to create a new link for each draft:
-            <input type="text" style="width:400px;" onclick="this.select();" id="vote-url">
-            <a href="#" class="btn btn-sm btn-primary " onclick="ioStartStreamVote();">Get Link</a>
-            
+            CLick the "Get LinK" button and share with your stream/friends.<br/>
+            <b>WARNING:</b> You will need to create a new link for each draft.
+            <br/><br/>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" aria-describedby="startStreamVote" style="width:300px;" onclick="this.select();" id="vote-url">
+                <a href="#" class="btn btn-sm btn-primary" id="startStreamVote" onclick="ioStartStreamVote();">Get Link</a>
+            </div>
         </div>
         <div onclick="toggleLive();" id="live-tab">Draft With Friends (BETA)</div>
     </div>
