@@ -1,8 +1,27 @@
 <html>
 <head>
     <title>Marvel Snap! Draftanator</title>
+    <script>
+        window.onload = function () {
+           updatePicks();
+        }
+    </script>
 </head>
 <body>
+    
+    <div id="live">
+        <div id="live-start">
+            CLick the "Get LinK" button and share with your stream/friends.<br/>
+            <b>WARNING:</b> You will need to create a new link for each draft.
+            <br/><br/>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" aria-describedby="startStreamVote" style="width:300px;" onclick="this.select();" id="vote-url">
+                <a href="#" class="btn btn-sm btn-primary" id="startStreamVote" onclick="ioStartStreamVote();">Get Link</a>
+            </div>
+        </div>
+        <div onclick="toggleLive();" id="live-tab">Draft With Friends (BETA)</div>
+    </div>
+    
     <!-- yeah yeah it's full of tables sue me -->
       <div id="heading"><img id="header-image" src="/images/header.png"></div>
      <div id="draft-ui">
@@ -66,15 +85,20 @@
         <table id="picks">
             <tr>
                 <td>
+                    <div id="vote-1" class="vote-master circle">0%</div>
                     <img onload="this.setAttribute('onclick', 'chooseCard(1);')" id="pick1" class="pick"><br />
                     <div class="card-desc" id="card-desc-1">This card +2 on blah</div><br />
                     <a href="#" class="btn btn-secondary btn-sm" onclick="redraw(1)">Don't Have Card</a>
                 </td>
-                <td><img onload="this.setAttribute('onclick', 'chooseCard(2);')" id="pick2" class="pick"><br />
+                <td>
+                    <div id="vote-2" class="vote-master circle">0%</div>
+                    <img onload="this.setAttribute('onclick', 'chooseCard(2);')" id="pick2" class="pick"><br />
                     <p class="card-desc" id="card-desc-2">This card +2 on blah</p><br />
                     <a href="#" class="btn btn-secondary btn-sm" onclick="redraw(2)">Don't Have Card</a>
                 </td>
-                <td><img onload="this.setAttribute('onclick', 'chooseCard(3);')" id="pick3" class="pick"><br />
+                <td>
+                    <div id="vote-3" class="vote-master circle">0%</div>
+                    <img onload="this.setAttribute('onclick', 'chooseCard(3);')" id="pick3" class="pick"><br />
                     <p class="card-desc" id="card-desc-3">This card +2 on blah</p><br />
                     <a href="#" class="btn btn-secondary btn-sm" onclick="redraw(3)">Don't Have Card</a>
                 </td>

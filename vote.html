@@ -1,0 +1,96 @@
+<html>
+
+<head>
+    <title>Marvel Snap! Draftanator</title>
+    <script>
+        window.onload = function () {
+            startVoteSession();
+        }
+    </script>
+</head>
+
+<body>
+    <div id="heading"><img id="header-image" src="/images/header.png"></div>
+    <div id="draft-ui">
+        <table cellpadding=0 cellmargin="0" id="draft">
+            <tr>
+                <td><img src="./images/blank2.png" class="cards" id="card1"></td>
+                <td><img src="./images/blank2.png" class="cards" id="card2"></td>
+                <td><img src="./images/blank2.png" class="cards" id="card3"></td>
+                <td><img src="./images/blank2.png" class="cards" id="card4"></td>
+                <td><img src="./images/blank2.png" class="cards" id="card5"></td>
+                <td><img src="./images/blank2.png" class="cards" id="card6"></td>
+                <td rowspan="2">
+                    <table id="energy-table">
+                        <tr id="top-table">
+                            <td valign="bottom"><div id="energy1"></div></td>
+                            <td valign="bottom"><div id="energy2"></div></td>
+                            <td valign="bottom"><div id="energy3"></div></td>
+                            <td valign="bottom"><div id="energy4"></div></td>
+                            <td valign="bottom"><div id="energy5"></div></td>
+                            <td valign="bottom"><div id="energy6"></div></td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>5</td>
+                            <td>6</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td><img src="./images/blank2.png" class="cards" id="card7"></td>
+                <td><img src="./images/blank2.png" class="cards" id="card8"></td>
+                <td><img src="./images/blank2.png" class="cards" id="card9"></td>
+                <td><img src="./images/blank2.png" class="cards" id="card10"></td>
+                <td><img src="./images/blank2.png" class="cards" id="card11"></td>
+                <td><img src="./images/blank2.png" class="cards" id="card12"></td>
+            </tr>
+        </table>
+    </div>
+    <div id="picks-ui">
+        <table id="picks">
+            <tr>
+                <td>
+                    <div id="client-vote-1" class="circle">0%</div>
+                    <a href="#" onclick="registerVote(1)"><img id="client-pick1" class="pick"></a><br />
+                    <div class="card-desc" id="client-card-desc-1"></div>
+                    <a href="#" id="vote-button-1" class="vote-button btn btn-small btn-secondary" onclick="registerVote(1)">Vote 1</a>
+        
+                </td>
+                <td>
+                    <div id="client-vote-2" class="circle">0%</div>
+                    <a href="#" onclick="registerVote(2)"><img id="client-pick2" class="pick"></a><br />
+                    <p class="card-desc" id="client-card-desc-2"></p><br />
+                    <a href="#" id="vote-button-2" class="vote-button btn btn-small btn-secondary" onclick="registerVote(2)">Vote 2</a>
+                </td>
+                <td>
+                    <div id="client-vote-3" class="circle">0%</div>
+                    <a href="#" onclick="registerVote(3)"><img id="client-pick3" class="pick"></a><br />
+                    <p class="card-desc" id="client-card-desc-3"></p><br />
+                    <a href="#" id="vote-button-3" class="vote-button btn btn-small btn-secondary" onclick="registerVote(3)">Vote 3</a>
+                </td>
+            </tr>
+        </table>
+        <br/><br/>
+        <div id="vote-details">
+               <div id="totalvotes">Total Votes: 0</div>
+               <div id="draft-done">The draft has been completed!</div>
+        </div>
+
+    </div>
+
+
+    <div id="footer">Created by stonedonkey - Follow on 
+        <a target="_blank" href="https://twitch.tv/stonedonkey">Twitch</a> - 
+        <a target="_blank" href="https://twitter.com/stonedonkey">Twitter</a><br /><br /> 
+        <a target="_blank" href="https://github.com/hansenwebco/marvel-snap-draft">Github</a> - 
+        <a target="_blank" href="https://github.com/hansenwebco/marvel-snap-draft/issues">Bugs</a>
+    </div>
+    <script src="./dist/dist.js"></script>
+
+</body>
+</html>

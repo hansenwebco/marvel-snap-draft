@@ -1,7 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
 
+body,
+html {
+    margin: 0px;
+    padding: 0px;
+}
+
 #header-image {
-    height:120px;
+    height: 120px;
     margin-bottom: -25px;
 }
 
@@ -12,7 +18,7 @@
 }
 
 #draft td {
-    width:100px;
+    width: 100px;
 }
 
 
@@ -23,28 +29,29 @@
 
 
 .card-desc {
-    font-size:10px;
-    margin-bottom:5px;
-    max-width:180px;
-    margin-left:auto;
-    margin-right:auto;
+    font-size: 10px;
+    margin-bottom: 5px;
+    max-width: 180px;
+    margin-left: auto;
+    margin-right: auto;
     min-height: 40px;
-    margin-top:3px;
+    margin-top: 3px;
 
 }
+
 a {
     color: white;
 }
 
 a:hover {
-    color:skyblue;
+    color: skyblue;
 }
 
 #heading {
     font-size: 30px;
     font-weight: 400;
     text-align: center;
-    margin-top:20px;
+    margin-top: 20px;
     color: white;
 }
 
@@ -56,26 +63,26 @@ a:hover {
     padding: 30px;
     border-radius: 25px;
     margin-top: 50px;
-    box-sizing:content-box;
+    box-sizing: content-box;
     border: solid 4px #95a2e4;
 }
 
 .pick {
-   
+
     cursor: pointer;
-    height:260px;
-    width:260px;
-       
+    height: 260px;
+    width: 260px;
+
 }
 
 .donthave {
-    margin-top:10px;
-    margin-bottom:20px;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
-.picks  {
-    margin-top:20px;
-   
+.picks {
+    margin-top: 20px;
+
 }
 
 .cards {
@@ -86,7 +93,7 @@ a:hover {
 
 body {
     background-color: #222;
-    font-family:  'Orbitron',Arial, Helvetica, sans-serif;
+    font-family: 'Orbitron', Arial, Helvetica, sans-serif;
     color: #DDD;
     background-image: url('../images/back.jpg');
     background-size: cover;
@@ -104,56 +111,113 @@ td {
 }
 
 #energy-table {
-    margin-left:30px;
+    margin-left: 30px;
     border-collapse: collapse;
 }
 
-#top-table{ 
-    height:70px;
+#top-table {
+    height: 70px;
     border-left: solid 1px #1e6ff4;
     border-bottom: solid 1px #1e6ff4;
 }
 
 
 #energy1 {
-    width:10px;
-    height:1px;
+    width: 10px;
+    height: 1px;
     background-color: #1e6ff4;
 }
 
 #energy2 {
-    width:10px;
-    height:1px;
+    width: 10px;
+    height: 1px;
     background-color: #1e6ff4;
 }
 
 #energy3 {
-    width:10px;
-    height:1px;
+    width: 10px;
+    height: 1px;
     background-color: #1e6ff4;
 }
 
 #energy4 {
-    width:10px;
-    height:1px;
+    width: 10px;
+    height: 1px;
     background-color: #1e6ff4;
 }
 
 #energy5 {
-    width:10px;
-    height:1px;
+    width: 10px;
+    height: 1px;
     background-color: #1e6ff4;
 }
 
 #energy6 {
-    width:10px;
-    height:1px;
-    background-color:#1e6ff4;
+    width: 10px;
+    height: 1px;
+    background-color: #1e6ff4;
 }
 
 #footer {
-    margin-top:60px;
-    font-size:10px;
+    margin-top: 60px;
+    font-size: 10px;
     text-align: center;
 }
 
+.circle {
+    width: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 16px;
+    border: 3px solid #000;
+    background-color: black;
+    position: absolute;
+    margin-left: 170px;
+    margin-top: 90px;
+}
+
+#draft-done {
+    display: none;
+    margin-bottom: 30px;
+}
+
+
+
+#live {
+    position: absolute;
+    right: 30px;
+    top: 0px;
+    width: 550px;
+
+}
+
+#live-tab {
+    background-color: red;
+    padding: 10px;
+    font-size: 10px;
+    width: 170px;
+    margin: auto;
+    text-align: center;
+    cursor: pointer;
+
+}
+
+#live-start {
+    font-size: 12px;
+    background-color: #222;
+    padding: 30px;
+    margin: 0px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border: solid 1px #eee;
+    display: none;
+}
+
+#vote-details {
+    text-align: center;
+}
+
+.vote-master {
+    display: none;
+}
