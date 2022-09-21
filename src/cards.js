@@ -4,8 +4,8 @@ cards = {
       "id": "1",
       "name": "Abomination",
       "energy": "5",
-      "power": "8",
-      "desc": "No abilities"
+      "power": "9",
+      "desc": "<span class='warn'>(5/9)</span> No abilities"
     },
     {
       "id": "2",
@@ -53,8 +53,8 @@ cards = {
       "id": "8",
       "name": "MrNegative",
       "energy": "4",
-      "power": "4",
-      "desc": "On Reveal: Swap the Power and Cost of all cards in your deck."
+      "power": "1",
+      "desc": "<span class='warn'>(4/1)</span> On Reveal: Swap the Power and Cost of all cards in your deck."
     },
     {
       "id": "9",
@@ -144,8 +144,8 @@ cards = {
       "id": "21",
       "name": "Onslaught",
       "energy": "6",
-      "power": "6",
-      "desc": "Ongoing: Double your other Ongoing effects at this location."
+      "power": "7",
+      "desc": "<span class='warn'>(6/7)</span> Ongoing: Double your other Ongoing effects at this location."
     },
     {
       "id": "22",
@@ -173,7 +173,7 @@ cards = {
       "name": "ProfessorX",
       "energy": "5",
       "power": "3",
-      "desc": "Ongoing: Lock down this location. (Cards can't be added, removed or destroyed.)"
+      "desc": "Ongoing: Lock down this location. (Cards can't be added, removed, etc.)"
     },
     {
       "id": "26",
@@ -214,8 +214,8 @@ cards = {
       "id": "31",
       "name": "RedSkull",
       "energy": "5",
-      "power": "14",
-      "desc": "Ongoing: Enemy cards at this location have +2 Power."
+      "power": "15",
+      "desc": "<span class='warn'>(5/15)</span> Ongoing: Enemy cards at this location have +2 Power."
     },
     {
       "id": "32",
@@ -243,7 +243,7 @@ cards = {
       "name": "BaronMordo",
       "energy": "2",
       "power": "3",
-      "desc": "On Reveal: Your opponent draws a card, increase its cost by 1."
+      "desc": "<span class='warn'>(2/3)</span> On Reveal: Your opponent draws a card. Set its Cost to 6."
     },
     {
       "id": "36",
@@ -262,9 +262,9 @@ cards = {
     {
       "id": "38",
       "name": "Ronan",
-      "energy": "4",
+      "energy": "5",
       "power": "0",
-      "desc": "Ongoing: +2 Power for each card in your opponent's hand."
+      "desc": "<span class='warn'>(5/0)</span> Ongoing: +3 Power for each card in your opponent's hand."
     },
     {
       "id": "39",
@@ -333,22 +333,22 @@ cards = {
       "id": "48",
       "name": "Spectrum",
       "energy": "6",
-      "power": "4",
-      "desc": "On Reveal: Give your Ongoing cards +2 Power."
+      "power": "6",
+      "desc": "<span class='warn'>(6/5)</span> On Reveal: Give your Ongoing cards +2 Power."
     },
     {
       "id": "49",
       "name": "SpiderMan",
       "energy": "4",
-      "power": "2",
-      "desc": "On Reveal: Your opponent can't play cards at this location next turn."
+      "power": "3",
+      "desc": "<span class='warn'>(4/3)</span> On Reveal: Your opponent can't play cards at this location next turn."
     },
     {
       "id": "50",
       "name": "SpiderWoman",
-      "energy": "4",
-      "power": "4",
-      "desc": "On Reveal: Afflict all enemy cards here with -1 Power."
+      "energy": "5",
+      "power": "7",
+      "desc": "<span class='warn'>(5/7)</span> On Reveal: Afflict all enemy cards here with -1 Power."
     },
     {
       "id": "51",
@@ -430,9 +430,9 @@ cards = {
     {
       "id": "62",
       "name": "Thor",
-      "energy": "4",
-      "power": "6",
-      "desc": "On Reveal: Shuffle Mjolnir into your deck."
+      "energy": "3",
+      "power": "4",
+      "desc": "<span class='warn'>(3/4)</span> On Reveal: Shuffle Mjolnir into your deck."
     },
     {
       "id": "63",
@@ -452,8 +452,8 @@ cards = {
       "id": "65",
       "name": "Ultron",
       "energy": "6",
-      "power": "7",
-      "desc": "On Reveal: Create four 1-Power Drones at each adjacent location."
+      "power": "8",
+      "desc": "<span class='warn'>(6/8)</span> On Reveal: Create four 1-Power Drones at each other location."
     },
     {
       "id": "66",
@@ -473,8 +473,8 @@ cards = {
       "id": "68",
       "name": "BlackBolt",
       "energy": "5",
-      "power": "7",
-      "desc": "On Reveal: Your opponent must discard the lowest-Cost card in their hand."
+      "power": "8",
+      "desc": "<span class='warn'>(5/8)</span> On Reveal: Your opponent must discard the lowest-Cost card in their hand."
     },
     {
       "id": "69",
@@ -598,9 +598,9 @@ cards = {
     {
       "id": "86",
       "name": "BlueMarvel",
-      "energy": "6",
-      "power": "4",
-      "desc": "Ongoing: Your other cards have +1 Power."
+      "energy": "5",
+      "power": "3",
+      "desc": "<span class='warn'>(5/3)</span> Ongoing: Your other cards have +1 Power."
     },
     {
       "id": "87",
@@ -669,8 +669,8 @@ cards = {
       "id": "96",
       "name": "Aero",
       "energy": "5",
-      "power": "6",
-      "desc": "On Reveal: Move all enemy cards played this turn to this location."
+      "power": "8",
+      "desc": "<span class='warn'>(5/8)</span> On Reveal: Move all enemy cards played this turn to this location."
     },
     {
       "id": "97",
@@ -746,8 +746,8 @@ cards = {
       "id": "107",
       "name": "AgathaHarkness",
       "energy": "6",
-      "power": "13",
-      "desc": "Agatha starts in your hand and plays your cards for you."
+      "power": "14",
+      "desc": "<span class='warn'>(6/14)</span> Agatha starts in your hand and plays your cards for you."
     },
     {
       "id": "108",
@@ -766,9 +766,9 @@ cards = {
     {
       "id": "110",
       "name": "DevilDinosaur",
-      "energy": "4",
-      "power": "0",
-      "desc": "Ongoing: +2 Power for each card in your hand."
+      "energy": "5",
+      "power": "3",
+      "desc": "<span class='warn'>(5/3)</span> Ongoing: +2 Power for each card in your hand."
     },
     {
       "id": "111",
@@ -872,8 +872,8 @@ cards = {
       "id": "125",
       "name": "Gamora",
       "energy": "5",
-      "power": "6",
-      "desc": "On Reveal: If your opponent played a card here this turn, +4 Power."
+      "power": "7",
+      "desc": "<span class='warn'>(5/7)</span> On Reveal: If your opponent played a card here this turn, +5 Power."
     },
     {
       "id": "126",
@@ -970,8 +970,8 @@ cards = {
       "id": "139",
       "name": "Hulk",
       "energy": "6",
-      "power": "11",
-      "desc": "No abilities"
+      "power": "12",
+      "desc": "<span class='warn'>(6/12)</span> No abilities"
     },
     {
       "id": "140",
@@ -1046,9 +1046,9 @@ cards = {
     {
       "id": "150",
       "name": "JessicaJones",
-      "energy": "5",
-      "power": "8",
-      "desc": "On Reveal: If you don't play a card here next turn, +2 Power."
+      "energy": "4",
+      "power": "4",
+      "desc": "<span class='warn'>(4/4)</span> On Reveal: If you don't play a card here next turn, +4 Power."
     },
     {
       "id": "151",
@@ -1097,7 +1097,7 @@ cards = {
       "name": "Klaw",
       "energy": "5",
       "power": "4",
-      "desc": "Ongoing: +5 Power at the location to the right."
+      "desc": "Ongoing: The location to the right has +6 Power."
     },
     {
       "id": "158",
@@ -1116,9 +1116,9 @@ cards = {
     {
       "id": "160",
       "name": "LadySif",
-      "energy": "2",
+      "energy": "3",
       "power": "4",
-      "desc": "On Reveal: Discard the highest cost card from your hand."
+      "desc": "<span class='warn'>(3/4)</span> On Reveal: Discard the highest cost card from your hand."
     },
     {
       "id": "161",
