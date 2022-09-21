@@ -221,3 +221,8 @@ td {
 .vote-master {
     display: none;
 }
+
+.warn {
+    color:rgb(201, 120, 120);
+    font-weight: bold;
+}
