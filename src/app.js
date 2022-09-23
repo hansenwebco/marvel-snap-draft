@@ -52,6 +52,7 @@ function chooseCard(card) {
     if (currentPick > 12) {
         document.getElementById("picks").style.display = "none";
         document.getElementById("picks-complete").style.display = "block";
+        document.getElementById("totalvotes").style.display = "none";
         return;
     }
 }
@@ -96,7 +97,6 @@ function redraw(redraw) {
 function updatePicks() {
 
     let totalCards = cards.card.length;
-
 
     do {
         pick1 = randomNum(1, totalCards);
@@ -151,10 +151,8 @@ function buildDeckCode() {
         deck.Cards[x] = { "CardDefId": replaced };
     }
 
-
     let result = Base64.btoa(JSON.stringify(deck));
     document.getElementById("deck-code").value = result;
-
 }
 
 function copyDeckCode() {
@@ -163,7 +161,10 @@ function copyDeckCode() {
 }
 
 function drawVotes(arg) {
-    let totalVotes = arg.votes.length;
+    let totalVotes = arg.votes.length === undefined ? 0 : arg.votes.length;
+
+    let viewers = arg.viewers;
+    document.getElementById("totalvotes").innerHTML = "Viewers " + viewers + " - Total Votes: " + (totalVotes === undefined ? 0 : totalVotes)     
 
     if (totalVotes && totalVotes > 0) {
         document.getElementById("vote-1").innerHTML = Math.round(((arg.votes.filter(elm => elm.pick === 1).length / totalVotes) * 100)) + "%";
@@ -183,13 +184,11 @@ function ioStartStreamVote() {
     socket = io(SIGNALIO_SERVER);
 
     socket.on("stateupdate", (arg) => {
+        document.getElementById("vote-details-master").style.display = "block";
         drawVotes(arg);
     })
 
-    socket.on("picksupdated", (arg) => {
-        drawVotes(arg);
-    })
-    
+   
     voteSession = uuidv4();
 
     let message = {};

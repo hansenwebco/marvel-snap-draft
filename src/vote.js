@@ -22,10 +22,7 @@ function getUserSession() {
         id = localStorage.getItem("snapvote");
         console.log("pulled from storage");
     }
-    
-    
     return id;
-    
 }
 
 function startVoteSession() {
@@ -89,6 +86,7 @@ function drawUI(arg, resetVote) {
         }
 
     let totalVotes = arg.votes.length;
+   
 
     if (totalVotes && totalVotes > 0) {
         document.getElementById("client-vote-1").innerHTML = Math.round(((arg.votes.filter(elm => elm.pick === 1).length / totalVotes) * 100)) + "%";
@@ -101,7 +99,8 @@ function drawUI(arg, resetVote) {
         document.getElementById("client-vote-3").innerHTML =  "0%";
     }
 
-    document.getElementById("totalvotes").innerHTML = "Total Votes: " + (totalVotes === undefined ? 0 : totalVotes);
+    let viewers = arg.viewers;
+    document.getElementById("totalvotes").innerHTML = "Viewers " + viewers + " - Total Votes: " + (totalVotes === undefined ? 0 : totalVotes) 
 
 
     document.getElementById("client-pick1").src = "./images/" + arg.instance.pick1 + ".webp";
