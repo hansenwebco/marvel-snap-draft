@@ -2,8 +2,9 @@
 <head>
     <title>Marvel Snap! Draftanator</title>
     <script>
-        window.onload = function () {
-           updatePicks();
+        window.onload = async function () {
+           await loadCards();
+            updatePicks();
         }
     </script>
 </head>
