@@ -13,12 +13,14 @@ let socket;
 let voteSession = "";
 let cards;
 
+
+const DATA_URL = "https://snapdata.stonedonkey.com/";
 const SIGNALIO_SERVER  = "wss://stone-donkey.onrender.com"
 //const SIGNALIO_SERVER = "ws://localhost:3000";
 
 
 async function loadCards() {
-    let result = await(await fetch("https://snapdata.stonedonkey.com/data/snap.json")).json();
+    let result = await(await fetch(DATA_URL + "data/snap.json")).json();
     cards = result.data.cards;
 }
 
@@ -88,9 +90,17 @@ function redraw(redraw) {
         } while (pick1 === pick3 || pick2 === pick3 || pickList.indexOf("|" + pick3) >= 0);
 
 
-    document.getElementById("pick1").src = "https://snapdata.stonedonkey.com/images/cards/" + pick1 + ".webp";
-    document.getElementById("pick2").src = "https://snapdata.stonedonkey.com/images/cards/" + pick2 + ".webp";
-    document.getElementById("pick3").src = "https://snapdata.stonedonkey.com/images/cards/" + pick3 + ".webp";
+    document.getElementById("pick1").src = DATA_URL + "images/cards/" + pick1 + ".webp";
+    document.getElementById("pick2").src = DATA_URL + "images/cards/" + pick2 + ".webp";
+    document.getElementById("pick3").src = DATA_URL + "images/cards/"+ pick3 + ".webp";
+
+    document.querySelectorAll('.outofdate').forEach(e => e.remove());
+    if (cards.card[pick1 - 1].currentImage === false)
+        drawOutOfDate(1);
+    if (cards.card[pick2 - 1].currentImage === false)
+        drawOutOfDate(2);
+    if (cards.card[pick3 - 1].currentImage === false)
+        drawOutOfDate(3);        
 
     document.getElementById("card-desc-1").innerHTML = cards.card[pick1 - 1].desc;
     document.getElementById("card-desc-2").innerHTML = cards.card[pick2 - 1].desc;
@@ -117,9 +127,17 @@ function updatePicks() {
         pick3 = randomNum(1, totalCards);
     } while (pick1 === pick3 || pick2 === pick3 || pickList.indexOf("|" + pick3) >= 0);
 
-    document.getElementById("pick1").src = "https://snapdata.stonedonkey.com/images/cards/" + pick1 + ".webp";
-    document.getElementById("pick2").src = "https://snapdata.stonedonkey.com/images/cards/" + pick2 + ".webp";
-    document.getElementById("pick3").src = "https://snapdata.stonedonkey.com/images/cards/" + pick3 + ".webp";
+    document.getElementById("pick1").src = DATA_URL + "images/cards/" + pick1 + ".webp";
+    document.getElementById("pick2").src = DATA_URL + "images/cards/" + pick2 + ".webp";
+    document.getElementById("pick3").src = DATA_URL + "images/cards/" + pick3 + ".webp";
+
+    document.querySelectorAll('.outofdate').forEach(e => e.remove());
+    if (cards.card[pick1 - 1].currentImage === false)
+        drawOutOfDate(1);
+    if (cards.card[pick2 - 1].currentImage === false)
+        drawOutOfDate(2);
+    if (cards.card[pick3 - 1].currentImage === false)
+        drawOutOfDate(3);        
 
     document.getElementById("card-desc-1").innerHTML = cards.card[pick1 - 1].desc;
     document.getElementById("card-desc-2").innerHTML = cards.card[pick2 - 1].desc;
@@ -130,9 +148,16 @@ function updatePicks() {
 
 }
 
+function drawOutOfDate(cardId) {
+    const newDiv = document.createElement("img");
+    newDiv.classList.add("outofdate");
+    newDiv.src = "./images/outofdate.png";
+    document.getElementById("card-" + cardId + "-td").appendChild(newDiv);
+}
+
 function drawPicks() {
     for (var x = 0; x < cardsPicked.length; x++) {
-        document.getElementById("card" + (x + 1)).src = "https://snapdata.stonedonkey.com/images/cards/" + cardsPicked[x].id + ".webp";
+        document.getElementById("card" + (x + 1)).src = DATA_URL + "images/cards/" + cardsPicked[x].id + ".webp";
     }
 
     for (var y = 0; y < 6; y++) {

@@ -231,3 +231,12 @@ td {
     display: none;
     text-align: center;
 }
+
+
+.outofdate {
+    background: url("../images/outofdate.png");    
+    z-index: 100;
+    position:absolute;
+    margin-top:-333px;
+    margin-left:-85px;
+}
