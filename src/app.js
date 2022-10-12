@@ -76,18 +76,19 @@ function redraw(redraw) {
 
     let totalCards = cards.card.length;
 
+    console.log(" ");
     if (redraw === 1)
         do {
             pick1 = randomNum(1, totalCards);
-        } while (pick1 === pick2 || pick1 === pick3 || pickList.indexOf("|" + pick1) >= 0)
+        } while (pick1 === pick2 || pick1 === pick3 || pickList.indexOf("|" + pick1) >= 0 || cards.card[pick1 - 1].released === false)
     else if (redraw === 2)
         do {
             pick2 = randomNum(1, totalCards);
-        } while (pick1 === pick2 || pick2 === pick3 || pickList.indexOf("|" + pick2) >= 0);
+        } while (pick1 === pick2 || pick2 === pick3 || pickList.indexOf("|" + pick2) >= 0 ||  cards.card[pick2 - 1].released === false);
     else if (redraw === 3)
         do {
             pick3 = randomNum(1, totalCards);
-        } while (pick1 === pick3 || pick2 === pick3 || pickList.indexOf("|" + pick3) >= 0);
+        } while (pick1 === pick3 || pick2 === pick3 || pickList.indexOf("|" + pick3) >= 0 ||  cards.card[pick3 - 1].released === false);
 
 
     document.getElementById("pick1").src = DATA_URL + "images/cards/" + pick1 + ".webp";
@@ -114,18 +115,21 @@ function redraw(redraw) {
 function updatePicks() {
 
     let totalCards = cards.card.length;
-
+  
     do {
         pick1 = randomNum(1, totalCards);
-    } while (pickList.indexOf("|" + pick1) >= 0)
+        //console.log("pick1",pick1,cards.card[pick1 - 1].released);
+    } while (pickList.indexOf("|" + pick1) >= 0 || cards.card[pick1 - 1].released === false)
 
     do {
         pick2 = randomNum(1, totalCards);
-    } while (pick1 === pick2 || pickList.indexOf("|" + pick2) >= 0);
+        //console.log("pick2",pick2,cards.card[pick2 - 1].released);
+    } while ((pick1 === pick2 || pickList.indexOf("|" + pick2) >= 0) || cards.card[pick2 - 1].released === false);
 
     do {
         pick3 = randomNum(1, totalCards);
-    } while (pick1 === pick3 || pick2 === pick3 || pickList.indexOf("|" + pick3) >= 0);
+        //console.log("pick3",pick3,cards.card[pick3 - 1].released);
+    } while ((pick1 === pick3 || pick2 === pick3 || pickList.indexOf("|" + pick3) >= 0)  || cards.card[pick3 - 1].released === false);
 
     document.getElementById("pick1").src = DATA_URL + "images/cards/" + pick1 + ".webp";
     document.getElementById("pick2").src = DATA_URL + "images/cards/" + pick2 + ".webp";
