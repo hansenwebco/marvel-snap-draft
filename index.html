@@ -30,12 +30,18 @@
     <div id="start-screen">
         <table id="start">
             <tr>
-                <td><a class="btn btn-primary" onclick="start(0)">Classic Mode</a></td>
-                <td><a class="btn btn-primary" onclick="start(1)">Weighted Mode</a></td>
+                <td>
+                    <span onclick="start(0)" class="material-symbols-outlined icon">settings</span><Br/><br/><Br/><br/>
+                    <a class="btn btn-primary" onclick="start(0)">Classic Mode</a>
+                </td>
+                <td>
+                    <span onclick="start(1)" class="material-symbols-outlined icon">scale</span><Br/><br/><Br/><br/>
+                    <a class="btn btn-primary" onclick="start(1)">Weighted Mode</a>
+                </td>
             </tr>
             <tr>
-                <td>Every card in Snap has an equal chance of appearing with each pick.</td>
-                <td>Cards are assigned rarities stronger cards are shown less often.</td>
+                <td><div class="start-text">Every card in Snap has an equal chance of appearing with each pick.</div></td>
+                <td><div class="start-text">Cards are assigned rarities stronger cards are shown less often.</div></td>
             </tr>
         </table>
     </div>

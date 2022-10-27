@@ -85,19 +85,18 @@ function redraw(redraw) {
 
     let totalCards = cards.card.length;
 
-    console.log(" ");
     if (redraw === 1)
         do {
             pick1 = randomNum(1, totalCards);
-        } while (pick1 === pick2 || pick1 === pick3 || pickList.indexOf("|" + pick1) >= 0 || cards.card[pick1 - 1].released === false || cards.card[pick1 - 1].draftRarity != pickRarity)
+        } while (pick1 === pick2 || pick1 === pick3 || pickList.indexOf("|" + pick1) >= 0 || cards.card[pick1 - 1].released === false || (cards.card[pick1 - 1].draftRarity != pickRarity && draftMode ==1))
     else if (redraw === 2)
         do {
             pick2 = randomNum(1, totalCards);
-        } while (pick1 === pick2 || pick2 === pick3 || pickList.indexOf("|" + pick2) >= 0 || cards.card[pick2 - 1].released === false || cards.card[pick2 - 1].draftRarity != pickRarity);
+        } while (pick1 === pick2 || pick2 === pick3 || pickList.indexOf("|" + pick2) >= 0 || cards.card[pick2 - 1].released === false || (cards.card[pick2 - 1].draftRarity != pickRarity && draftMode ==1));
     else if (redraw === 3)
         do {
             pick3 = randomNum(1, totalCards);
-        } while (pick1 === pick3 || pick2 === pick3 || pickList.indexOf("|" + pick3) >= 0 || cards.card[pick3 - 1].released === false || cards.card[pick3 - 1].draftRarity != pickRarity);
+        } while (pick1 === pick3 || pick2 === pick3 || pickList.indexOf("|" + pick3) >= 0 || cards.card[pick3 - 1].released === false || (cards.card[pick3 - 1].draftRarity != pickRarity && draftMode ==1));
 
 
     document.getElementById("pick1").src = DATA_URL + "images/cards/" + pick1 + ".webp";
@@ -126,19 +125,19 @@ function updatePickRarity() {
     let rare = randomNum(0, 100);
     console.log(rare);
     switch (true) {
-        case (rare <= 44):
+        case (rare <= 54):
             pickRarity = 0;
             console.log("common");
             break;
-        case (rare >= 45 && rare <= 74 ):
+        case (rare >= 55 && rare <= 84 ):
             pickRarity = 1;
             console.log("rare");
             break;
-        case (rare >=75 && rare <= 90):
+        case (rare >=85 && rare <= 94):
             pickRarity = 2;
             console.log("epic");
             break;
-        case (rare >=91):
+        case (rare >=95):
             pickRarity = 3;
             console.log("legendary");
             break;
@@ -155,15 +154,15 @@ function updatePicks() {
 
     do {
         pick1 = randomNum(1, totalCards);
-    } while (pickList.indexOf("|" + pick1) >= 0 || cards.card[pick1 - 1].released === false || cards.card[pick1 - 1].draftRarity != pickRarity)
+    } while (pickList.indexOf("|" + pick1) >= 0 || cards.card[pick1 - 1].released === false || (cards.card[pick1 - 1].draftRarity != pickRarity && draftMode ==1))
 
     do {
         pick2 = randomNum(1, totalCards);
-    } while ((pick1 === pick2 || pickList.indexOf("|" + pick2) >= 0) || cards.card[pick2 - 1].released === false || cards.card[pick2 - 1].draftRarity != pickRarity);
+    } while ((pick1 === pick2 || pickList.indexOf("|" + pick2) >= 0) || cards.card[pick2 - 1].released === false || (cards.card[pick2 - 1].draftRarity != pickRarity && draftMode ==1));
 
     do {
         pick3 = randomNum(1, totalCards);
-    } while ((pick1 === pick3 || pick2 === pick3 || pickList.indexOf("|" + pick3) >= 0) || cards.card[pick3 - 1].released === false || cards.card[pick3 - 1].draftRarity != pickRarity);
+    } while ((pick1 === pick3 || pick2 === pick3 || pickList.indexOf("|" + pick3) >= 0) || cards.card[pick3 - 1].released === false || (cards.card[pick3 - 1].draftRarity != pickRarity && draftMode ==1));
 
     document.getElementById("pick1").src = DATA_URL + "images/cards/" + pick1 + ".webp";
     document.getElementById("pick2").src = DATA_URL + "images/cards/" + pick2 + ".webp";
@@ -207,6 +206,10 @@ function drawPicks() {
 
     for (var x = 0; x < cardsPicked.length; x++) {
         document.getElementById("card" + (x + 1)).src = DATA_URL + "images/cards/" + cardsPicked[x].id + ".webp";
+        if (draftMode == 1) {
+            document.getElementById("card" + (x + 1)).setAttribute("class","cards");
+            document.getElementById("card" + (x + 1)).classList.add("card-preview-rarity-" + cardsPicked[x].draftRarity );
+        }
     }
 
     for (var y = 0; y < 6; y++) {
