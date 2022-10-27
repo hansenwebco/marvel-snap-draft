@@ -11,16 +11,41 @@ html {
     margin-bottom: -25px;
 }
 
+#draft-ui, #picks-ui {
+    display: none;
+}
+
+#start-screen {
+    width:100%;
+    height:100px;
+    text-align: center;
+    margin-top:130px;
+    margin-bottom: 150px;
+}
+
+#start {
+    width:540px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#start td {
+    text-align: left;
+    padding:20px;
+    font-size: 12px;
+   
+}
+
 #draft {
     margin-left: auto;
     margin-right: auto;
     margin-top: 40px;
 }
 
+
 #draft td {
     width: 100px;
 }
-
 
 #picks {
     margin-left: auto;
@@ -88,8 +113,6 @@ a:hover {
 .cards {
     height: 90px;
 }
-
-
 
 body {
     background-color: #222;
@@ -239,4 +262,19 @@ td {
     position:absolute;
     margin-top:-333px;
     margin-left:-85px;
+}
+
+.pick-rarity-3 {
+ 
+    filter : drop-shadow(0px 0px 20px rgb(196, 216, 18));
+
+}
+.pick-rarity-2 {
+ 
+    filter : drop-shadow(0 0 20px rgb(221, 16, 211));
+}
+
+.pick-rarity-1 {
+ 
+    filter : drop-shadow(0 0 20px rgb(48, 67, 236));
 }

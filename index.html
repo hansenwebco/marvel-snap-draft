@@ -4,7 +4,7 @@
     <script>
         window.onload = async function () {
            await loadCards();
-            updatePicks();
+            //updatePicks();
         }
     </script>
 </head>
@@ -23,8 +23,24 @@
         <div onclick="toggleLive();" id="live-tab">Draft With Friends (BETA)</div>
     </div>
     
+    
+    <div id="heading"><img id="header-image" src="/images/header.png"></div>
+
+
+    <div id="start-screen">
+        <table id="start">
+            <tr>
+                <td><a class="btn btn-primary" onclick="start(0)">Classic Mode</a></td>
+                <td><a class="btn btn-primary" onclick="start(1)">Weighted Mode</a></td>
+            </tr>
+            <tr>
+                <td>Every card in Snap has an equal chance of appearing with each pick.</td>
+                <td>Cards are assigned rarities stronger cards are shown less often.</td>
+            </tr>
+        </table>
+    </div>
+    
     <!-- yeah yeah it's full of tables sue me -->
-      <div id="heading"><img id="header-image" src="/images/header.png"></div>
      <div id="draft-ui">
         <table cellpadding=0 cellmargin="0" id="draft">
             <tr>
