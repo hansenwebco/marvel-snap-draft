@@ -305,15 +305,15 @@ td {
 
 @keyframes pulse-rare {
     0% {
-        filter: drop-shadow(0 0 20px rgb(77, 152, 214));
+        filter: drop-shadow(0 0 30px #2f08dd);
     }
 
     50% {
-        filter: drop-shadow(0 0 30px rgb(77, 152, 214));
+        filter: drop-shadow(0 0 50px #2f08dd);
     }
 
     100% {
-        filter: drop-shadow(0 0 20px rgb(77, 152, 214));
+        filter: drop-shadow(0 0 30px #2f08dd);
     }
 }
 

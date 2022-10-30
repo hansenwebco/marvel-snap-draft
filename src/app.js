@@ -121,23 +121,30 @@ function redraw(redraw) {
 }
 
 function updatePickRarity() {
-    console.log('set rarity');
-    let rare = randomNum(0, 100);
-    console.log(rare);
+    let rare= 0;
+    if (currentPick >= 1 && currentPick <= 3 || currentPick == 12) {
+        rare = randomNum(0, 100);
+        if (rare < 74)
+            rare = 75;
+        console.log("improved odds");
+    }
+    else 
+        rare = randomNum(0,100);
+    
     switch (true) {
-        case (rare <= 54):
+        case (rare <= 74):
             pickRarity = 0;
             console.log("common");
             break;
-        case (rare >= 55 && rare <= 84 ):
+        case (rare >= 75 && rare <= 89 ):
             pickRarity = 1;
             console.log("rare");
             break;
-        case (rare >=85 && rare <= 94):
+        case (rare >=90 && rare <= 96):
             pickRarity = 2;
             console.log("epic");
             break;
-        case (rare >=95):
+        case (rare >=97):
             pickRarity = 3;
             console.log("legendary");
             break;
