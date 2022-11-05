@@ -300,7 +300,7 @@ td {
 }
 
 .pick-rarity-1 {
-    animation: pulse-rare 3s infinite;
+    /*animation: pulse-rare 3s infinite;*/
 }
 
 @keyframes pulse-rare {
@@ -346,15 +346,15 @@ td {
 }
 
 .card-preview-rarity-3 {
-    filter: drop-shadow(3px 3px 0px rgb(196, 216, 18));
+    filter: drop-shadow(4px 4px 0px rgb(196, 216, 18));
    
 }
 
 .card-preview-rarity-2 {
-    filter: drop-shadow(3px 3px 0px rgb(221, 16, 211));
+    filter: drop-shadow(4px 4px 0px rgb(221, 16, 211));
 }
 
 .card-preview-rarity-1 {
-    filter: drop-shadow(3px 3px 0px rgb(96, 109, 226));
+   /* filter: drop-shadow(3px 3px 0px rgb(96, 109, 226)); */
   
 }
