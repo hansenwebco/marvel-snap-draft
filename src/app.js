@@ -2,8 +2,10 @@ import { Base64 } from 'js-base64';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { v4 as uuidv4 } from 'uuid';
 import { io } from "socket.io-client";
+import { pick } from 'query-string';
 
-let pick1 = 0;
+
+let pickCard = 0;
 let pick2 = 0;
 let pick3 = 0;
 let currentPick = 1;
@@ -12,7 +14,6 @@ let cardsPicked = [];
 let socket;
 let voteSession = "";
 let cards;
-let pickRarity = 0;
 let draftMode = 0;
 
 const DATA_URL = "https://snapdata.stonedonkey.com/";
@@ -25,7 +26,13 @@ function start(mode) {
     document.getElementById("start-screen").style.display = "none";
     document.getElementById("draft-ui").style.display = "block";
     document.getElementById("picks-ui").style.display = "block";
-    updatePicks();
+    if (draftMode == 1) {
+        configureSealed();
+        //updatePicksSealed();
+        //s1UpdatePicks(cards);
+    }
+    else
+        updatePicks();
 }
 
 async function loadCards() {
@@ -45,7 +52,7 @@ function chooseCard(card) {
 
     let chose = 0;
     if (card === 1)
-        chose = pick1;
+        chose = pickCard;
     else if (card === 2)
         chose = pick2;
     else if (card === 3)
@@ -55,7 +62,6 @@ function chooseCard(card) {
 
     cardsPicked.push(cards.card.find(x => parseInt(x.id) === chose));
 
-
     cardsPicked.sort((a, b) => a.name > b.name ? 1 : -1)
     cardsPicked.sort((a, b) => a.power - b.power);
     cardsPicked.sort((a, b) => a.energy - b.energy);
@@ -63,7 +69,10 @@ function chooseCard(card) {
     drawPicks();
 
     currentPick++;
-    updatePicks();
+    if (draftMode == 1)
+        s1UpdatePicks(cards);
+    else
+        updatePicks();
 
     let deckCode = buildDeckCode();
 
@@ -75,43 +84,81 @@ function chooseCard(card) {
     }
 }
 
-function randomNum(min, max) {
+export function randomNum(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function updatePicks() {
+
+    let totalCards = cards.card.length;
+
+    do {
+        pickCard = randomNum(1, totalCards);
+    } while (pickList.indexOf("|" + pickCard) >= 0 || cards.card[pickCard - 1].released === false)
+
+    do {
+        pick2 = randomNum(1, totalCards);
+    } while ((pickCard === pick2 || pickList.indexOf("|" + pick2) >= 0) || cards.card[pick2 - 1].released === false);
+
+    do {
+        pick3 = randomNum(1, totalCards);
+    } while ((pickCard === pick3 || pick2 === pick3 || pickList.indexOf("|" + pick3) >= 0) || cards.card[pick3 - 1].released === false);
+
+    document.getElementById("pick1").src = DATA_URL + "images/cards/" + pickCard + ".webp";
+    document.getElementById("pick2").src = DATA_URL + "images/cards/" + pick2 + ".webp";
+    document.getElementById("pick3").src = DATA_URL + "images/cards/" + pick3 + ".webp";
+
+
+    document.querySelectorAll('.outofdate').forEach(e => e.remove());
+    if (cards.card[pickCard - 1].currentImage === false)
+        drawOutOfDate(1);
+    if (cards.card[pick2 - 1].currentImage === false)
+        drawOutOfDate(2);
+    if (cards.card[pick3 - 1].currentImage === false)
+        drawOutOfDate(3);
+
+    document.getElementById("card-desc-1").innerHTML = cards.card[pickCard - 1].desc;
+    document.getElementById("card-desc-2").innerHTML = cards.card[pick2 - 1].desc;
+    document.getElementById("card-desc-3").innerHTML = cards.card[pick3 - 1].desc;
+
+    if (voteSession.length > 0)
+        ioEmitState();
+
 }
 
 // called when the user says they already have a card
 // this can probably be combined with updatePicks somehow but I can't be bothered...
-function redraw(redraw) {
+function updateCard(redraw) {
 
     let totalCards = cards.card.length;
 
     if (redraw === 1)
         do {
-            pick1 = randomNum(1, totalCards);
-        } while (pick1 === pick2 || pick1 === pick3 || pickList.indexOf("|" + pick1) >= 0 || cards.card[pick1 - 1].released === false || (cards.card[pick1 - 1].draftRarity != pickRarity && draftMode == 1))
+            pickCard = randomNum(1, totalCards);
+        } while (pickCard === pick2 || pickCard === pick3 || pickList.indexOf("|" + pickCard) >= 0 || cards.card[pickCard - 1].released === false);
     else if (redraw === 2)
         do {
             pick2 = randomNum(1, totalCards);
-        } while (pick1 === pick2 || pick2 === pick3 || pickList.indexOf("|" + pick2) >= 0 || cards.card[pick2 - 1].released === false || (cards.card[pick2 - 1].draftRarity != pickRarity && draftMode == 1));
+        } while (pickCard === pick2 || pick2 === pick3 || pickList.indexOf("|" + pick2) >= 0 || cards.card[pick2 - 1].released === false);
     else if (redraw === 3)
         do {
             pick3 = randomNum(1, totalCards);
-        } while (pick1 === pick3 || pick2 === pick3 || pickList.indexOf("|" + pick3) >= 0 || cards.card[pick3 - 1].released === false || (cards.card[pick3 - 1].draftRarity != pickRarity && draftMode == 1));
+        } while (pickCard === pick3 || pick2 === pick3 || pickList.indexOf("|" + pick3) >= 0 || cards.card[pick3 - 1].released === false);
 
 
-    document.getElementById("pick1").src = DATA_URL + "images/cards/" + pick1 + ".webp";
+    document.getElementById("pick1").src = DATA_URL + "images/cards/" + pickCard + ".webp";
     document.getElementById("pick2").src = DATA_URL + "images/cards/" + pick2 + ".webp";
     document.getElementById("pick3").src = DATA_URL + "images/cards/" + pick3 + ".webp";
 
     document.querySelectorAll('.outofdate').forEach(e => e.remove());
-    if (cards.card[pick1 - 1].currentImage === false)
+    if (cards.card[pickCard - 1].currentImage === false)
         drawOutOfDate(1);
     if (cards.card[pick2 - 1].currentImage === false)
         drawOutOfDate(2);
     if (cards.card[pick3 - 1].currentImage === false)
         drawOutOfDate(3);
 
-    document.getElementById("card-desc-1").innerHTML = cards.card[pick1 - 1].desc;
+    document.getElementById("card-desc-1").innerHTML = cards.card[pickCard - 1].desc;
     document.getElementById("card-desc-2").innerHTML = cards.card[pick2 - 1].desc;
     document.getElementById("card-desc-3").innerHTML = cards.card[pick3 - 1].desc;
 
@@ -120,99 +167,7 @@ function redraw(redraw) {
 
 }
 
-let rarePicked = false;
-function updatePickRarity() {
-    let rare = 0;
-    if (currentPick == 1) {
-        pickRarity = 3;
-        console.log("forced legend")
-        return;
-    }
 
-    if (currentPick == 12 && rarePicked == false) {
-        rare = randomNum(0, 100);
-        if (rare < 74) {
-            rare = 75;
-            rarePicked = true;
-        }
-        console.log("gurantee rare");
-    }
-    else if (currentPick == 2 || (currentPick == 3 && rarePicked == false)) {
-        rare = randomNum(0, 100); 
-        if (rare > 50) { // 50% chance to pull rares on turn 2 and 3
-            rare = 75;
-            rarePicked = true;
-        }
-    }
-    else
-        rare = randomNum(0, 100);
-
-    switch (true) {
-        case (rare <= 74):
-            pickRarity = 1;
-            console.log("common");
-            break;
-        case (rare >= 75 && rare <= 96):
-            pickRarity = 2;
-            console.log("epic");
-            rarePicked = true;
-            break;
-        case (rare > 97):
-            pickRarity = 3;
-            console.log("legendary");
-            break;
-    }
-}
-
-function updatePicks() {
-
-    if (draftMode == 1)
-        updatePickRarity();
-
-    let totalCards = cards.card.length;
-
-    do {
-        pick1 = randomNum(1, totalCards);
-    } while (pickList.indexOf("|" + pick1) >= 0 || cards.card[pick1 - 1].released === false || (cards.card[pick1 - 1].draftRarity != pickRarity && draftMode == 1))
-
-    do {
-        pick2 = randomNum(1, totalCards);
-    } while ((pick1 === pick2 || pickList.indexOf("|" + pick2) >= 0) || cards.card[pick2 - 1].released === false || (cards.card[pick2 - 1].draftRarity != pickRarity && draftMode == 1));
-
-    do {
-        pick3 = randomNum(1, totalCards);
-    } while ((pick1 === pick3 || pick2 === pick3 || pickList.indexOf("|" + pick3) >= 0) || cards.card[pick3 - 1].released === false || (cards.card[pick3 - 1].draftRarity != pickRarity && draftMode == 1));
-
-    document.getElementById("pick1").src = DATA_URL + "images/cards/" + pick1 + ".webp";
-    document.getElementById("pick2").src = DATA_URL + "images/cards/" + pick2 + ".webp";
-    document.getElementById("pick3").src = DATA_URL + "images/cards/" + pick3 + ".webp";
-
-    if (draftMode == 1) {
-        document.getElementById("pick1").setAttribute("class", "pick");
-        document.getElementById("pick2").setAttribute("class", "pick");
-        document.getElementById("pick3").setAttribute("class", "pick");
-
-        document.getElementById("pick1").classList.add("pick-rarity-" + pickRarity);
-        document.getElementById("pick2").classList.add("pick-rarity-" + pickRarity);
-        document.getElementById("pick3").classList.add("pick-rarity-" + pickRarity);
-    }
-
-    document.querySelectorAll('.outofdate').forEach(e => e.remove());
-    if (cards.card[pick1 - 1].currentImage === false)
-        drawOutOfDate(1);
-    if (cards.card[pick2 - 1].currentImage === false)
-        drawOutOfDate(2);
-    if (cards.card[pick3 - 1].currentImage === false)
-        drawOutOfDate(3);
-
-    document.getElementById("card-desc-1").innerHTML = cards.card[pick1 - 1].desc;
-    document.getElementById("card-desc-2").innerHTML = cards.card[pick2 - 1].desc;
-    document.getElementById("card-desc-3").innerHTML = cards.card[pick3 - 1].desc;
-
-    if (voteSession.length > 0)
-        ioEmitState();
-
-}
 
 function drawOutOfDate(cardId) {
     const newDiv = document.createElement("img");
@@ -225,10 +180,6 @@ function drawPicks() {
 
     for (var x = 0; x < cardsPicked.length; x++) {
         document.getElementById("card" + (x + 1)).src = DATA_URL + "images/cards/" + cardsPicked[x].id + ".webp";
-        if (draftMode == 1) {
-            document.getElementById("card" + (x + 1)).setAttribute("class", "cards");
-            document.getElementById("card" + (x + 1)).classList.add("card-preview-rarity-" + cardsPicked[x].draftRarity);
-        }
     }
 
     for (var y = 0; y < 6; y++) {
@@ -322,7 +273,7 @@ function toggleLive() {
 
 function ioEmitState() {
     let state = {};
-    state.pick1 = pick1;
+    state.pick1 = pickCard;
     state.pick2 = pick2;
     state.pick3 = pick3;
     state.session = voteSession;
@@ -330,12 +281,163 @@ function ioEmitState() {
     socket.emit("updatestate", state);
 }
 
+// sealed mode /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+let packCount = 5;
+let cardsOpened = [];
+function configureSealed() {
+    document.getElementById("picks").style.display = "none";
+    document.getElementById("draft").style.display = "none";
+    document.getElementById("picks-sealed").style.display = "block";
+}
+
+function openPack() {
+
+
+
+    if (packCount >= 1) {
+
+        new Audio('./sound/pack-open.wav').play();
+
+        packCount--;
+
+        if (packCount == 0) {
+            // TODO : remove event click for more packs
+            document.getElementById("seasonpack").src = "./images/trans.png";
+        }
+
+        document.getElementById("packcount").innerHTML = packCount + " Packs Remaining";
+
+        var cardReveals = 0;
+        [...document.getElementsByClassName("cardback")].forEach(
+            (element, index, array) => {
+
+                element.src = "./images/cardback-full.png";
+
+                element.classList.forEach(item => {
+                    if (item.startsWith('pick-rarity')) {
+                        element.classList.remove(item);
+                    }
+                });
+
+
+                element.addEventListener("click", function handler() {
+                    let pick = drawCard();
+                    this.src = DATA_URL + "images/cards/" + cards.card[pick].id + ".webp";
+                    this.classList.add("pick-rarity-" + cards.card[pick].draftRarity);
+                    new Audio('./sound/card-open.wav').play();
+                    this.removeEventListener('click', handler);
+                    cardReveals++;
+                   
+                    if (packCount == 0 && cardReveals == 5) {
+                        console.log("show draft");
+                    }
+
+                })
+            }
+        );
+
+
+    }
+
+}
+
+function drawCard() {
+    let totalCards = cards.card.length;
+
+    var pickRarity = randomNum(1, 100);
+    var rarity = 1;
+    if (pickRarity > 64 && pickRarity < 96)
+        rarity = 2;
+    else if (pickRarity >=97)
+        rarity = 3;
+
+    let cardPicked = 0;
+    do {
+        let pickCard = randomNum(1, totalCards);
+        if (cards.card[pickCard - 1].released == true && cards.card[pickCard - 1].draftRarity == rarity && cards.card[pickCard - 1].released == true) {
+            cardsPicked.push(cards.card[pickCard - 1]);
+            cardPicked = pickCard;
+        }
+    }
+    while (cardPicked == 0);
+
+    return cardPicked;
+
+}
+
+function updatePicksSealed() {
+    let totalCards = cards.card.length;
+
+    var x = 0;
+    do {
+        var pickRarity = randomNum(1, 100);
+        var rarity = 1;
+        if (pickRarity > 64 && pickRarity < 89)
+            rarity = 2;
+        else if (pickRarity >= 90)
+            rarity = 3;
+
+
+        pickCard = randomNum(1, totalCards);
+        if (cards.card[pickCard - 1].released == true && cards.card[pickCard - 1].draftRarity == rarity) {
+            cardsPicked.push(cards.card[pickCard - 1]);
+            x++;
+        }
+    } while (x < 30)
+
+    cardsPicked.sort((a, b) => a.name > b.name ? 1 : -1)
+    cardsPicked.sort((a, b) => a.power - b.power);
+    cardsPicked.sort((a, b) => a.energy - b.energy);
+
+    for (var x = 0; x < cardsPicked.length; x++) {
+        console.log(x + 1 + " " + cardsPicked[x].draftRarity + " " + cardsPicked[x].name);
+    }
+
+    drawSealed(cardsPicked);
+}
+
+function drawSealed(cards) {
+
+    let table = document.getElementById("picks-sealed");
+    let tr = table.insertRow(0);
+
+    let cells = 0;
+    let lastCard = 0;
+    for (var x = 0; x < 30; x++) {
+
+        if (cardsPicked[x].id != lastCard) {
+
+            cells++;
+
+            let td = tr.insertCell(-1);
+            let img = document.createElement("img");
+
+            img.src = DATA_URL + "images/cards/" + cardsPicked[x].id + ".webp";
+            img.classList.add("sealed-card");
+            img.classList.add("pick-rarity-" + cardsPicked[x].draftRarity);
+            td.appendChild(img);
+
+            if (cells >= 8) {
+                tr = table.insertRow(-1);
+                cells = 0;
+            }
+
+            lastCard = cardsPicked[x].id;
+
+        }
+    }
+
+}
+// end sealed mode /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// public functions
 window.updatePicks = updatePicks;
 window.chooseCard = chooseCard;
-window.redraw = redraw;
+window.updateCard = updateCard;
 window.copyDeckCode = copyDeckCode;
 window.ioStartStreamVote = ioStartStreamVote;
 window.toggleLive = toggleLive;
 window.loadCards = loadCards;
 window.start = start;
 
+window.openPack = openPack;

@@ -35,12 +35,12 @@
             </tr>
             <tr>
                 <td>
-                    <span onclick="start(0)" class="material-symbols-outlined icon">settings</span><Br/><br/><Br/><br/>
+                    <span onclick="start(0)" class="material-symbols-outlined icon">public</span><Br/><br/><Br/><br/>
                     <a class="btn btn-primary" onclick="start(0)">Classic Mode</a>
                 </td>
                 <td>
-                    <span onclick="start(1)" class="material-symbols-outlined icon">scale</span><Br/><br/><Br/><br/>
-                    <a class="btn btn-primary" onclick="start(1)">Weighted Mode</a>
+                    <span onclick="start(1)" class="material-symbols-outlined icon">batch_prediction</span><Br/><br/><Br/><br/>
+                    <a class="btn btn-primary" onclick="start(1)">Sealed Mode</a>
                 </td>
             </tr>
             <tr>
@@ -115,22 +115,43 @@
                     <div id="vote-1" class="vote-master circle">0%</div>
                     <img onload="this.setAttribute('onclick', 'chooseCard(1);')" id="pick1" class="pick"><br />
                     <div class="card-desc" id="card-desc-1">This card +2 on blah</div><br />
-                    <a class="btn btn-secondary btn-sm" onclick="redraw(1)">Don't Have Card</a>
+                    <a class="btn btn-secondary btn-sm" onclick="updateCard(1)">Don't Have Card</a>
                 </td>
                 <td id="card-2-td">
                     <div id="vote-2" class="vote-master circle">0%</div>
                     <img onload="this.setAttribute('onclick', 'chooseCard(2);')" id="pick2" class="pick"><br />
                     <p class="card-desc" id="card-desc-2">This card +2 on blah</p><br />
-                    <a  class="btn btn-secondary btn-sm" onclick="redraw(2)">Don't Have Card</a>
+                    <a  class="btn btn-secondary btn-sm" onclick="updateCard(2)">Don't Have Card</a>
                 </td>
                 <td id="card-3-td">
                     <div id="vote-3" class="vote-master circle">0%</div>
                     <img onload="this.setAttribute('onclick', 'chooseCard(3);')" id="pick3" class="pick"><br />
                     <p class="card-desc" id="card-desc-3">This card +2 on blah</p><br />
-                    <a  class="btn btn-secondary btn-sm" onclick="redraw(3)">Don't Have Card</a>
+                    <a  class="btn btn-secondary btn-sm" onclick="updateCard(3)">Don't Have Card</a>
                 </td>
             </tr>
         </table>
+        <table id="open-packs">
+            <tr>
+                <td></td>
+            </tr>
+        </table>
+        <table id="picks-sealed">
+            <tr>
+                <td>
+                    <div id="cardtray"><img onclick="openPack();" id="seasonpack" src="./images/CardPack-Wakanda.png"></div> 
+                    <div id="packcount">5 Packs Remaining</div>
+                </td>
+                <td>
+                    <img id="draw1" class="cardback" src="./images/trans.png">
+                    <img id="draw2" class="cardback" src="./images/trans.png">
+                    <img id="draw3" class="cardback" src="./images/trans.png">
+                    <img id="draw4" class="cardback" src="./images/trans.png">
+                    <img id="draw5" class="cardback" src="./images/trans.png">
+                </td>
+            </tr>
+        </table>
+
         <div id="vote-details-master">
             <br/>
             <div id="totalvotes">Total Votes: 0</div>
