@@ -2,10 +2,14 @@
     display: none;
 }
 
+#open-packs {
+    display: none;
+}
+
 #cardtray {
     background-image: url('./images/cardtray.png');
     width: 262px;
-    height: 438px
+    height: 438px;
 }
 
 #seasonpack {
