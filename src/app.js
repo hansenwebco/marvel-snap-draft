@@ -83,7 +83,8 @@ function chooseCard(card) {
 }
 
 export function randomNum(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+    //return Math.floor(Math.random() * (max - min + 1)) + min;
+    return Math.floor(Math.random() * (max - min) ) + min;
 }
 
 function updatePicks() {
@@ -298,7 +299,7 @@ function configureSealed() {
 
 function openPack() {
 
-    if (packCount >= 1) {
+    if (packCount >= 1 && (cardReveals == 0 ||cardReveals == 5)) {
 
         new Audio('./sound/pack-open2.wav').play();
 
@@ -350,18 +351,25 @@ function drawCard() {
 
     var pickRarity = randomNum(1, 100);
     var rarity = 1;
-    if (pickRarity > 64 && pickRarity < 96)
+    if (pickRarity > 79 && pickRarity < 96)
         rarity = 2;
     else if (pickRarity >= 97)
         rarity = 3;
 
+
     let cardPicked = 0;
     do {
         let pickCard = randomNum(1, totalCards);
-        if (cards.card[pickCard - 1].released == true && cards.card[pickCard - 1].draftRarity == rarity) {
-            console.log("card added");
-            cardsOpened.push(cards.card[pickCard]);
-            cardPicked = pickCard;
+        try {
+            if (cards.card[pickCard].released == true && cards.card[pickCard].draftRarity == rarity) {
+                console.log("card added");
+                cardsOpened.push(cards.card[pickCard]);
+                cardPicked = pickCard;
+                console.log("rarirty", pickRarity, cardPicked);
+            }
+        }
+        catch (ex) {
+            console.log(ex, "picked card:" + cardPicked)
         }
     }
     while (cardPicked == 0);
@@ -385,8 +393,8 @@ function drawSealed() {
     sortOpened();
 
     let table = document.getElementById("picks-sealed");
-   
-    for(var i = 0;i<table.rows.length;){
+
+    for (var i = 0; i < table.rows.length;) {
         table.deleteRow(i);
     }
 
@@ -411,10 +419,10 @@ function drawSealed() {
             img.addEventListener("click", function handler() {
                 //console.log(this.getAttribute("cardid"));
                 cardsPicked.push(cards.card.find(x => parseInt(x.id) === parseInt(this.getAttribute("cardid"))));
-                
+
                 // TODO: this isn't working properly
-                cardsOpened.splice(cardsOpened.find(x => parseInt(x.id) === parseInt(this.getAttribute("cardid"))),1);
-                            
+                cardsOpened.splice(cardsOpened.findIndex(x => parseInt(x.id) === parseInt(this.getAttribute("cardid"))), 1);
+
                 sortOpened();
                 drawPicks();
                 drawSealed();
