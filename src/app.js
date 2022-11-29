@@ -28,11 +28,10 @@ function start(mode) {
     document.getElementById("picks-ui").style.display = "block";
     if (draftMode == 1) {
         configureSealed();
-        //updatePicksSealed();
-
     }
-    else
+    else {
         updatePicks();
+    }
 }
 
 async function loadCards() {
@@ -84,7 +83,7 @@ function chooseCard(card) {
 
 export function randomNum(min, max) {
     //return Math.floor(Math.random() * (max - min + 1)) + min;
-    return Math.floor(Math.random() * (max - min) ) + min;
+    return Math.floor(Math.random() * (max - min)) + min;
 }
 
 function updatePicks() {
@@ -175,17 +174,23 @@ function drawOutOfDate(cardId) {
 
 function drawPicks() {
 
+    for (var x = 0; x < 11; x++) {
+        document.getElementById("card" + (x + 1)).src = "./images/blank2.png";
+        document.getElementById("card" + (x + 1)).removeAttribute("cardid");
+       
+       
+    }
+
     for (var x = 0; x < cardsPicked.length; x++) {
         document.getElementById("card" + (x + 1)).src = DATA_URL + "images/cards/" + cardsPicked[x].id + ".webp";
+        document.getElementById("card" + (x + 1)).setAttribute("cardid",cardsPicked[x].id);
     }
 
     for (var y = 0; y < 6; y++) {
-
         var count = cardsPicked.filter(elm => {
             return elm.energy == (y + 1)
         }
         ).length;
-
         document.getElementById("energy" + (y + 1)).style.height = 1 + count * 10 + "px";
     }
 
@@ -285,7 +290,7 @@ function sortCards() {
 }
 
 // sealed mode /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-let packCount = 5;
+let packCount = 1;
 let cardsOpened = [];
 let cardReveals = 0;
 function configureSealed() {
@@ -294,19 +299,19 @@ function configureSealed() {
     document.getElementById("picks-sealed").style.display = "block";
     document.getElementById("open-packs").style.display = "block";
 
-    bindClick();
+    bindClickCardBackSealed();
+    bindClickSealed();
 }
 
-function openPack() {
+function openPackSealed() {
 
-    if (packCount >= 1 && (cardReveals == 0 ||cardReveals == 5)) {
+    if (packCount >= 1 && (cardReveals == 0 || cardReveals == 5)) {
 
         new Audio('./sound/pack-open2.wav').play();
 
         packCount--;
 
         if (packCount == 0) {
-            // TODO : remove event click for more packs
             document.getElementById("seasonpack").src = "./images/trans.png";
         }
 
@@ -328,25 +333,26 @@ function openPack() {
 
 }
 
-function bindClick() {
-    [...document.getElementsByClassName("cardback")].forEach(
-        (element, index, array) => {
-            element.addEventListener("click", function handler() {
-                if (this.src.includes("cardback-full.png")) {
-                    let pick = drawCard();
-                    this.src = DATA_URL + "images/cards/" + cards.card[pick].id + ".webp";
-                    this.classList.add("pick-rarity-" + cards.card[pick].draftRarity);
-                    new Audio('./sound/card-open.wav').play();
-                    cardReveals++;
-                    if (packCount == 0 && cardReveals == 5) {
-                        drawSealed();
+function bindClickSealed() {
+    [...document.getElementsByClassName("cardback")]
+        .forEach(
+            (element, index, array) => {
+                element.addEventListener("click", function handler() {
+                    if (this.src.includes("cardback-full.png")) {
+                        let pick = drawCardSealed();
+                        this.src = DATA_URL + "images/cards/" + cards.card[pick].id + ".webp";
+                        this.classList.add("pick-rarity-" + cards.card[pick].draftRarity);
+                        new Audio('./sound/card-open.wav').play();
+                        cardReveals++;
+                        if (packCount == 0 && cardReveals == 5) {
+                            renderOpenedCardsSealed();
+                        }
                     }
-                }
+                })
             })
-        })
 }
 
-function drawCard() {
+function drawCardSealed() {
     let totalCards = cards.card.length;
 
     var pickRarity = randomNum(1, 100);
@@ -360,37 +366,31 @@ function drawCard() {
     let cardPicked = 0;
     do {
         let pickCard = randomNum(1, totalCards);
-        try {
-            if (cards.card[pickCard].released == true && cards.card[pickCard].draftRarity == rarity) {
-                console.log("card added");
-                cardsOpened.push(cards.card[pickCard]);
-                cardPicked = pickCard;
-                console.log("rarirty", pickRarity, cardPicked);
-            }
+        if (cards.card[pickCard].released == true && cards.card[pickCard].draftRarity == rarity && cardsOpened.findIndex(x => parseInt(x.id) === parseInt(cards.card[pickCard].id)) < 0) {
+            cardsOpened.push(cards.card[pickCard]);
+            cardPicked = pickCard;
         }
-        catch (ex) {
-            console.log(ex, "picked card:" + cardPicked)
-        }
+
     }
     while (cardPicked == 0);
 
     return cardPicked;
 }
 
-function sortOpened() {
+function sortOpenedSealed() {
 
     cardsOpened.sort((a, b) => a.name > b.name ? 1 : -1)
     cardsOpened.sort((a, b) => a.power - b.power);
     cardsOpened.sort((a, b) => a.energy - b.energy);
 }
 
-function drawSealed() {
+function renderOpenedCardsSealed() {
 
     document.getElementById("open-packs").style.display = "none";
     document.getElementById("draft").style.display = "";
     document.getElementById("draft-ui").style.display = "block";
 
-    sortOpened();
+    sortOpenedSealed();
 
     let table = document.getElementById("picks-sealed");
 
@@ -417,15 +417,13 @@ function drawSealed() {
             img.setAttribute("cardid", cardsOpened[x].id);
 
             img.addEventListener("click", function handler() {
-                //console.log(this.getAttribute("cardid"));
                 cardsPicked.push(cards.card.find(x => parseInt(x.id) === parseInt(this.getAttribute("cardid"))));
-
-                // TODO: this isn't working properly
                 cardsOpened.splice(cardsOpened.findIndex(x => parseInt(x.id) === parseInt(this.getAttribute("cardid"))), 1);
 
-                sortOpened();
+                sortCards();
+                sortOpenedSealed();
                 drawPicks();
-                drawSealed();
+                renderOpenedCardsSealed();
             })
 
             td.appendChild(img);
@@ -434,13 +432,31 @@ function drawSealed() {
                 tr = table.insertRow(-1);
                 cells = 0;
             }
-
             lastCard = cardsOpened[x].id;
-
         }
     }
 
 }
+
+function bindClickCardBackSealed() {
+    
+    for (var x = 0; x < 12; x++) {
+        document.getElementById("card" + (x + 1)).addEventListener("click", function handler() {
+
+            let card = cards.card.find(elm => parseInt(elm.id) === parseInt(this.getAttribute("cardid")));
+            console.log("elm",card );
+            
+            cardsOpened.push(card);
+            cardsPicked.splice(cardsPicked.findIndex(x => parseInt(x.id) === parseInt(this.getAttribute("cardid"))), 1);
+            
+            sortCards();
+            sortOpenedSealed();
+            drawPicks();
+            renderOpenedCardsSealed();
+        })
+    }
+}
+
 // end sealed mode /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // public functions
@@ -452,5 +468,4 @@ window.ioStartStreamVote = ioStartStreamVote;
 window.toggleLive = toggleLive;
 window.loadCards = loadCards;
 window.start = start;
-
-window.openPack = openPack;
+window.openPack = openPackSealed;
