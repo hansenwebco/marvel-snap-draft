@@ -174,11 +174,9 @@ function drawOutOfDate(cardId) {
 
 function drawPicks() {
 
-    for (var x = 0; x < 11; x++) {
+    for (var x = 0; x < 12; x++) {
         document.getElementById("card" + (x + 1)).src = "./images/blank2.png";
         document.getElementById("card" + (x + 1)).removeAttribute("cardid");
-       
-       
     }
 
     for (var x = 0; x < cardsPicked.length; x++) {
@@ -290,7 +288,7 @@ function sortCards() {
 }
 
 // sealed mode /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-let packCount = 5;
+let packCount = 3;
 let cardsOpened = [];
 let cardReveals = 0;
 function configureSealed() {
@@ -417,6 +415,10 @@ function renderOpenedCardsSealed() {
             img.setAttribute("cardid", cardsOpened[x].id);
 
             img.addEventListener("click", function handler() {
+                
+                console.log(cardsPicked.length)
+                if (cardsPicked.length < 12)
+                {
                 cardsPicked.push(cards.card.find(x => parseInt(x.id) === parseInt(this.getAttribute("cardid"))));
                 cardsOpened.splice(cardsOpened.findIndex(x => parseInt(x.id) === parseInt(this.getAttribute("cardid"))), 1);
 
@@ -424,6 +426,7 @@ function renderOpenedCardsSealed() {
                 sortOpenedSealed();
                 drawPicks();
                 renderOpenedCardsSealed();
+                }
             })
 
             td.appendChild(img);
@@ -444,11 +447,16 @@ function bindClickCardBackSealed() {
         document.getElementById("card" + (x + 1)).addEventListener("click", function handler() {
 
             let card = cards.card.find(elm => parseInt(elm.id) === parseInt(this.getAttribute("cardid")));
+            
             console.log("elm",card );
+            console.log(cardsPicked.findIndex(x => parseInt(x.id) == parseInt(this.getAttribute("cardid"))))
+
             
             cardsOpened.push(card);
             cardsPicked.splice(cardsPicked.findIndex(x => parseInt(x.id) === parseInt(this.getAttribute("cardid"))), 1);
             
+            console.log(cardsPicked);
+
             sortCards();
             sortOpenedSealed();
             drawPicks();
