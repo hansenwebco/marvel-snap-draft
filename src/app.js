@@ -197,7 +197,7 @@ function drawPicks() {
         document.getElementById("energy" + (y + 1)).style.height = 1 + count * 10 + "px";
     }
 
-    console.log("cardspicked",cardsPicked.length)
+
     if (draftMode == 1 && cardsPicked.length >= 12) {
         document.getElementById("button-finish-sealed").style.display = "inline-block";
     }
@@ -301,7 +301,7 @@ function sortCards() {
 }
 
 // sealed mode /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-let packCount = 5;
+let packCount = 6;
 let cardsOpened = [];
 let cardReveals = 0;
 function configureSealed() {
@@ -309,6 +309,8 @@ function configureSealed() {
     document.getElementById("draft").style.display = "none";
     document.getElementById("picks-sealed").style.display = "block";
     document.getElementById("open-packs").style.display = "block";
+
+    document.getElementById("packcount").innerHTML = packCount + " Packs Remaining";
 
     bindClickCardBackSealed();
     bindClickSealed();
@@ -333,13 +335,16 @@ function openPackSealed() {
             (element, index, array) => {
 
                 element.src = "./images/cardback-full.png";
-                element.classList.forEach(item => {
-                    if (item.startsWith('pick-rarity')) {
-                        element.classList.remove(item);
-                    }
-                });
+                removeRarityClass(element);
             }
         );
+        [...document.getElementsByClassName("sealed-update-card")].forEach(
+            (element, index, array) => {
+                element.style.display = "none"
+            }
+        );
+        
+
     }
 
 }
@@ -350,20 +355,34 @@ function bindClickSealed() {
             (element, index, array) => {
                 element.addEventListener("click", function handler() {
                     if (this.src.includes("cardback-full.png")) {
-                        let pick = drawCardSealed();
-                        this.src = DATA_URL + "images/cards/" + cards.card[pick].id + ".webp";
+                        let pick = drawCardSealed(0); // pick a card
+                         
+                        this.src = DATA_URL + "images/cards/" + cards.card[pick].id + ".webp"; // render card.
+                        this.setAttribute("cardid",cards.card[pick].id )
                         this.classList.add("pick-rarity-" + cards.card[pick].draftRarity);
+
+                        let cardnumber = this.id.replace("draw",""); // show don't have card button
+                        document.getElementById("sealed-redraw-" + cardnumber).style.display = "inline-block"
+
                         new Audio('./sound/card-open.wav').play();
                         cardReveals++;
-                        if (packCount == 0 && cardReveals == 5) {
-                            renderOpenedCardsSealed();
+                        
+                        if (packCount == 0 && cardReveals == 5) { // all packs are opened
+                            //renderOpenedCardsSealed();
+                            document.getElementById("build-deck").style.display = "inline-block";
                         }
                     }
                 })
             })
 }
 
-function drawCardSealed() {
+function drawCardSealed(cardid) { // if cardid is zero new role, else we're replacing a sealed draw
+
+    if (cardid > 0) {
+        // remove the card already in our hands
+        cardsOpened.splice(cardsOpened.findIndex(x => parseInt(x.id) === parseInt(cardid), 1));
+    }
+
     let totalCards = cards.card.length;
 
     var pickRarity = randomNum(1, 100);
@@ -373,14 +392,19 @@ function drawCardSealed() {
     else if (pickRarity >= 97)
         rarity = 3;
 
-
     let cardPicked = 0;
     do {
         let pickCard = randomNum(1, totalCards);
         // TODO: do we want duplicates and do we want rarity?
-        if (cards.card[pickCard].released == true && cards.card[pickCard].draftRarity == rarity && cardsOpened.findIndex(x => parseInt(x.id) === parseInt(cards.card[pickCard].id)) < 0) {
-            cardsOpened.push(cards.card[pickCard]);
-            cardPicked = pickCard;
+        //if (cards.card[pickCard].released == true && cards.card[pickCard].draftRarity == rarity && cardsOpened.findIndex(x => parseInt(x.id) === parseInt(cards.card[pickCard].id)) < 0) {
+        if (cards.card[pickCard].released == true ) {
+            if (cardsOpened.findIndex(x => parseInt(x.id) === parseInt(cards.card[pickCard].id)) < 0) {
+                cardsOpened.push(cards.card[pickCard]);
+                cardPicked = pickCard;
+            }
+            else
+                cardPicked = pickCard;
+
         }
 
     }
@@ -430,7 +454,6 @@ function renderOpenedCardsSealed() {
 
             img.addEventListener("click", function handler() {
 
-                console.log(cardsPicked.length)
                 if (cardsPicked.length < 12) {
                     cardsPicked.push(cards.card.find(x => parseInt(x.id) === parseInt(this.getAttribute("cardid"))));
                     cardsOpened.splice(cardsOpened.findIndex(x => parseInt(x.id) === parseInt(this.getAttribute("cardid"))), 1);
@@ -478,6 +501,31 @@ function bindClickCardBackSealed() {
     }
 }
 
+function updateSealedCard(cardNum) {
+   
+    
+    let element = document.getElementById("draw" + cardNum);
+    
+    let pick = drawCardSealed(parseInt(element.getAttribute("cardid")));
+
+    element.src = DATA_URL + "images/cards/" + cards.card[pick].id + ".webp"; // render card
+    element.setAttribute("cardid", cards.card[pick].id )
+    removeRarityClass(element);
+    element.classList.add("pick-rarity-" + cards.card[pick].draftRarity);
+}
+
+function removeRarityClass(element) {
+    element.classList.forEach(item => {
+        if (item.startsWith('pick-rarity')) {
+            element.classList.remove(item);
+        }
+    });
+}
+
+function buildDeck() {
+    renderOpenedCardsSealed();
+}
+
 function sealedComplete() {
     buildDeckCode();
     document.getElementById("picks").style.display = "none";
@@ -499,3 +547,5 @@ window.loadCards = loadCards;
 window.start = start;
 window.openPack = openPackSealed;
 window.sealedComplete = sealedComplete;
+window.updateSealedCard = updateSealedCard;
+window.buildDeck = buildDeck;

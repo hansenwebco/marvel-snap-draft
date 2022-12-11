@@ -12,6 +12,10 @@
     display: none;
 }
 
+#build-deck {
+    display: none;
+}
+
 #cardtray {
     background-image: url('./images/cardtray.png');
     width: 262px;
@@ -61,6 +65,7 @@
 .sealed-update-card {
     font-size: 8px;
     margin-top:3px;
+    margin-bottom:3px;
     display: none;
 }
 
@@ -69,11 +74,11 @@
 }
 
 .pick-rarity-3 {
-    -webkit-filter: drop-shadow(0px 0px 2px #c4d812) drop-shadow(0px 0px 2px #c4d812) drop-shadow(0px 0px 2px #c4d812) drop-shadow(0px 0px 2px #c4d812);
+    /*-webkit-filter: drop-shadow(0px 0px 2px #c4d812) drop-shadow(0px 0px 2px #c4d812) drop-shadow(0px 0px 2px #c4d812) drop-shadow(0px 0px 2px #c4d812);*/
 }
 
 .pick-rarity-2 {
-    -webkit-filter: drop-shadow(0px 0px 2px #dd10d3) drop-shadow(0px 0px 2px #dd10d3) drop-shadow(0px 0px 2px #dd10d3) drop-shadow(0px 0px 2px #dd10d3);
+   /* -webkit-filter: drop-shadow(0px 0px 2px #dd10d3) drop-shadow(0px 0px 2px #dd10d3) drop-shadow(0px 0px 2px #dd10d3) drop-shadow(0px 0px 2px #dd10d3);*/
 
 }
 
@@ -124,12 +129,12 @@
 }
 
 .card-preview-rarity-3 {
-    filter: drop-shadow(4px 4px 0px rgb(196, 216, 18));
+    /*filter: drop-shadow(4px 4px 0px rgb(196, 216, 18));*/
 
 }
 
 .card-preview-rarity-2 {
-    filter: drop-shadow(4px 4px 0px rgb(221, 16, 211));
+   /* filter: drop-shadow(4px 4px 0px rgb(221, 16, 211)); */
 }
 
 .card-preview-rarity-1 {

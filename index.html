@@ -150,25 +150,31 @@
                 <td class="center-td">
                     <div class="sealed-card-wrapper">
                         <img id="draw1" class="cardback" src="./images/trans.png"><br />
-                        <a class="btn btn-secondary btn-sm sealed-update-card" onclick="updateCard(1)">Don't Have Card</a>
+                        <a class="btn btn-secondary btn-sm sealed-update-card"  id="sealed-redraw-1" onclick="updateSealedCard(1)">Don't Have Card</a>
                     </div>
                     <div class="sealed-card-wrapper">
                         <img id="draw2" class="cardback" src="./images/trans.png"><br />
-                        <a class="btn btn-secondary btn-sm sealed-update-card" onclick="updateCard(1)">Don't Have Card</a>
+                        <a class="btn btn-secondary btn-sm sealed-update-card"  id="sealed-redraw-2" onclick="updateSealedCard(2)">Don't Have Card</a>
                     </div>
                     <div class="sealed-card-wrapper">
                         <img id="draw3" class="cardback" src="./images/trans.png"><br />
-                        <a class="btn btn-secondary btn-sm sealed-update-card" onclick="updateCard(1)">Don't Have Card</a>
+                        <a class="btn btn-secondary btn-sm sealed-update-card" card="3" id="sealed-redraw-3" onclick="updateSealedCard(3)">Don't Have Card</a>
                     </div>
                     <div class="sealed-card-wrapper">
                         <img id="draw4" class="cardback" src="./images/trans.png"><br />
-                        <a class="btn btn-secondary btn-sm sealed-update-card" onclick="updateCard(1)">Don't Have Card</a>
+                        <a class="btn btn-secondary btn-sm sealed-update-card"  id="sealed-redraw-4" onclick="updateSealedCard(4)">Don't Have Card</a>
                     </div>
                     <div class="sealed-card-wrapper">
                         <img id="draw5" class="cardback" src="./images/trans.png"><br />
-                        <a class="btn btn-secondary btn-sm sealed-update-card" onclick="updateCard(1)">Don't Have Card</a>
+                        <a class="btn btn-secondary btn-sm sealed-update-card" id="sealed-redraw-5" onclick="updateSealedCard(5)">Don't Have Card</a>
                     </div>
                 </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="#" onclick="buildDeck()" class="btn btn-primary bulid-deck" id="build-deck">Build Deck</a>
+                </td>
+                <td>&nbsp;</td>
             </tr>
         </table>
         </td>
