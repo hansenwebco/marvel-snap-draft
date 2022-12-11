@@ -174,14 +174,19 @@ function drawOutOfDate(cardId) {
 
 function drawPicks() {
 
+    console.log("draw picks")
+
     for (var x = 0; x < 12; x++) {
         document.getElementById("card" + (x + 1)).src = "./images/blank2.png";
         document.getElementById("card" + (x + 1)).removeAttribute("cardid");
+        document.getElementById("card" + (x + 1)).classList.remove("pointer");
     }
 
     for (var x = 0; x < cardsPicked.length; x++) {
         document.getElementById("card" + (x + 1)).src = DATA_URL + "images/cards/" + cardsPicked[x].id + ".webp";
-        document.getElementById("card" + (x + 1)).setAttribute("cardid",cardsPicked[x].id);
+        document.getElementById("card" + (x + 1)).setAttribute("cardid", cardsPicked[x].id);
+        if (draftMode == 1)
+            document.getElementById("card" + (x + 1)).classList.add("pointer");
     }
 
     for (var y = 0; y < 6; y++) {
@@ -288,7 +293,7 @@ function sortCards() {
 }
 
 // sealed mode /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-let packCount = 3;
+let packCount = 5;
 let cardsOpened = [];
 let cardReveals = 0;
 function configureSealed() {
@@ -415,17 +420,16 @@ function renderOpenedCardsSealed() {
             img.setAttribute("cardid", cardsOpened[x].id);
 
             img.addEventListener("click", function handler() {
-                
-                console.log(cardsPicked.length)
-                if (cardsPicked.length < 12)
-                {
-                cardsPicked.push(cards.card.find(x => parseInt(x.id) === parseInt(this.getAttribute("cardid"))));
-                cardsOpened.splice(cardsOpened.findIndex(x => parseInt(x.id) === parseInt(this.getAttribute("cardid"))), 1);
 
-                sortCards();
-                sortOpenedSealed();
-                drawPicks();
-                renderOpenedCardsSealed();
+                console.log(cardsPicked.length)
+                if (cardsPicked.length < 12) {
+                    cardsPicked.push(cards.card.find(x => parseInt(x.id) === parseInt(this.getAttribute("cardid"))));
+                    cardsOpened.splice(cardsOpened.findIndex(x => parseInt(x.id) === parseInt(this.getAttribute("cardid"))), 1);
+
+                    sortCards();
+                    sortOpenedSealed();
+                    drawPicks();
+                    renderOpenedCardsSealed();
                 }
             })
 
@@ -442,25 +446,25 @@ function renderOpenedCardsSealed() {
 }
 
 function bindClickCardBackSealed() {
-    
+
     for (var x = 0; x < 12; x++) {
         document.getElementById("card" + (x + 1)).addEventListener("click", function handler() {
 
             let card = cards.card.find(elm => parseInt(elm.id) === parseInt(this.getAttribute("cardid")));
-            
-            console.log("elm",card );
-            console.log(cardsPicked.findIndex(x => parseInt(x.id) == parseInt(this.getAttribute("cardid"))))
 
-            
-            cardsOpened.push(card);
-            cardsPicked.splice(cardsPicked.findIndex(x => parseInt(x.id) === parseInt(this.getAttribute("cardid"))), 1);
-            
-            console.log(cardsPicked);
+            //console.log("elm", card);
+            //console.log(cardsPicked.findIndex(x => parseInt(x.id) == parseInt(this.getAttribute("cardid"))))
 
-            sortCards();
-            sortOpenedSealed();
-            drawPicks();
-            renderOpenedCardsSealed();
+            if (this.getAttribute("cardid") != null) { // handle clicking on a area that is not a card
+                cardsOpened.push(card);
+                cardsPicked.splice(cardsPicked.findIndex(x => parseInt(x.id) === parseInt(this.getAttribute("cardid"))), 1);
+
+                //console.log(cardsPicked);
+                sortCards();
+                sortOpenedSealed();
+                drawPicks();
+                renderOpenedCardsSealed();
+            }
         })
     }
 }

@@ -142,12 +142,32 @@
                     <div id="cardtray"><img onclick="openPack();" id="seasonpack" src="./images/CardPack-Wakanda.png"></div> 
                     <div id="packcount">5 Packs Remaining</div>
                 </td>
-                <td>
-                    <img id="draw1" class="cardback" src="./images/trans.png">
-                    <img id="draw2" class="cardback" src="./images/trans.png">
-                    <img id="draw3" class="cardback" src="./images/trans.png">
-                    <img id="draw4" class="cardback" src="./images/trans.png">
-                    <img id="draw5" class="cardback" src="./images/trans.png">
+                <td align="center">
+                    <table style="width:650px">
+                        <tr>
+                            <td>
+                                <img id="draw1" class="cardback" src="./images/trans.png"><br/><a style="font-size: 8px;" class="btn btn-secondary btn-sm" onclick="updateCard(1)">Don't Have Card</a>
+                            </td>
+                            <td>
+                                <img id="draw2" class="cardback" src="./images/trans.png"><br/><a style="font-size: 8px;" class="btn btn-secondary btn-sm" onclick="updateCard(1)">Don't Have Card</a>
+                            </td>
+                            <td>
+                                <img id="draw3" class="cardback" src="./images/trans.png"><br/><a style="font-size: 8px;" class="btn btn-secondary btn-sm" onclick="updateCard(1)">Don't Have Card</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                            <table width="650">
+                            <td align="right">
+                                <img id="draw4" class="cardback" src="./images/trans.png"><br/><a style="font-size: 8px;" class="btn btn-secondary btn-sm" onclick="updateCard(1)">Don't Have Card</a>
+                            </td>
+                            <td>
+                                <img id="draw5" class="cardback" src="./images/trans.png"><br/><a style="font-size: 8px;" class="btn btn-secondary btn-sm" onclick="updateCard(1)">Don't Have Card</a>
+                            </td>
+                            </table>
+                        </td>
+                        </tr>
+                    </table>
                 </td>
             </tr>
         </table>

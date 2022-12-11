@@ -26,15 +26,21 @@
 }
 
 .cardback {
-    width: 220px;
-    margin:-6px;
-    padding:3px;
+    width: 180px;
+    height: 260px;;
+    object-fit: cover;
     cursor:pointer;
+    
 
 }
 
 .sealed-card {
     width: 110px;
+    cursor: pointer;
+}
+
+.pointer {
+    cursor: pointer;
 }
 
 .pick-rarity-3 {
