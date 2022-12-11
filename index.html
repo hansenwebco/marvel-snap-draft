@@ -20,7 +20,7 @@
                 <a  class="btn btn-sm btn-primary" id="startStreamVote" onclick="ioStartStreamVote();">Get Link</a>
             </div>
         </div>
-        <div onclick="toggleLive();" id="live-tab">Draft With Friends (BETA)</div>
+        <div onclick="toggleLive();" id="live-tab">Draft With Friends</div>
     </div>
     
     
@@ -89,6 +89,11 @@
                 <td><img src="./images/blank2.png" class="cards" id="card11"></td>
                 <td><img src="./images/blank2.png" class="cards" id="card12"></td>
             </tr>
+            <tr>
+                    <td colspan="6">
+                        <a href="#" id="button-finish-sealed" onclick="sealedComplete();return false;" class="btn btn-primary">Finish Sealed Draft</a>
+                    </td>
+            </tr>
         </table>
     </div>
     <div id="picks-ui">
@@ -139,37 +144,35 @@
         <table id="open-packs">
             <tr>
                 <td>
-                    <div id="cardtray"><img onclick="openPack();" id="seasonpack" src="./images/CardPack-Wakanda.png"></div> 
+                    <div id="cardtray"><img onclick="openPack();" id="seasonpack" src="./images/CardPack-Wakanda.png"></div>
                     <div id="packcount">5 Packs Remaining</div>
                 </td>
-                <td align="center">
-                    <table style="width:650px">
-                        <tr>
-                            <td>
-                                <img id="draw1" class="cardback" src="./images/trans.png"><br/><a style="font-size: 8px;" class="btn btn-secondary btn-sm" onclick="updateCard(1)">Don't Have Card</a>
-                            </td>
-                            <td>
-                                <img id="draw2" class="cardback" src="./images/trans.png"><br/><a style="font-size: 8px;" class="btn btn-secondary btn-sm" onclick="updateCard(1)">Don't Have Card</a>
-                            </td>
-                            <td>
-                                <img id="draw3" class="cardback" src="./images/trans.png"><br/><a style="font-size: 8px;" class="btn btn-secondary btn-sm" onclick="updateCard(1)">Don't Have Card</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="3">
-                            <table width="650">
-                            <td align="right">
-                                <img id="draw4" class="cardback" src="./images/trans.png"><br/><a style="font-size: 8px;" class="btn btn-secondary btn-sm" onclick="updateCard(1)">Don't Have Card</a>
-                            </td>
-                            <td>
-                                <img id="draw5" class="cardback" src="./images/trans.png"><br/><a style="font-size: 8px;" class="btn btn-secondary btn-sm" onclick="updateCard(1)">Don't Have Card</a>
-                            </td>
-                            </table>
-                        </td>
-                        </tr>
-                    </table>
+                <td class="center-td">
+                    <div class="sealed-card-wrapper">
+                        <img id="draw1" class="cardback" src="./images/trans.png"><br />
+                        <a class="btn btn-secondary btn-sm sealed-update-card" onclick="updateCard(1)">Don't Have Card</a>
+                    </div>
+                    <div class="sealed-card-wrapper">
+                        <img id="draw2" class="cardback" src="./images/trans.png"><br />
+                        <a class="btn btn-secondary btn-sm sealed-update-card" onclick="updateCard(1)">Don't Have Card</a>
+                    </div>
+                    <div class="sealed-card-wrapper">
+                        <img id="draw3" class="cardback" src="./images/trans.png"><br />
+                        <a class="btn btn-secondary btn-sm sealed-update-card" onclick="updateCard(1)">Don't Have Card</a>
+                    </div>
+                    <div class="sealed-card-wrapper">
+                        <img id="draw4" class="cardback" src="./images/trans.png"><br />
+                        <a class="btn btn-secondary btn-sm sealed-update-card" onclick="updateCard(1)">Don't Have Card</a>
+                    </div>
+                    <div class="sealed-card-wrapper">
+                        <img id="draw5" class="cardback" src="./images/trans.png"><br />
+                        <a class="btn btn-secondary btn-sm sealed-update-card" onclick="updateCard(1)">Don't Have Card</a>
+                    </div>
                 </td>
             </tr>
+        </table>
+        </td>
+        </tr>
         </table>
 
         <div id="vote-details-master">

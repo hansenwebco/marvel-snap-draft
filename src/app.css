@@ -291,3 +291,6 @@ td {
     margin-left: -85px;
 }
 
+#live {
+    display: none;
+}

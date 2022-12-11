@@ -6,6 +6,12 @@
     display: none;
 }
 
+#button-finish-sealed {
+    margin-top:15px;
+    margin-bottom:-26px;
+    display: none;
+}
+
 #cardtray {
     background-image: url('./images/cardtray.png');
     width: 262px;
@@ -25,18 +31,37 @@
 
 }
 
+.center-td {
+    display: flex;
+    justify-content: center;
+    flex-wrap:wrap;
+
+}
+
+.sealed-card-wrapper {
+    width:200px;
+    float:left;
+    height:250px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 .cardback {
     width: 180px;
-    height: 260px;;
+    height: 240px;
     object-fit: cover;
     cursor:pointer;
-    
-
 }
 
 .sealed-card {
     width: 110px;
     cursor: pointer;
+}
+
+.sealed-update-card {
+    font-size: 8px;
+    margin-top:3px;
+    display: none;
 }
 
 .pointer {

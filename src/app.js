@@ -31,6 +31,7 @@ function start(mode) {
     }
     else {
         updatePicks();
+        document.getElementById("live").style.display="inline-block";
     }
 }
 
@@ -174,8 +175,7 @@ function drawOutOfDate(cardId) {
 
 function drawPicks() {
 
-    console.log("draw picks")
-
+ 
     for (var x = 0; x < 12; x++) {
         document.getElementById("card" + (x + 1)).src = "./images/blank2.png";
         document.getElementById("card" + (x + 1)).removeAttribute("cardid");
@@ -196,6 +196,14 @@ function drawPicks() {
         ).length;
         document.getElementById("energy" + (y + 1)).style.height = 1 + count * 10 + "px";
     }
+
+    console.log("cardspicked",cardsPicked.length)
+    if (draftMode == 1 && cardsPicked.length >= 12) {
+        document.getElementById("button-finish-sealed").style.display = "inline-block";
+    }
+    else
+        document.getElementById("button-finish-sealed").style.display = "none";
+
 
 }
 
@@ -369,6 +377,7 @@ function drawCardSealed() {
     let cardPicked = 0;
     do {
         let pickCard = randomNum(1, totalCards);
+        // TODO: do we want duplicates and do we want rarity?
         if (cards.card[pickCard].released == true && cards.card[pickCard].draftRarity == rarity && cardsOpened.findIndex(x => parseInt(x.id) === parseInt(cards.card[pickCard].id)) < 0) {
             cardsOpened.push(cards.card[pickCard]);
             cardPicked = pickCard;
@@ -469,6 +478,14 @@ function bindClickCardBackSealed() {
     }
 }
 
+function sealedComplete() {
+    buildDeckCode();
+    document.getElementById("picks").style.display = "none";
+    document.getElementById("draft-ui").style.display = "none";
+    document.getElementById("picks-sealed").style.display = "none";
+    document.getElementById("picks-complete").style.display = "block";
+}
+
 // end sealed mode /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // public functions
@@ -481,3 +498,4 @@ window.toggleLive = toggleLive;
 window.loadCards = loadCards;
 window.start = start;
 window.openPack = openPackSealed;
+window.sealedComplete = sealedComplete;
