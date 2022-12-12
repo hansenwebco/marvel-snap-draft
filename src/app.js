@@ -3,7 +3,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { v4 as uuidv4 } from 'uuid';
 import { io } from "socket.io-client";
 import { pick } from 'query-string';
-
+import tippy from 'tippy.js';
+import 'tippy.js/dist/tippy.css'
+import 'tippy.js/themes/light-border.css';
 
 let pickCard = 0;
 let pick2 = 0;
@@ -38,6 +40,7 @@ function start(mode) {
 async function loadCards() {
     let result = await (await fetch(DATA_URL + "data/snap.json")).json();
     cards = result.data.cards;
+  
 }
 
 function chooseCard(card) {
@@ -304,6 +307,7 @@ function sortCards() {
 let packCount = 6;
 let cardsOpened = [];
 let cardReveals = 0;
+let tippyInstance;
 function configureSealed() {
     document.getElementById("picks").style.display = "none";
     document.getElementById("draft").style.display = "none";
@@ -327,7 +331,6 @@ function openPackSealed() {
         if (packCount == 0) {
             document.getElementById("seasonpack").src = "./images/trans.png";
         }
-
         document.getElementById("packcount").innerHTML = packCount + " Packs Remaining";
 
         cardReveals = 0;
@@ -343,6 +346,9 @@ function openPackSealed() {
                 element.style.display = "none"
             }
         );
+        for(let x =1 ; x<= 5 ; x++) {
+            document.getElementById("sealed-desc-" + x).innerHTML = "";
+        }
         
 
     }
@@ -363,6 +369,7 @@ function bindClickSealed() {
 
                         let cardnumber = this.id.replace("draw",""); // show don't have card button
                         document.getElementById("sealed-redraw-" + cardnumber).style.display = "inline-block"
+                        document.getElementById("sealed-desc-" + cardnumber).innerHTML = cards.card[pick].desc;
 
                         new Audio('./sound/card-open.wav').play();
                         cardReveals++;
@@ -404,12 +411,9 @@ function drawCardSealed(cardid) { // if cardid is zero new role, else we're repl
             }
             else
                 cardPicked = pickCard;
-
         }
-
     }
     while (cardPicked == 0);
-
     return cardPicked;
 }
 
@@ -451,7 +455,7 @@ function renderOpenedCardsSealed() {
             img.classList.add("sealed-card");
             img.classList.add("pick-rarity-" + cardsOpened[x].draftRarity);
             img.setAttribute("cardid", cardsOpened[x].id);
-
+            img.setAttribute("data-tippy-content",cardsOpened[x].desc);
             img.addEventListener("click", function handler() {
 
                 if (cardsPicked.length < 12) {
@@ -473,7 +477,19 @@ function renderOpenedCardsSealed() {
             }
             lastCard = cardsOpened[x].id;
         }
+
+
+ 
     }
+    // if (tippyInstance != undefined)
+    // tippyInstance.unmount();
+    tippyInstance = tippy('[data-tippy-content]', {
+        theme: 'light-border',
+        delay: [200, 200],
+        maxWidth:200,
+        appendTo:document.getElementById("picks-sealed"),
+        placement: 'bottom',
+    });
 
 }
 
@@ -510,6 +526,7 @@ function updateSealedCard(cardNum) {
 
     element.src = DATA_URL + "images/cards/" + cards.card[pick].id + ".webp"; // render card
     element.setAttribute("cardid", cards.card[pick].id )
+    document.getElementById("sealed-desc-" + cardNum).innerHTML = cards.card[pick].desc;
     removeRarityClass(element);
     element.classList.add("pick-rarity-" + cards.card[pick].draftRarity);
 }

@@ -1,3 +1,9 @@
+.tippy-content {
+    font-size: 10px;
+    margin:auto;
+    text-align: center;
+}
+
 #picks-sealed {
     display: none;
 }
@@ -10,6 +16,16 @@
     margin-top:15px;
     margin-bottom:-26px;
     display: none;
+}
+
+.sealed-desc  {
+    font-size: 9px;
+    margin-bottom: 5px;
+    max-width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 40px;
+    max-height: 40px;
 }
 
 #build-deck {
@@ -42,17 +58,19 @@
 
 }
 
+/* this sets the cards and containers */
 .sealed-card-wrapper {
-    width:200px;
+    width:210px;
     float:left;
-    height:250px;
+    height:290px;
     text-align: center;
     margin-bottom: 20px;
+
 }
 
 .cardback {
     width: 180px;
-    height: 240px;
+    height: 230px;
     object-fit: cover;
     cursor:pointer;
 }
