@@ -1,6 +1,6 @@
 .tippy-content {
     font-size: 10px;
-    margin:auto;
+    margin: auto;
     text-align: center;
 }
 
@@ -8,17 +8,22 @@
     display: none;
 }
 
+#opendone {
+    margin-top: 40px;
+    min-height: 40px;
+}
+
 #open-packs {
     display: none;
 }
 
 #button-finish-sealed {
-    margin-top:15px;
-    margin-bottom:-26px;
+    margin-top: 15px;
+    margin-bottom: -26px;
     display: none;
 }
 
-.sealed-desc  {
+.sealed-desc {
     font-size: 9px;
     margin-bottom: 5px;
     max-width: 150px;
@@ -54,15 +59,15 @@
 .center-td {
     display: flex;
     justify-content: center;
-    flex-wrap:wrap;
+    flex-wrap: wrap;
 
 }
 
 /* this sets the cards and containers */
 .sealed-card-wrapper {
-    width:210px;
-    float:left;
-    height:290px;
+    width: 210px;
+    float: left;
+    height: 290px;
     text-align: center;
     margin-bottom: 20px;
 
@@ -72,7 +77,7 @@
     width: 180px;
     height: 230px;
     object-fit: cover;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .sealed-card {
@@ -82,8 +87,8 @@
 
 .sealed-update-card {
     font-size: 8px;
-    margin-top:3px;
-    margin-bottom:3px;
+    margin-top: 3px;
+    margin-bottom: 3px;
     display: none;
 }
 
@@ -96,7 +101,7 @@
 }
 
 .pick-rarity-2 {
-   /* -webkit-filter: drop-shadow(0px 0px 2px #dd10d3) drop-shadow(0px 0px 2px #dd10d3) drop-shadow(0px 0px 2px #dd10d3) drop-shadow(0px 0px 2px #dd10d3);*/
+    /* -webkit-filter: drop-shadow(0px 0px 2px #dd10d3) drop-shadow(0px 0px 2px #dd10d3) drop-shadow(0px 0px 2px #dd10d3) drop-shadow(0px 0px 2px #dd10d3);*/
 
 }
 
@@ -152,7 +157,7 @@
 }
 
 .card-preview-rarity-2 {
-   /* filter: drop-shadow(4px 4px 0px rgb(221, 16, 211)); */
+    /* filter: drop-shadow(4px 4px 0px rgb(221, 16, 211)); */
 }
 
 .card-preview-rarity-1 {

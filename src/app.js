@@ -66,8 +66,9 @@ function chooseCard(card) {
     cardsPicked.push(cards.card.find(x => parseInt(x.id) === chose));
 
     sortCards();
-
     drawPicks();
+  
+  
 
     currentPick++;
     if (draftMode == 1)
@@ -164,6 +165,8 @@ function updateCard(redraw) {
     document.getElementById("card-desc-2").innerHTML = cards.card[pick2 - 1].desc;
     document.getElementById("card-desc-3").innerHTML = cards.card[pick3 - 1].desc;
 
+
+
     if (voteSession.length > 0)
         ioEmitState();
 
@@ -177,7 +180,6 @@ function drawOutOfDate(cardId) {
 }
 
 function drawPicks() {
-
  
     for (var x = 0; x < 12; x++) {
         document.getElementById("card" + (x + 1)).src = "./images/blank2.png";
@@ -188,9 +190,14 @@ function drawPicks() {
     for (var x = 0; x < cardsPicked.length; x++) {
         document.getElementById("card" + (x + 1)).src = DATA_URL + "images/cards/" + cardsPicked[x].id + ".webp";
         document.getElementById("card" + (x + 1)).setAttribute("cardid", cardsPicked[x].id);
-        if (draftMode == 1)
+        if (draftMode == 1) {
             document.getElementById("card" + (x + 1)).classList.add("pointer");
+        }
+        // add tooltaips
+        document.getElementById("card" + (x + 1)).setAttribute("data-tippy-content",cardsPicked[x].desc);
     }
+
+    bindToolTips();
 
     for (var y = 0; y < 6; y++) {
         var count = cardsPicked.filter(elm => {
@@ -304,10 +311,9 @@ function sortCards() {
 }
 
 // sealed mode /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-let packCount = 6;
+let packCount = 1;
 let cardsOpened = [];
 let cardReveals = 0;
-let tippyInstance;
 function configureSealed() {
     document.getElementById("picks").style.display = "none";
     document.getElementById("draft").style.display = "none";
@@ -349,10 +355,7 @@ function openPackSealed() {
         for(let x =1 ; x<= 5 ; x++) {
             document.getElementById("sealed-desc-" + x).innerHTML = "";
         }
-        
-
     }
-
 }
 
 function bindClickSealed() {
@@ -481,16 +484,18 @@ function renderOpenedCardsSealed() {
 
  
     }
-    // if (tippyInstance != undefined)
-    // tippyInstance.unmount();
-    tippyInstance = tippy('[data-tippy-content]', {
+
+    bindToolTips();
+}
+
+function bindToolTips()
+{
+    let tippyInstance = tippy('[data-tippy-content]', {
         theme: 'light-border',
         delay: [200, 200],
         maxWidth:200,
-        appendTo:document.getElementById("picks-sealed"),
         placement: 'bottom',
     });
-
 }
 
 function bindClickCardBackSealed() {

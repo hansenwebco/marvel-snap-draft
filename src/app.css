@@ -23,8 +23,6 @@ html {
     text-align: center;
     margin-top: 110px;
     margin-bottom: 350px;
-
-
 }
 
 .icon {
@@ -146,7 +144,7 @@ body {
     font-family: 'Orbitron', Arial, Helvetica, sans-serif;
     color: #DDD;
     background-image: url('../images/back.jpg');
-    background-size: cover;
+    background-size: auto;
     background-repeat: no-repeat;
 
 }
