@@ -12,6 +12,15 @@ html {
     margin-bottom: -25px;
 }
 
+.new-mode {
+    width:50px;
+    position:absolute;
+    top: 0px;
+    left: 210px;
+    z-index: 100;
+    clear: both;
+}
+
 #draft-ui,
 #picks-ui {
     display: none;
@@ -21,8 +30,8 @@ html {
     width: 100%;
     height: 100px;
     text-align: center;
-    margin-top: 110px;
-    margin-bottom: 350px;
+    margin-top: 70px;
+    margin-bottom: 450px;
 }
 
 .icon {
@@ -210,6 +219,7 @@ td {
     margin-top: 60px;
     font-size: 10px;
     text-align: center;
+
 }
 
 .circle {

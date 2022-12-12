@@ -67,7 +67,7 @@
 .sealed-card-wrapper {
     width: 210px;
     float: left;
-    height: 290px;
+    height: 260px;
     text-align: center;
     margin-bottom: 20px;
 
@@ -75,7 +75,7 @@
 
 .cardback {
     width: 180px;
-    height: 230px;
+    height: 200px;
     object-fit: cover;
     cursor: pointer;
 }

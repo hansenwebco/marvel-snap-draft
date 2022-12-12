@@ -421,7 +421,6 @@ function drawCardSealed(cardid) { // if cardid is zero new role, else we're repl
 }
 
 function sortOpenedSealed() {
-
     cardsOpened.sort((a, b) => a.name > b.name ? 1 : -1)
     cardsOpened.sort((a, b) => a.power - b.power);
     cardsOpened.sort((a, b) => a.energy - b.energy);
@@ -480,9 +479,6 @@ function renderOpenedCardsSealed() {
             }
             lastCard = cardsOpened[x].id;
         }
-
-
-
     }
 
     bindToolTips();
@@ -548,9 +544,21 @@ function buildDeck() {
 }
 
 function sealedComplete() {
+    
+    for(let x = 1; x <=12; x++) 
+    {
+        let elm = document.getElementById("card"+x);
+        // prevents clicks.. kinda hate this but couldn't find a way to remove anonymous events without a bunch of rework
+        elm.addEventListener("click", function (event) {
+            event.stopPropagation();
+        }, true);
+    }
+
+    document.getElementById("button-finish-sealed").style.display = "none";
+
     buildDeckCode();
     document.getElementById("picks").style.display = "none";
-    document.getElementById("draft-ui").style.display = "none";
+    //document.getElementById("draft-ui").style.display = "none";
     document.getElementById("picks-sealed").style.display = "none";
     document.getElementById("picks-complete").style.display = "block";
 }
