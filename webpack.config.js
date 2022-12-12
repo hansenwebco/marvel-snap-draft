@@ -3,6 +3,7 @@ module.exports = {
     './src/vote.js',
     './src/app.js',
     './src/app.css',
+    './src/season1.css',
   ],
   output: {
     path: `${__dirname}/dist`,

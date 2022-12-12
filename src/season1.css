@@ -1,0 +1,166 @@
+.tippy-content {
+    font-size: 10px;
+    margin: auto;
+    text-align: center;
+}
+
+#picks-sealed {
+    display: none;
+}
+
+#opendone {
+    margin-top: 40px;
+    min-height: 40px;
+}
+
+#open-packs {
+    display: none;
+}
+
+#button-finish-sealed {
+    margin-top: 15px;
+    margin-bottom: -26px;
+    display: none;
+}
+
+.sealed-desc {
+    font-size: 9px;
+    margin-bottom: 5px;
+    max-width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 40px;
+    max-height: 40px;
+}
+
+#build-deck {
+    display: none;
+}
+
+#cardtray {
+    background-image: url('./images/cardtray.png');
+    width: 262px;
+    height: 438px;
+}
+
+#seasonpack {
+    width: 250px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+#packcount {
+
+    font-size: 15px;
+    margin-top: -35px;
+
+}
+
+.center-td {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+}
+
+/* this sets the cards and containers */
+.sealed-card-wrapper {
+    width: 210px;
+    float: left;
+    height: 260px;
+    text-align: center;
+    margin-bottom: 20px;
+
+}
+
+.cardback {
+    width: 180px;
+    height: 200px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.sealed-card {
+    width: 110px;
+    cursor: pointer;
+}
+
+.sealed-update-card {
+    font-size: 8px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    display: none;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.pick-rarity-3 {
+    /*-webkit-filter: drop-shadow(0px 0px 2px #c4d812) drop-shadow(0px 0px 2px #c4d812) drop-shadow(0px 0px 2px #c4d812) drop-shadow(0px 0px 2px #c4d812);*/
+}
+
+.pick-rarity-2 {
+    /* -webkit-filter: drop-shadow(0px 0px 2px #dd10d3) drop-shadow(0px 0px 2px #dd10d3) drop-shadow(0px 0px 2px #dd10d3) drop-shadow(0px 0px 2px #dd10d3);*/
+
+}
+
+.pick-rarity-1 {
+    /*animation: pulse-rare 3s infinite;*/
+}
+
+@keyframes pulse-rare {
+    0% {
+        filter: drop-shadow(0 0 30px #2f08dd);
+    }
+
+    50% {
+        filter: drop-shadow(0 0 50px #2f08dd);
+    }
+
+    100% {
+        filter: drop-shadow(0 0 30px #2f08dd);
+    }
+}
+
+@keyframes pulse-epic {
+    0% {
+        filter: drop-shadow(0 0 20px #dd10d3);
+    }
+
+    50% {
+        filter: drop-shadow(0 0 25px rgb(163, 11, 156));
+    }
+
+    100% {
+        filter: drop-shadow(0 0 20px rgb(221, 16, 211));
+    }
+}
+
+@keyframes pulse-legend {
+    0% {
+        filter: drop-shadow(0px 0px 10px #c4d812);
+    }
+
+    50% {
+        filter: drop-shadow(0px 0px 20px rgb(196, 216, 18));
+    }
+
+    100% {
+        filter: drop-shadow(0px 0px 10px rgb(196, 216, 18));
+    }
+}
+
+.card-preview-rarity-3 {
+    /*filter: drop-shadow(4px 4px 0px rgb(196, 216, 18));*/
+
+}
+
+.card-preview-rarity-2 {
+    /* filter: drop-shadow(4px 4px 0px rgb(221, 16, 211)); */
+}
+
+.card-preview-rarity-1 {
+    /* filter: drop-shadow(3px 3px 0px rgb(96, 109, 226)); */
+
+}

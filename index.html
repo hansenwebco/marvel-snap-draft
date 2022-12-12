@@ -1,15 +1,19 @@
+<!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Marvel Snap! Draftanator</title>
     <script>
         window.onload = async function () {
            await loadCards();
-            updatePicks();
+            //updatePicks();
         }
     </script>
 </head>
 <body>
-    
+   
     <div id="live">
         <div id="live-start">
             CLick the "Get LinK" button and share with your stream/friends.<br/>
@@ -20,11 +24,38 @@
                 <a  class="btn btn-sm btn-primary" id="startStreamVote" onclick="ioStartStreamVote();">Get Link</a>
             </div>
         </div>
-        <div onclick="toggleLive();" id="live-tab">Draft With Friends (BETA)</div>
+        <div onclick="toggleLive();" id="live-tab">Draft With Friends</div>
+    </div>
+    
+    
+    <div id="heading"><img id="header-image" src="/images/header-winter.png"></div>
+
+
+    <div id="start-screen">
+        <table id="start">
+            <tr>
+                <td>&nbsp;</td>
+                <td><img src="images/weighted-season.png"></td>
+            </tr>
+            <tr>
+                <td>
+                    <span onclick="start(0)" class="material-symbols-outlined icon">public</span><Br/><br/><Br/><br/>
+                    <a class="btn btn-primary" onclick="start(0)">Draft Mode</a>
+                </td>
+                <td style="position: relative;">
+                    <span onclick="start(1)" class="material-symbols-outlined icon">batch_prediction</span><Br/><br/><Br/><br/>
+                    <a class="btn btn-primary" onclick="start(1)">Sealed Mode</a>
+                    <img class="new-mode" src="images/new.png">
+                </td>
+            </tr>
+            <tr>
+                <td><div class="start-text">Choose one of three cards for twelve rounds to build your deck!</div></td>
+                <td><div class="start-text">Open five packs of random cards and build the best deck you can!</div></td>
+            </tr>
+        </table>
     </div>
     
     <!-- yeah yeah it's full of tables sue me -->
-      <div id="heading"><img id="header-image" src="/images/header.png"></div>
      <div id="draft-ui">
         <table cellpadding=0 cellmargin="0" id="draft">
             <tr>
@@ -63,6 +94,11 @@
                 <td><img src="./images/blank2.png" class="cards" id="card11"></td>
                 <td><img src="./images/blank2.png" class="cards" id="card12"></td>
             </tr>
+            <tr>
+                    <td colspan="6">
+                        <a href="#" id="button-finish-sealed" onclick="sealedComplete();return false;" class="btn btn-primary">Finish Sealed Draft</a>
+                    </td>
+            </tr>
         </table>
     </div>
     <div id="picks-ui">
@@ -89,28 +125,79 @@
                     <div id="vote-1" class="vote-master circle">0%</div>
                     <img onload="this.setAttribute('onclick', 'chooseCard(1);')" id="pick1" class="pick"><br />
                     <div class="card-desc" id="card-desc-1">This card +2 on blah</div><br />
-                    <a class="btn btn-secondary btn-sm" onclick="redraw(1)">Don't Have Card</a>
+                    <a class="btn btn-secondary btn-sm" onclick="updateCard(1)">Don't Have Card</a>
                 </td>
                 <td id="card-2-td">
                     <div id="vote-2" class="vote-master circle">0%</div>
                     <img onload="this.setAttribute('onclick', 'chooseCard(2);')" id="pick2" class="pick"><br />
                     <p class="card-desc" id="card-desc-2">This card +2 on blah</p><br />
-                    <a  class="btn btn-secondary btn-sm" onclick="redraw(2)">Don't Have Card</a>
+                    <a  class="btn btn-secondary btn-sm" onclick="updateCard(2)">Don't Have Card</a>
                 </td>
                 <td id="card-3-td">
                     <div id="vote-3" class="vote-master circle">0%</div>
                     <img onload="this.setAttribute('onclick', 'chooseCard(3);')" id="pick3" class="pick"><br />
                     <p class="card-desc" id="card-desc-3">This card +2 on blah</p><br />
-                    <a  class="btn btn-secondary btn-sm" onclick="redraw(3)">Don't Have Card</a>
+                    <a  class="btn btn-secondary btn-sm" onclick="updateCard(3)">Don't Have Card</a>
                 </td>
             </tr>
         </table>
+        <table id="picks-sealed">
+            <tr>
+                <td></td>
+            </tr>
+        </table>
+        <table id="open-packs">
+            <tr>
+                <td>
+                    <div id="cardtray"><img onclick="openPack();" id="seasonpack" src="./images/CardPack-PowerCosmic.png"></div>
+                    <div id="packcount">5 Packs Remaining</div>
+                    <div id="opendone"><a href="#" onclick="buildDeck()" class="btn btn-primary bulid-deck" id="build-deck">Build Deck</a></div>
+                </td>
+                <td class="center-td">
+                    <div class="sealed-card-wrapper">
+                        <img id="draw1" class="cardback" src="./images/trans.png"><br />
+                        <div id="sealed-desc-1" class="sealed-desc"></div>
+                        <a class="btn btn-secondary btn-sm sealed-update-card" id="sealed-redraw-1" onclick="updateSealedCard(1)">Don't Have Card</a>
+                    </div>
+                    <div class="sealed-card-wrapper">
+                        <img id="draw2" class="cardback" src="./images/trans.png"><br />
+                        <div id="sealed-desc-2" class="sealed-desc"></div>
+                        <a class="btn btn-secondary btn-sm sealed-update-card" id="sealed-redraw-2" onclick="updateSealedCard(2)">Don't Have Card</a>
+                    </div>
+                    <div class="sealed-card-wrapper">
+                        <img id="draw3" class="cardback" src="./images/trans.png"><br />
+                        <div id="sealed-desc-3" class="sealed-desc"></div>
+                        <a class="btn btn-secondary btn-sm sealed-update-card" card="3" id="sealed-redraw-3" onclick="updateSealedCard(3)">Don't Have Card</a>
+                    </div>
+                    <div class="sealed-card-wrapper">
+                        <img id="draw4" class="cardback" src="./images/trans.png"><br />
+                        <div id="sealed-desc-4" class="sealed-desc"></div>
+                        <a class="btn btn-secondary btn-sm sealed-update-card"  id="sealed-redraw-4" onclick="updateSealedCard(4)">Don't Have Card</a>
+                    </div>
+                    <div class="sealed-card-wrapper">
+                        <img id="draw5" class="cardback" src="./images/trans.png"><br />
+                        <div id="sealed-desc-5" class="sealed-desc"></div>
+                        <a class="btn btn-secondary btn-sm sealed-update-card" id="sealed-redraw-5" onclick="updateSealedCard(5)">Don't Have Card</a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                  &nbsp;
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
+        </td>
+        </tr>
+        </table>
+
         <div id="vote-details-master">
             <br/>
             <div id="totalvotes">Total Votes: 0</div>
         </div>        
     </div>
-    <div id="footer">Created by stonedonkey - Follow on <a target="_blank" href="https://twitch.tv/stonedonkey">Twitch</a> - <a target="_blank" href="https://twitter.com/stonedonkey">Twitter</a>
+    <div id="footer">Created by <a target="_blank" href="https://www.stonedonkey.com">stonedonkey</a> - Follow on <a target="_blank" href="https://twitch.tv/stonedonkey">Twitch</a> - <a target="_blank" href="https://mastodon.social/home">Mastodon</a>
        <br/><br/> <a target="_blank" href="https://github.com/hansenwebco/marvel-snap-draft">Github</a> - <a target="_blank" href="https://github.com/hansenwebco/marvel-snap-draft/issues">Bugs</a></div>
     <script src="./dist/dist.js"></script>
 </body>

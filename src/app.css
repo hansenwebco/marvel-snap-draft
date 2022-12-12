@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0');
 
 body,
 html {
@@ -11,16 +12,74 @@ html {
     margin-bottom: -25px;
 }
 
+.new-mode {
+    width:50px;
+    position:absolute;
+    top: 0px;
+    left: 210px;
+    z-index: 100;
+    clear: both;
+}
+
+#draft-ui,
+#picks-ui {
+    display: none;
+}
+
+#start-screen {
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    margin-top: 70px;
+    margin-bottom: 450px;
+}
+
+.icon {
+    font-size: 120px;
+    color: white;
+    background-color: #2f4294;
+    border-radius: 10px;
+    padding: 10px;
+    border: solid 3px white;
+    filter: drop-shadow(0 0 15px #111);
+}
+
+.icon:hover {
+    cursor: pointer;
+    background-color: #203077;
+    filter: drop-shadow(0 0 5px #111);
+}
+
+#start {
+    width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+#start td {
+    padding: 20px;
+    font-size: 12px;
+    text-align: center;
+}
+
+.start-text {
+    text-align: center;
+    width: 200px;
+    margin: auto;
+}
+
+
 #draft {
     margin-left: auto;
     margin-right: auto;
     margin-top: 40px;
 }
 
+
 #draft td {
     width: 100px;
 }
-
 
 #picks {
     margin-left: auto;
@@ -89,14 +148,12 @@ a:hover {
     height: 90px;
 }
 
-
-
 body {
     background-color: #222;
     font-family: 'Orbitron', Arial, Helvetica, sans-serif;
     color: #DDD;
     background-image: url('../images/back.jpg');
-    background-size: cover;
+    background-size: auto;
     background-repeat: no-repeat;
 
 }
@@ -162,6 +219,7 @@ td {
     margin-top: 60px;
     font-size: 10px;
     text-align: center;
+
 }
 
 .circle {
@@ -214,6 +272,8 @@ td {
     display: none;
 }
 
+
+
 #vote-details {
     text-align: center;
 }
@@ -223,7 +283,7 @@ td {
 }
 
 .warn {
-    color:rgb(201, 120, 120);
+    color: rgb(201, 120, 120);
     font-weight: bold;
 }
 
@@ -234,9 +294,13 @@ td {
 
 
 .outofdate {
-    background: url("../images/outofdate.png");    
+    background: url("../images/outofdate.png");
     z-index: 100;
-    position:absolute;
-    margin-top:-333px;
-    margin-left:-85px;
+    position: absolute;
+    margin-top: -333px;
+    margin-left: -85px;
+}
+
+#live {
+    display: none;
 }
