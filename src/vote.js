@@ -1,5 +1,5 @@
 import { io } from "socket.io-client";
-const queryString = require('query-string');
+import queryString from 'query-string';
 import { v4 as uuidv4 } from 'uuid';
 
 let socket;
