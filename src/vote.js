@@ -31,7 +31,14 @@ function getUserSession() {
 }
 
 function startVoteSession() {
+
+    document.getElementById("draft-ui").style.display = "block";
+    document.getElementById("picks-ui").style.display = "block";
+    document.getElementById("picks").style.display = "block";
+
+
     const parsed = queryString.parse(location.search);
+
 
     voteSession = parsed.id;
     userSession = getUserSession();
