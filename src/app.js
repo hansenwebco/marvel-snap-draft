@@ -111,6 +111,11 @@ function updatePicks() {
     document.getElementById("pick2").src = DATA_URL + "images/cards/" + pick2 + ".webp";
     document.getElementById("pick3").src = DATA_URL + "images/cards/" + pick3 + ".webp";
 
+    console.log(pickCard,pick2, pick3)
+    console.log(cards.card[pickCard - 1].name)
+    console.log(cards.card[pick2 - 1].name)
+    console.log(cards.card[pick3 - 1].name)
+
 
     document.querySelectorAll('.outofdate').forEach(e => e.remove());
     if (cards.card[pickCard - 1].currentImage === false)
@@ -484,13 +489,21 @@ function renderOpenedCardsSealed() {
     bindToolTips();
 }
 
+let tippyInstance;
 function bindToolTips() {
-    let tippyInstance = tippy('[data-tippy-content]', {
+    // this is a kinda inefficent, but I don't see an easier way to do this without rewriting a bunch of stuff and it's not THAT bad
+    if (tippyInstance !== undefined) {
+        console.log(tippyInstance)
+        tippyInstance.forEach(element => element.destroy() )
+    }
+    
+    tippyInstance = tippy('[data-tippy-content]', {
         theme: 'light-border',
         delay: [200, 200],
         maxWidth: 200,
-        placement: 'bottom',
+        placement: 'bottom'
     });
+    
 }
 
 function bindClickCardBackSealed() {
