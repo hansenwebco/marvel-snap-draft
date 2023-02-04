@@ -296,7 +296,7 @@ function ioStartStreamVote() {
 function toggleLive() {
     let tab = document.getElementById("live-start");
     tab.style.display = (tab.style.display === "block") ? "none" : "block";
-    document.getElementById("live-tab").innerHTML = (tab.style.display === "none") ? "Draft With Friends (BETA)" : "Close";
+    document.getElementById("live-tab").innerHTML = (tab.style.display === "none") ? "Draft With Friends" : "Close";
 }
 
 function ioEmitState() {
@@ -333,7 +333,7 @@ function configureSealed() {
 
 function openPackSealed() {
 
-    if (packCount >= 1 && (cardReveals == 0 || cardReveals == 5)) {
+    if ((packCount == 5 && cardReveals == 0) || (packCount >= 1 &&  cardReveals == 5)) {
 
         new Audio('./sound/pack-open2.wav').play();
 
