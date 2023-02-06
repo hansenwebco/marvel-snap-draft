@@ -1,16 +1,20 @@
 module.exports = {
-  entry: [
-    './src/vote.js',
-    './src/app.js',
-    './src/app.css',
-    './src/season1.css',
-  ],
+   
+  entry: {
+    vote: './src/vote.js',
+    app: './src/app.js',
+    table: './src/draft-table.js',
+    /*global_css: './src/app.css',
+    glbal_css: './src/season1.css',    */
+  },
   output: {
     path: `${__dirname}/dist`,
     publicPath: '/',
-    filename: 'dist.js',
+    filename: '[name].dist.js',
     clean: true,
   },
+ 
+  
   devServer: {
     devMiddleware: {
       writeToDisk: true,

@@ -2,6 +2,8 @@ import { io } from "socket.io-client";
 import queryString from 'query-string';
 import { v4 as uuidv4 } from 'uuid';
 
+import '../src/app.css';
+
 let socket;
 let voteSession;
 let userSession;

@@ -7,6 +7,9 @@ import tippy from 'tippy.js';
 import 'tippy.js/dist/tippy.css'
 import 'tippy.js/themes/light-border.css';
 
+import '../src/app.css';
+import '../src/season1.css';
+
 let pickCard = 0;
 let pick2 = 0;
 let pick3 = 0;

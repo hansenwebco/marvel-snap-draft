@@ -96,19 +96,6 @@
     cursor: pointer;
 }
 
-.pick-rarity-3 {
-    /*-webkit-filter: drop-shadow(0px 0px 2px #c4d812) drop-shadow(0px 0px 2px #c4d812) drop-shadow(0px 0px 2px #c4d812) drop-shadow(0px 0px 2px #c4d812);*/
-}
-
-.pick-rarity-2 {
-    /* -webkit-filter: drop-shadow(0px 0px 2px #dd10d3) drop-shadow(0px 0px 2px #dd10d3) drop-shadow(0px 0px 2px #dd10d3) drop-shadow(0px 0px 2px #dd10d3);*/
-
-}
-
-.pick-rarity-1 {
-    /*animation: pulse-rare 3s infinite;*/
-}
-
 @keyframes pulse-rare {
     0% {
         filter: drop-shadow(0 0 30px #2f08dd);
