@@ -11,7 +11,7 @@ const SIGNALIO_SERVER = "wss://stone-donkey.onrender.com"
 //const SIGNALIO_SERVER = "ws://localhost:3000";
 
 async function loadCardsVote() {
-    let result = await(await fetch("http://snapdata-cdn.stonedonkey.com/data/snap.json")).json();
+    let result = await(await fetch("https://snapdata-cdn.stonedonkey.com/data/snap.json")).json();
     cards = result.data.cards;
 }
 
@@ -118,9 +118,9 @@ function drawUI(arg, resetVote) {
     document.getElementById("totalvotes").innerHTML = "Viewers " + viewers + " - Total Votes: " + (totalVotes === undefined ? 0 : totalVotes) 
 
 
-    document.getElementById("client-pick1").src = "http://snapdata-cdn.stonedonkey.com/images/cards/" + arg.instance.pick1 + ".webp";
-    document.getElementById("client-pick2").src = "http://snapdata-cdn.stonedonkey.com/images/cards/" + arg.instance.pick2 + ".webp";
-    document.getElementById("client-pick3").src = "http://snapdata-cdn.stonedonkey.com/images/cards/" + arg.instance.pick3 + ".webp";
+    document.getElementById("client-pick1").src = "https://snapdata-cdn.stonedonkey.com/images/cards/" + arg.instance.pick1 + ".webp";
+    document.getElementById("client-pick2").src = "https://snapdata-cdn.stonedonkey.com/images/cards/" + arg.instance.pick2 + ".webp";
+    document.getElementById("client-pick3").src = "https://snapdata-cdn.stonedonkey.com/images/cards/" + arg.instance.pick3 + ".webp";
 
     document.getElementById("client-card-desc-1").innerHTML = cards.card[arg.instance.pick1 - 1].desc;
     document.getElementById("client-card-desc-2").innerHTML = cards.card[arg.instance.pick2 - 1].desc;

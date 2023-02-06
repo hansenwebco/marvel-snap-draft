@@ -17,7 +17,7 @@ let voteSession = "";
 let cards;
 let draftMode = 0;
 
-const DATA_URL = "http://snapdata-cdn.stonedonkey.com/";
+const DATA_URL = "https://snapdata-cdn.stonedonkey.com/";
 const SIGNALIO_SERVER = "wss://stone-donkey.onrender.com"
 //const SIGNALIO_SERVER = "ws://localhost:3000";
 
