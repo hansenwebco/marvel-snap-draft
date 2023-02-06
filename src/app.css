@@ -304,3 +304,15 @@ td {
 #live {
     display: none;
 }
+
+#notice {
+
+    background-color: red;
+    width:800px;
+    border-radius: 10px;
+    text-align: left;
+    margin: auto;
+    margin-top:100px;
+    padding:20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
