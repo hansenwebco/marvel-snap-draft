@@ -38,7 +38,7 @@ function start(mode) {
 }
 
 async function loadCards() {
-    let result = await (await fetch(DATA_URL + "data/snap.json",  {referrerPolicy: "unsafe-url" })).json();
+    let result = await (await fetch(DATA_URL + "data/snap.json")).json();
     cards = result.data.cards;
 
 }
