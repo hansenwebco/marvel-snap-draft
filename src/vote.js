@@ -11,7 +11,7 @@ const SIGNALIO_SERVER = "wss://stone-donkey.onrender.com"
 //const SIGNALIO_SERVER = "ws://localhost:3000";
 
 async function loadCardsVote() {
-    let result = await(await fetch("https://snapdata.stonedonkey.com/data/snap.json")).json();
+    let result = await(await fetch("https://snapdata.stonedonkey.com/data/snap.json", {referrerPolicy: "unsafe-url" })).json();
     cards = result.data.cards;
 }
 
