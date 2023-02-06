@@ -55,10 +55,6 @@
     <div id="start-screen">
         <table id="start">
             <tr>
-                <td>&nbsp;</td>
-                <td><img src="images/weighted-season.png"></td>
-            </tr>
-            <tr>
                 <td>
                     <span onclick="start(0)" class="material-symbols-outlined icon">public</span><Br/><br/><Br/><br/>
                     <a class="btn btn-primary" onclick="start(0)">Draft Mode</a>
@@ -66,12 +62,17 @@
                 <td style="position: relative;">
                     <span onclick="start(1)" class="material-symbols-outlined icon">batch_prediction</span><Br/><br/><Br/><br/>
                     <a class="btn btn-primary" onclick="start(1)">Sealed Mode</a>
-                    <img class="new-mode" src="images/new.png">
                 </td>
+                <td style="position: relative;">
+                    <span onclick="document.location.href='draft-table.html'" class="material-symbols-outlined icon">table_restaurant</span><br/><br/><br/><br/>
+                    <a class="btn btn-primary" href="draft-table.html">Draft Table</a>
+                    <img class="new-mode" src="images/new.png">
+                </td>                
             </tr>
             <tr>
                 <td><div class="start-text">Choose one of three cards for twelve rounds to build your deck!</div></td>
                 <td><div class="start-text">Open five packs of random cards and build the best deck you can!</div></td>
+                <td><div class="start-text">Drafting table for helping you create custom drafts for vs mode!</div></td>
             </tr>
         </table>
     </div>

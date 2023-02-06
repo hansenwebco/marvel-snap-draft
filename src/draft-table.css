@@ -1,0 +1,24 @@
+.table-card {
+    width:100px;
+}
+
+
+#wrapper {
+    width:90%;
+    margin: 0px auto;
+    padding:10px;
+ 
+}
+
+#heading {
+    margin-bottom: 40px;
+}
+
+.row {
+    width:1200px;
+    border: solid 1px blue;
+    min-height:70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

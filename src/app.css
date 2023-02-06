@@ -16,7 +16,7 @@ html {
     width:50px;
     position:absolute;
     top: 0px;
-    left: 210px;
+    left: 170px;
     z-index: 100;
     clear: both;
 }
@@ -51,7 +51,7 @@ html {
 }
 
 #start {
-    width: 650px;
+    width: 850px;
     margin-left: auto;
     margin-right: auto;
 

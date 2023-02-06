@@ -1,19 +1,78 @@
 <html>
-
 <head>
     <title>Marvel Snap! Draftanator</title>
     <script>
         window.onload = async function () {
-            //await loadCardsVote();
-            //startVoteSession();
-          
+            await getCards();
+            bindCards();
         }
     </script>
 </head>
-
 <body>
     <div id="heading"><img id="header-image" src="/images/header.png"></div>
 
+    <div class="row" id="player1">
+        Player 1:
+        <img src="./images/blank2.png">
+        <img src="./images/blank2.png">
+        <img src="./images/blank2.png">
+        <img src="./images/blank2.png">
+        <img src="./images/blank2.png">
+        <img src="./images/blank2.png">
+        <img src="./images/blank2.png">
+        <img src="./images/blank2.png">
+        <img src="./images/blank2.png">
+        <img src="./images/blank2.png">
+        <img src="./images/blank2.png">
+        <img src="./images/blank2.png">
+    </div>
+    <div class="row" id="player2">
+        Player 2:
+        <img src="./images/blank2.png">
+        <img src="./images/blank2.png">
+        <img src="./images/blank2.png">
+        <img src="./images/blank2.png">
+        <img src="./images/blank2.png">
+        <img src="./images/blank2.png">
+        <img src="./images/blank2.png">
+        <img src="./images/blank2.png">
+        <img src="./images/blank2.png">
+        <img src="./images/blank2.png">
+        <img src="./images/blank2.png">
+        <img src="./images/blank2.png">
+    </div>
+    <div class="row" id="player2">
+        Player 1 Bans:
+        <img src="./images/blank2.png">
+        <img src="./images/blank2.png">
+        <img src="./images/blank2.png">
+        <img src="./images/blank2.png">
+        <img src="./images/blank2.png">
+        <img src="./images/blank2.png">
+        <img src="./images/blank2.png">
+        <img src="./images/blank2.png">
+        <img src="./images/blank2.png">
+        <img src="./images/blank2.png">
+        <img src="./images/blank2.png">
+        <img src="./images/blank2.png">
+    </div>
+    <div class="row" id="player2">
+        Player 2 Bans:
+        <img src="./images/blank2.png">
+        <img src="./images/blank2.png">
+        <img src="./images/blank2.png">
+        <img src="./images/blank2.png">
+        <img src="./images/blank2.png">
+        <img src="./images/blank2.png">
+        <img src="./images/blank2.png">
+        <img src="./images/blank2.png">
+        <img src="./images/blank2.png">
+        <img src="./images/blank2.png">
+        <img src="./images/blank2.png">
+        <img src="./images/blank2.png">
+    </div>        
+
+    <div id="wrapper"></div>
 
     <div id="footer">Created by stonedonkey - Follow on 
         <a target="_blank" href="https://twitch.tv/stonedonkey">Twitch</a> - 
@@ -21,7 +80,6 @@
         <a target="_blank" href="https://github.com/hansenwebco/marvel-snap-draft">Github</a> - 
         <a target="_blank" href="https://github.com/hansenwebco/marvel-snap-draft/issues">Bugs</a>
     </div>
-    <script src="./dist/global_css.dist.js"></script>
     <script src="./dist/table.dist.js"></script>
 
 </body>
