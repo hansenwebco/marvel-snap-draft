@@ -1,0 +1,23 @@
+name: Deploy Draftanator
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: unbuntu-latest
+    timeout-minutes: 10
+
+    strategy:
+      matrix: 
+        node-version: [15.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: npm install
+        run: npm install
+      - name: npm build
+        run: npm run build
+    
