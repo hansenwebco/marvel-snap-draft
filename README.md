@@ -2,7 +2,7 @@
 
 This is a quick prototype of a drafting tool for the upcoming game Marvel Snap.
 
-Currently hosted at: [https://marvel-snap-draft.onrender.com/](https://marvel-snap-draft.onrender.com/)
+Currently hosted at: [https://www.marvelsnapdraft.com/](https://www.marvelsnapdraft.com/)
 
 # Developers
 
