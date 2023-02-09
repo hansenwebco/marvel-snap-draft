@@ -2,7 +2,6 @@ import { Base64 } from 'js-base64';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { v4 as uuidv4 } from 'uuid';
 import { io } from "socket.io-client";
-import { pick } from 'query-string';
 import tippy from 'tippy.js';
 import 'tippy.js/dist/tippy.css'
 import 'tippy.js/themes/light-border.css';
@@ -21,7 +20,7 @@ let voteSession = "";
 let cards;
 let draftMode = 0;
 
-const DATA_URL = "https://snapdata.stonedonkey.com/";
+const DATA_URL = "https://snapdata-cdn.stonedonkey.com/";
 const SIGNALIO_SERVER = "wss://stone-donkey.onrender.com"
 //const SIGNALIO_SERVER = "ws://localhost:3000";
 
@@ -31,6 +30,7 @@ function start(mode) {
     document.getElementById("start-screen").style.display = "none";
     document.getElementById("draft-ui").style.display = "block";
     document.getElementById("picks-ui").style.display = "block";
+    document.getElementById("notice").style.display = "none";
     if (draftMode == 1) {
         configureSealed();
     }

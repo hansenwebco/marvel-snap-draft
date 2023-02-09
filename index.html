@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 
     <!-- Primary Meta Tags -->
@@ -51,7 +51,6 @@
     
     <div id="heading"><img id="header-image" src="/images/header.png"></div>
 
-
     <div id="start-screen">
         <table id="start">
             <tr>
@@ -77,7 +76,7 @@
         </table>
     </div>
     
-    <!-- yeah yeah it's full of tables sue me -->
+  
      <div id="draft-ui">
         <table cellpadding=0 cellmargin="0" id="draft">
             <tr>
@@ -171,7 +170,7 @@
         <table id="open-packs">
             <tr>
                 <td>
-                    <div id="cardtray"><img onclick="openPack();" id="seasonpack" src="./images/CardPack-SavageLands.png"></div>
+                    <div id="cardtray"><img onclick="openPack();" id="seasonpack" src="./images/CardPack-quantum.png"></div>
                     <div id="packcount">5 Packs Remaining</div>
                     <div id="opendone"><a href="#" onclick="buildDeck()" class="btn btn-primary bulid-deck" id="build-deck">Build Deck</a></div>
                 </td>
@@ -219,9 +218,16 @@
             <div id="totalvotes">Total Votes: 0</div>
         </div>        
     </div>
-    <div id="footer">Created by <a target="_blank" href="https://www.stonedonkey.com">stonedonkey</a> - Follow on <a target="_blank" href="https://twitch.tv/stonedonkey">Twitch</a> - <a target="_blank" href="https://mastodon.social/@stonedonkey">Mastodon</a>
-       <br/><br/> <a target="_blank" href="https://github.com/hansenwebco/marvel-snap-draft">Github</a> - <a target="_blank" href="https://github.com/hansenwebco/marvel-snap-draft/issues">Bugs</a></div>
-    <script src="./dist/app.dist.js"></script>
 
+    <div id="notice">
+        <h4>Update:</h4>
+        Due to a tremoundous response from the community the cost of running the Draftanator has required some server changes.  Server updates should be rolling out now to resolve this it make take a few days to fully show for some.
+        <br/><br/>
+        Thanks to all who've donated! If you wish to help support the hosting costs you can help out at <a href="https://www.buymeacoffee.com/stonedonkey">buy me a Coffee</a>.
+    </div>
+
+    <div id="footer">Created by <a target="_blank" href="https://www.stonedonkey.com">stonedonkey</a> - Follow on <a target="_blank" href="https://twitch.tv/stonedonkey">Twitch</a> - <a target="_blank" href="https://mastodon.social/@stonedonkey">Mastodon</a>
+       <br/><br/> <a target="_blank" href="https://github.com/hansenwebco/marvel-snap-draft">Github</a> - <a target="_blank" href="https://github.com/hansenwebco/marvel-snap-draft/issues">Bugs</a><br/> (aws 3)</div>
+    <script src="./scripts/app.dist.js"></script>
 </body>
 </html>
