@@ -248,6 +248,7 @@ td {
     top: 0px;
     width: 550px;
 
+
 }
 
 #live-tab {
@@ -258,6 +259,7 @@ td {
     margin: auto;
     text-align: center;
     cursor: pointer;
+    display: none;
 
 }
 
