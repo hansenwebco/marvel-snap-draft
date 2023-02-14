@@ -6,6 +6,8 @@ import tippy from 'tippy.js';
 import 'tippy.js/dist/tippy.css'
 import 'tippy.js/themes/light-border.css';
 
+var PACKAGE = require('../package.json');
+
 let pickCard = 0;
 let pick2 = 0;
 let pick3 = 0;
@@ -38,6 +40,9 @@ function start(mode) {
 }
 
 async function loadCards() {
+    
+    document.getElementById("version").innerHTML = "v" + PACKAGE.version;
+
     let result = await (await fetch(DATA_URL + "data/snap.json")).json();
     cards = result.data.cards;
 
