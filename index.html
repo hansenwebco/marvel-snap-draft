@@ -118,10 +118,9 @@
         </table>
     </div>
     <div id="picks-ui">
-        <div id="picks-complete" style="display:none">
+        <div id="picks-complete">
             By Thor's hammer, congratulations you've completed your draft!
-            <br/><br/>
-            
+            <br /><br />
             <div id="deckcode-container" class="row col-12">
                 <div class="col-9">
                     <input class="form-control" readonly onclick="this.select();" type="text" id="deck-code" />
@@ -130,29 +129,35 @@
                     <input type="button" class="btn btn-primary" onclick="copyDeckCode();" value="Copy Deck Code">
                 </div>
             </div>
-     
-            <br/><br/>
+    
+            <br /><br />
             <a class="btn btn-secondary" href="/">Start a New Draft</a>
-            <br/><br/>
+            <br /><br /> <br /> 
+            <div class="row col-12">
+                <div class="col-12" id="draftid">
+                    Draft ID: <input onclick="this.select();" readonly id="draftguid" class="col-3" type=text value="8f83e99c-871e-49e1-8938-ad8f81f9fe3f">
+                </div>
+       
+            </div>
         </div>
         <table id="picks">
             <tr>
                 <td id="card-1-td">
                     <div id="vote-1" class="vote-master circle">0%</div>
                     <img onload="this.setAttribute('onclick', 'chooseCard(1);')" id="pick1" class="pick"><br />
-                    <div class="card-desc" id="card-desc-1">This card +2 on blah</div><br />
+                    <div class="card-desc" id="card-desc-1"></div><br />
                     <a class="btn btn-secondary btn-sm" onclick="updateCard(1)">Don't Have Card</a>
                 </td>
                 <td id="card-2-td">
                     <div id="vote-2" class="vote-master circle">0%</div>
                     <img onload="this.setAttribute('onclick', 'chooseCard(2);')" id="pick2" class="pick"><br />
-                    <p class="card-desc" id="card-desc-2">This card +2 on blah</p><br />
+                    <p class="card-desc" id="card-desc-2"></p><br />
                     <a  class="btn btn-secondary btn-sm" onclick="updateCard(2)">Don't Have Card</a>
                 </td>
                 <td id="card-3-td">
                     <div id="vote-3" class="vote-master circle">0%</div>
                     <img onload="this.setAttribute('onclick', 'chooseCard(3);')" id="pick3" class="pick"><br />
-                    <p class="card-desc" id="card-desc-3">This card +2 on blah</p><br />
+                    <p class="card-desc" id="card-desc-3"></p><br />
                     <a  class="btn btn-secondary btn-sm" onclick="updateCard(3)">Don't Have Card</a>
                 </td>
             </tr>
@@ -224,5 +229,7 @@
     <div id="footer">Created by <a target="_blank" href="https://www.stonedonkey.com">stonedonkey</a> - Follow on <a target="_blank" href="https://twitch.tv/stonedonkey">Twitch</a> - <a target="_blank" href="https://mastodon.social/@stonedonkey">Mastodon</a>
        <br/><br/> <a target="_blank" href="https://github.com/hansenwebco/marvel-snap-draft">Github</a> - <a target="_blank" href="https://github.com/hansenwebco/marvel-snap-draft/issues">Bugs</a> - <span id="version"></span></div> <br/> 
     <script src="./scripts/dist.js"></script> 
+    <br/><br/>
+
 </body>
 </html>
