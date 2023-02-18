@@ -1,6 +1,6 @@
 {
   "name": "marvel-snap-draft",
-  "version": "2.1.3",
+  "version": "2.1.4",
   "description": "A simple draft tool for Marvel Snap",
   "main": "app.js",
   "scripts": {
