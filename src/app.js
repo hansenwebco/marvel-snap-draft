@@ -593,7 +593,7 @@ function sealedComplete() {
         }, true);
     }
 
-    saveDraftToDb(draftList, 'arena');
+    saveDraftToDb(draftList, 'sealed');
     document.getElementById("button-finish-sealed").style.display = "none";
 
     buildDeckCode();
