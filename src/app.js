@@ -26,6 +26,11 @@ const SIGNALIO_SERVER = "wss://stone-donkey.onrender.com"
 
 function start(mode) {
     draftMode = mode;
+
+    // TODO: Remove these
+    //document.getElementById("picks").style.display = "none";
+    //document.getElementById("picks-complete").style.display = "block";
+
     document.getElementById("start-screen").style.display = "none";
     document.getElementById("draft-ui").style.display = "block";
     document.getElementById("picks-ui").style.display = "block";
@@ -40,7 +45,7 @@ function start(mode) {
 }
 
 async function loadCards() {
-    
+
     document.getElementById("version").innerHTML = "v" + PACKAGE.version;
 
     let result = await (await fetch(DATA_URL + "data/snap.json")).json();
@@ -73,8 +78,6 @@ function chooseCard(card) {
     sortCards();
     drawPicks();
 
-
-
     currentPick++;
     if (draftMode == 1)
         s1UpdatePicks(cards);
@@ -87,9 +90,33 @@ function chooseCard(card) {
         document.getElementById("picks").style.display = "none";
         document.getElementById("picks-complete").style.display = "block";
         document.getElementById("totalvotes").style.display = "none";
+
+        saveDraftToDb(pickList, 'arena');
         return;
     }
 }
+
+function saveDraftToDb(pickList, mode) {
+
+    let payload = JSON.stringify({ 'draft': pickList, 'mode': mode });
+
+    fetch('http://localhost:3000/draft', {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: payload,
+        cache: 'default'
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log('Success:', data.draftid);
+            document.getElementById("draftlink").value = "https://www.marvelsnapdraft.com/?draft=" + data.draftid;
+        })
+}
+
 
 export function randomNum(min, max) {
     //return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -116,11 +143,10 @@ function updatePicks() {
     document.getElementById("pick2").src = DATA_URL + "images/cards/" + pick2 + ".webp";
     document.getElementById("pick3").src = DATA_URL + "images/cards/" + pick3 + ".webp";
 
-    console.log(pickCard,pick2, pick3)
-    console.log(cards.card[pickCard - 1].name)
-    console.log(cards.card[pick2 - 1].name)
-    console.log(cards.card[pick3 - 1].name)
-
+    // console.log(pickCard,pick2, pick3)
+    // console.log(cards.card[pickCard - 1].name)
+    // console.log(cards.card[pick2 - 1].name)
+    // console.log(cards.card[pick3 - 1].name)
 
     document.querySelectorAll('.outofdate').forEach(e => e.remove());
     if (cards.card[pickCard - 1].currentImage === false)
@@ -175,8 +201,6 @@ function updateCard(redraw) {
     document.getElementById("card-desc-2").innerHTML = cards.card[pick2 - 1].desc;
     document.getElementById("card-desc-3").innerHTML = cards.card[pick3 - 1].desc;
 
-
-
     if (voteSession.length > 0)
         ioEmitState();
 
@@ -223,8 +247,6 @@ function drawPicks() {
     }
     else
         document.getElementById("button-finish-sealed").style.display = "none";
-
-
 }
 
 function buildDeckCode() {
@@ -297,7 +319,6 @@ function ioStartStreamVote() {
     ioEmitState();
 }
 
-
 function toggleLive() {
     let tab = document.getElementById("live-start");
     tab.style.display = (tab.style.display === "block") ? "none" : "block";
@@ -338,7 +359,7 @@ function configureSealed() {
 
 function openPackSealed() {
 
-    if ((packCount == 5 && cardReveals == 0) || (packCount >= 1 &&  cardReveals == 5)) {
+    if ((packCount == 5 && cardReveals == 0) || (packCount >= 1 && cardReveals == 5)) {
 
         new Audio('./sound/pack-open2.wav').play();
 
@@ -498,17 +519,17 @@ let tippyInstance;
 function bindToolTips() {
     // this is a kinda inefficent, but I don't see an easier way to do this without rewriting a bunch of stuff and it's not THAT bad
     if (tippyInstance !== undefined) {
-        console.log(tippyInstance)
-        tippyInstance.forEach(element => element.destroy() )
+        //console.log(tippyInstance)
+        tippyInstance.forEach(element => element.destroy())
     }
-    
+
     tippyInstance = tippy('[data-tippy-content]', {
         theme: 'light-border',
         delay: [200, 200],
         maxWidth: 200,
         placement: 'bottom'
     });
-    
+
 }
 
 function bindClickCardBackSealed() {
@@ -537,9 +558,7 @@ function bindClickCardBackSealed() {
 
 function updateSealedCard(cardNum) {
 
-
     let element = document.getElementById("draw" + cardNum);
-
     let pick = drawCardSealed(parseInt(element.getAttribute("cardid")));
 
     element.src = DATA_URL + "images/cards/" + cards.card[pick].id + ".webp"; // render card
@@ -562,16 +581,19 @@ function buildDeck() {
 }
 
 function sealedComplete() {
-    
-    for(let x = 1; x <=12; x++) 
-    {
-        let elm = document.getElementById("card"+x);
+
+    let draftList = "";
+
+    for (let x = 1; x <= 12; x++) {
+        let elm = document.getElementById("card" + x);
+        draftList = draftList + "|" + cardsPicked[x - 1].id;
         // prevents clicks.. kinda hate this but couldn't find a way to remove anonymous events without a bunch of rework
         elm.addEventListener("click", function (event) {
             event.stopPropagation();
         }, true);
     }
 
+    saveDraftToDb(draftList, 'arena');
     document.getElementById("button-finish-sealed").style.display = "none";
 
     buildDeckCode();

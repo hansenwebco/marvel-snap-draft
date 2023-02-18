@@ -7,14 +7,19 @@ html {
     padding: 0px;
 }
 
+#draftid 
+{
+    display: none;
+}
+
 #header-image {
     height: 120px;
     margin-bottom: -25px;
 }
 
 .new-mode {
-    width:50px;
-    position:absolute;
+    width: 50px;
+    position: absolute;
     top: 0px;
     left: 210px;
     z-index: 100;
@@ -54,7 +59,6 @@ html {
     width: 650px;
     margin-left: auto;
     margin-right: auto;
-
 }
 
 #start td {
@@ -165,6 +169,24 @@ td {
 
 #picks-complete {
     text-align: center;
+    display: none;
+}
+
+#draftid {
+    font-size: 11px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#draftlink {
+    text-align: center;
+    border: none;
+    background-color: #555;
+    color: #aaa
+}
+
+#draftlink:focus {
+
+  outline: 0 none;
 }
 
 #energy-table {
@@ -310,11 +332,11 @@ td {
 #notice {
 
     background-color: #291763;
-    width:900px;
+    width: 900px;
     border-radius: 10px;
     text-align: left;
     margin: auto;
-    padding:20px;
+    padding: 20px;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 13px;
     border: solid 3px white;
