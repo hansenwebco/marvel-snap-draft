@@ -100,7 +100,7 @@ function saveDraftToDb(pickList, mode) {
 
     let payload = JSON.stringify({ 'draft': pickList, 'mode': mode });
 
-    fetch('http://localhost:3000/draft', {
+    fetch('http://snapbot.stonedonkey.com/draft', {
         method: 'POST',
         mode: 'cors',
         headers: {
