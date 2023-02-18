@@ -7,6 +7,11 @@ html {
     padding: 0px;
 }
 
+#draftid 
+{
+    display: none;
+}
+
 #header-image {
     height: 120px;
     margin-bottom: -25px;

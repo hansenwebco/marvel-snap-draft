@@ -319,7 +319,6 @@ function ioStartStreamVote() {
     ioEmitState();
 }
 
-
 function toggleLive() {
     let tab = document.getElementById("live-start");
     tab.style.display = (tab.style.display === "block") ? "none" : "block";
@@ -559,9 +558,7 @@ function bindClickCardBackSealed() {
 
 function updateSealedCard(cardNum) {
 
-
     let element = document.getElementById("draw" + cardNum);
-
     let pick = drawCardSealed(parseInt(element.getAttribute("cardid")));
 
     element.src = DATA_URL + "images/cards/" + cards.card[pick].id + ".webp"; // render card
@@ -585,14 +582,18 @@ function buildDeck() {
 
 function sealedComplete() {
 
+    let draftList = "";
+
     for (let x = 1; x <= 12; x++) {
         let elm = document.getElementById("card" + x);
+        draftList = draftList + "|" + cardsPicked[x - 1].id;
         // prevents clicks.. kinda hate this but couldn't find a way to remove anonymous events without a bunch of rework
         elm.addEventListener("click", function (event) {
             event.stopPropagation();
         }, true);
     }
 
+    saveDraftToDb(draftList, 'arena');
     document.getElementById("button-finish-sealed").style.display = "none";
 
     buildDeckCode();
