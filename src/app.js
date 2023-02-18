@@ -45,7 +45,7 @@ function start(mode) {
 }
 
 async function loadCards() {
-    
+
     document.getElementById("version").innerHTML = "v" + PACKAGE.version;
 
     let result = await (await fetch(DATA_URL + "data/snap.json")).json();
@@ -91,30 +91,30 @@ function chooseCard(card) {
         document.getElementById("picks-complete").style.display = "block";
         document.getElementById("totalvotes").style.display = "none";
 
-        console.log(pickList);
-        saveDraftToDb(pickList, 'draft');
+        saveDraftToDb(pickList, 'arena');
         return;
     }
 }
 
 function saveDraftToDb(pickList, mode) {
-   
-    let payload =  { 'draft' : pickList, mode: mode }
-   
+
+    let payload = JSON.stringify({ 'draft': pickList, 'mode': mode });
+
     fetch('http://localhost:3000/draft', {
-        Method: 'POST',
+        method: 'POST',
         mode: 'cors',
-        Headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
         },
-        Body: payload,
-        Cache: 'default'
-      })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log('Success:', data.draftid);
-      })
+        body: payload,
+        cache: 'default'
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log('Success:', data.draftid);
+            document.getElementById("draftlink").value = "https://www.marvelsnapdraft.com/?draft=" + data.draftid;
+        })
 }
 
 
@@ -360,7 +360,7 @@ function configureSealed() {
 
 function openPackSealed() {
 
-    if ((packCount == 5 && cardReveals == 0) || (packCount >= 1 &&  cardReveals == 5)) {
+    if ((packCount == 5 && cardReveals == 0) || (packCount >= 1 && cardReveals == 5)) {
 
         new Audio('./sound/pack-open2.wav').play();
 
@@ -521,16 +521,16 @@ function bindToolTips() {
     // this is a kinda inefficent, but I don't see an easier way to do this without rewriting a bunch of stuff and it's not THAT bad
     if (tippyInstance !== undefined) {
         //console.log(tippyInstance)
-        tippyInstance.forEach(element => element.destroy() )
+        tippyInstance.forEach(element => element.destroy())
     }
-    
+
     tippyInstance = tippy('[data-tippy-content]', {
         theme: 'light-border',
         delay: [200, 200],
         maxWidth: 200,
         placement: 'bottom'
     });
-    
+
 }
 
 function bindClickCardBackSealed() {
@@ -584,10 +584,9 @@ function buildDeck() {
 }
 
 function sealedComplete() {
-    
-    for(let x = 1; x <=12; x++) 
-    {
-        let elm = document.getElementById("card"+x);
+
+    for (let x = 1; x <= 12; x++) {
+        let elm = document.getElementById("card" + x);
         // prevents clicks.. kinda hate this but couldn't find a way to remove anonymous events without a bunch of rework
         elm.addEventListener("click", function (event) {
             event.stopPropagation();

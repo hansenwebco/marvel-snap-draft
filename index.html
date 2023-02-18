@@ -29,12 +29,10 @@
     <script>
         window.onload = async function () {
            await loadCards();
-            //updatePicks();
         }
     </script>
 </head>
 <body>
-   
     <div id="live">
         <div id="live-start">
             CLick the "Get LinK" button and share with your stream/friends.<br/>
@@ -135,9 +133,8 @@
             <br /><br /> <br /> 
             <div class="row col-12">
                 <div class="col-12" id="draftid">
-                    Draft ID: <input onclick="this.select();" readonly id="draftguid" class="col-3" type=text value="8f83e99c-871e-49e1-8938-ad8f81f9fe3f">
+                    Link to this draft: <input onclick="this.select();" readonly id="draftlink" class="col-6" type=text value="8f83e99c-871e-49e1-8938-ad8f81f9fe3f">
                 </div>
-       
             </div>
         </div>
         <table id="picks">
@@ -218,18 +215,15 @@
             <div id="totalvotes">Total Votes: 0</div>
         </div>        
     </div>
-
     <div id="notice">
         <h4>Update 2/12/2023:</h4>
         Server changes have been updated and should be live now.  Live voting is currently disabled while we revamp how voting is handled on the backend.
         <br/><br/>
         Thanks to all who've donated! If you wish to help support the hosting costs you can help out at <a href="https://www.buymeacoffee.com/stonedonkey">buy me a Coffee</a>.
     </div>
-
     <div id="footer">Created by <a target="_blank" href="https://www.stonedonkey.com">stonedonkey</a> - Follow on <a target="_blank" href="https://twitch.tv/stonedonkey">Twitch</a> - <a target="_blank" href="https://mastodon.social/@stonedonkey">Mastodon</a>
        <br/><br/> <a target="_blank" href="https://github.com/hansenwebco/marvel-snap-draft">Github</a> - <a target="_blank" href="https://github.com/hansenwebco/marvel-snap-draft/issues">Bugs</a> - <span id="version"></span></div> <br/> 
     <script src="./scripts/dist.js"></script> 
     <br/><br/>
-
 </body>
 </html>

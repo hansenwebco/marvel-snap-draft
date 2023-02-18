@@ -172,14 +172,14 @@ td {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-#draftguid {
+#draftlink {
     text-align: center;
     border: none;
     background-color: #555;
     color: #aaa
 }
 
-#draftguid:focus {
+#draftlink:focus {
 
   outline: 0 none;
 }
