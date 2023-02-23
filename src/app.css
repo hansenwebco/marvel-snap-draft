@@ -482,16 +482,25 @@ td {
     }
 }
 
-@keyframes pulse-legend {
-    0% {
-        filter: drop-shadow(0px 0px 10px #c4d812);
-    }
 
-    50% {
-        filter: drop-shadow(0px 0px 20px rgb(196, 216, 18));
-    }
+.draft-table-wrapper {
+    border: solid 1px green;
+    display: flex;
+    width: 95%;
+    justify-content: center;
+    vertical-align: middle;
+    clear: both;
+}
+.draft-row-title {
+    border: solid 1px red;
+    width: 100px;
+    float:left;
+    vertical-align: middle;
+    display:flex;
+}
+.draft-table-row {
+    margin:auto;
+    width:800px;
+    border: solid 1px red;
 
-    100% {
-        filter: drop-shadow(0px 0px 10px rgb(196, 216, 18));
-    }
 }

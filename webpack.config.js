@@ -7,6 +7,7 @@ module.exports = {
       patterns: [
         { from: path.resolve(__dirname, "index.html"), to: "../index.html" },
         { from: path.resolve(__dirname, "vote.html"), to: "../vote.html" },
+        { from: path.resolve(__dirname, "draft-table.html"), to: "../draft-table.html" },
         { from: path.resolve(__dirname, "images"), to: "../images" },
         { from: path.resolve(__dirname, "sound"), to: "../sound" },
       ],
