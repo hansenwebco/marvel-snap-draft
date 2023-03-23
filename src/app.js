@@ -374,7 +374,7 @@ function openPackSealed() {
         [...document.getElementsByClassName("cardback")].forEach(
             (element, index, array) => {
 
-                element.src = "./images/cardback-full.png";
+                element.src = "./images/cardback-full-futurepast.png";
                 removeRarityClass(element);
             }
         );
@@ -394,7 +394,7 @@ function bindClickSealed() {
         .forEach(
             (element, index, array) => {
                 element.addEventListener("click", function handler() {
-                    if (this.src.includes("cardback-full.png")) {
+                    if (this.src.includes("cardback-full-futurepast.png")) {
                         let pick = drawCardSealed(0); // pick a card
 
                         this.src = DATA_URL + "images/cards/" + cards.card[pick].id + ".webp"; // render card.
