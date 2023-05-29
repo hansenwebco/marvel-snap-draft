@@ -125,7 +125,7 @@ export function randomNum(min, max) {
 
 function updatePicks() {
 
-    let totalCards = cards.card.length;
+    let totalCards = cards.card.length + 1;
 
     do {
         pickCard = randomNum(1, totalCards);
@@ -169,7 +169,7 @@ function updatePicks() {
 // this can probably be combined with updatePicks somehow but I can't be bothered...
 function updateCard(redraw) {
 
-    let totalCards = cards.card.length;
+    let totalCards = cards.card.length + 1;
 
     if (redraw === 1)
         do {
@@ -424,7 +424,7 @@ function drawCardSealed(cardid) { // if cardid is zero new role, else we're repl
         cardsOpened.splice(cardsOpened.findIndex(x => parseInt(x.id) === parseInt(cardid)), 1);
     }
 
-    let totalCards = cards.card.length;
+    let totalCards = cards.card.length + 1;
 
     var pickRarity = randomNum(1, 100);
     var rarity = 1;
